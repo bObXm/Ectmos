@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <%- include('partial/head.ejs') %> 
+
+<body>
+    <%- include('partial/navbar.ejs') %> 
+    <%- include('partial/flash.ejs')%>
+    
+<h1>Editeaza</h1>
+
+
+    <form action='/anunturiTenis/<%= anuntTenisEditat.id %>?_method=PUT' class='form' method="POST">
+        
+        <p class='field half'>
+            <label class='label' for='sport'>Sport</label>
+            <select class='select' id='sport' name="sport">
+                <option selected value='tenis'>Tenis</option>
+            </select>
+        </p>
+
+
+
+        <div class='field required'>
+
+            <label class='label' for='dificultate'>Nivel de dificultate</label>
+            <select class='select' id='dificultate' name="dificultate">
+               
+                <option value='Amator'<%=anuntTenisEditat.dificultate=== 'Amator' ? 'selected':'' %> >Amator</option>
+                <option value='Semi-amator'<%=anuntTenisEditat.dificultate=== 'Semi-amator' ? 'selected':'' %> >Semi-amator</option>
+                <option value='Mediu'<%=anuntTenisEditat.dificultate=== 'Mediu' ? 'selected':'' %> >Mediu</option>
+                <option value='Avansat'<%=anuntTenisEditat.dificultate=== 'Avansat' ? 'selected':'' %> >Avansat</option>
+            </select>
+
+        </div>
+
+
+
+
+
+        <p class='field required half'>
+            <label class='label' for='organizator'>Nume organizator</label>
+            <input class='text-input' id='organizator' name='organizator' required  value="<%= anuntTenisEditat.organizator %> ">
+        </p>
+       
+        <p class='field required half'>
+            <label class='label required' for='telefon'>Numar de telefon organizator</label>
+            <input class='text-input' id='telefon' name='telefon' type='text' value="<%= anuntTenisEditat.telefon %>" required >
+        </p>
+
+
+        <p class='field required'>
+            <label class='label' for='info'>Locatie</label>
+            <textarea class='textarea' cols='50' id='info' name='info' rows='4' required><%= anuntTenisEditat.info %> </textarea>
+        </p>
+
+
+        <p class='field required'>
+            <label for="dataSiOra" class="label">Alege data si ora pt eveniment</label>
+            <input type="datetime-local" class="form " id="dataSiOra" name="dataSiOra" required>
+        </p>
+
+        <p class='field half'>
+            <label class='label' for='simplu'>Nr de jucatori pt simplu?</label>
+            <select class='select' id='simplu' name="simplu">
+                <option selected value='0'>Simplu</option>
+                <option value='1' <%= anuntTenisEditat.simplu=== 1 ? 'selected':'' %> >1</option>
+                <option value='2' <%= anuntTenisEditat.simplu=== 2 ? 'selected':'' %> >2</option>
+            </select>
+        </p>
+
+        <p class='field half'>
+            <label class='label' for='dublu'>Nr de jucatori pt dublu?</label>
+            <select class='select' id='dublu' name="dublu">
+                <option selected value='0'>Dublu</option>
+                <option value='1' <%= anuntTenisEditat.dublu=== 1 ? 'selected':'' %> >1</option>
+                <option value='2' <%= anuntTenisEditat.dublu=== 2 ? 'selected':'' %> >2</option>
+            </select>
+        </p>
+
+        
+
+
+
+        <p class='field half'>
+            <input class='button' type='submit' value='Send'>
+        </p>
+
+
+
+
+
+
+    <%- include('partial/script.ejs') %>
+</body>
+</html>

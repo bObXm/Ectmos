@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partial/head.ejs') %>
+
+    <body>
+        <%- include('../partial/navbar.ejs') %>
+            <%- include('../partial/flash.ejs')%>
+
+
+
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <h1 class='d-flex justify-content-center mb-5'>Login</h1>
+                        <form action="/login" method="POST" class="validated-form " style="width: 25rem;" novalidate>
+                            <div class="mb-3">
+                                <label class="form-label" for="username">Username</label>
+                                <input class="form-control" type="text" id="username" name="username" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label" for="password">Password</label>
+                                <input class="form-control" type="password" id="password" name="password" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+                            <button class="btn btn-success">Login</button>
+                        </form>
+                    </div>
+                </div>
+
+
+
+                <%- include('../partial/script.ejs') %>
+
+    </body>
+
+</html>
