@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partial/head.ejs') %>
+
+    <body>
+        <%- include('partial/navbar.ejs') %>
+
+
+        
+
+               
+                <form action='/anunturiBaschet' class='form' method="POST">
+
+                    <p class='field half'>
+                        <label class='label' for='sport'>Sport</label>
+                        <select class='select' id='sport' name="sport">
+                            <option selected value='baschet'>Baschet</option>
+                        </select>
+                    </p>
+        
+        
+        
+                    <div class='field required'>
+        
+                        <label class='label' for='dificultate'>Nivel de dificultate</label>
+                        <select class='select' id='dificultate' name="dificultate">
+                           
+                            <option value='Amator'>Amator</option>
+                            <option value='Semi-amator'>Semi-amator</option>
+                            <option value='Mediu'>Mediu</option>
+                            <option value='Avansat'>Avansat</option>
+                        </select>
+
+                    </div>
+        
+        
+        
+        
+        
+                    <p class='field required half'>
+                        <label class='label' for='organizator'>Nume organizator</label>
+                        <input class='text-input' id='organizator' name='organizator' required >
+                    </p>
+                   
+                    <p class='field required half'>
+                        <label class='label' for='telefon'>Numar de telefon organizator</label>
+                        <input class='text-input' id='telefon' name='telefon' type='text' maxlength="10"  minlength="10" required>
+                    </p>
+        
+        
+                    <p class='field required'>
+                        <label class='label' for='info'>Locatie</label>
+                        <textarea class='textarea' cols='50' id='info' name='info' rows='4' required></textarea>
+                    </p>
+                    
+                    <p class='field required' >
+                        <label for="dataSiOra" class="label">Alege data si ora pt eveniment</label>
+                        <input type="datetime-local" class="form " id="dataSiOra" name="dataSiOra" required >
+                    </p>
+
+
+
+
+
+
+
+                <p class='field half'>
+                    <label class='label' for='center'>Cati "Center" vrei?</label>
+                    <select class='select' id='center' name="center">
+                        <option selected value='0'>Center</option>
+                        <option value='1'>1</option>
+                        <option value='2'>2</option>
+                    </select>
+                </p>
+
+                <p class='field half'>
+                    <label class='label' for='pForward'>Cati "Power Forward" vrei?</label>
+                    <select class='select' id='pForward' name="pForward">
+                        <option selected value='0'>Power Forward</option>
+                        <option value='1'>1</option>
+                        <option value='2'>2</option>
+                    </select>
+                </p>
+
+                <p class='field half'>
+                    <label class='label' for='pForward'>Cati "Small Forward" vrei?</label>
+                    <select class='select' id='pForward' name="sForward">
+                        <option selected value='0'>Small Forward</option>
+                        <option value='1'>1</option>
+                        <option value='2'>2</option>
+                    </select>
+                </p>
+
+                <p class='field half'>
+                    <label class='label' for='pGuard'>Cati "Point Guard" vrei?</label>
+                    <select class='select' id='pGuard' name="pGuard">
+                        <option selected value='0'>Point Guard</option>
+                        <option value='1'>1</option>
+                        <option value='2'>2</option>
+                    </select>
+                </p>
+
+
+                <p class='field half'>
+                    <label class='label' for='sGuard'>Cati "Shooting Guard" vrei?</label>
+                    <select class='select' id='sGuard' name="sGuard">
+                        <option selected value='0'>Shooting Guard</option>
+                        <option value='1'>1</option>
+                        <option value='2'>2</option>
+                    </select>
+                </p>
+
+
+
+
+                <p class='field half'>
+                    <input class='button' type='submit' value='Send'>
+                </p>
+
+
+
+
+
+
+                <%- include('partial/script.ejs') %>
+    </body>
+
+</html>

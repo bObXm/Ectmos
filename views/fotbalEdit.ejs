@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+    <%- include('partial/head.ejs') %>
+
+<body>
+    <%- include('partial/navbar.ejs') %>
+    <%- include('partial/flash.ejs')%>
+
+    
+       <h1>Editeaza</h1>
+
+
+        <form action='/anunturiFotbal/<%= anuntFotbalEditat.id %>?_method=PUT' class='form' method="POST">
+
+            <p class='field half'>
+                <label class='label' for='sport'>Sport</label>
+                <select class='select' id='sport' name="sport">
+                    <option selected value='fotbal'>Fotbal</option>
+                </select>
+            </p>
+
+            <div class='field required'>
+
+                <label class='label' for='dificultate'>Nivel de dificultate</label>
+                <select class='select' id='dificultate' name="dificultate">
+                   
+                    <option value='Amator'<%=anuntFotbalEditat.dificultate=== 'Amator' ? 'selected':'' %> >Amator</option>
+                    <option value='Semi-amator'<%=anuntFotbalEditat.dificultate=== 'Semi-amator' ? 'selected':'' %> >Semi-amator</option>
+                    <option value='Mediu'<%=anuntFotbalEditat.dificultate=== 'Mediu' ? 'selected':'' %> >Mediu</option>
+                    <option value='Avansat'<%=anuntFotbalEditat.dificultate=== 'Avansat' ? 'selected':'' %> >Avansat</option>
+                </select>
+<!-- am ales sa scterg optiunea cu nivel de dificulate pt da daca careva nu selecteaza nivelul
+ atunci se trimite nivel de dificulate care nu are setat nici o valuare si nu stiu stiu cum sa 
+ rezolv asa ceva sau numai complica treaba -->
+            </div>
+
+
+
+
+
+            <p class='field required half'>
+                <label class='label' for='organizator'>Nume organizator</label>
+                <input class='text-input' id='organizator' name='organizator' required  value="<%= anuntFotbalEditat.organizator %> ">
+            </p>
+            <!-- required=it specifies that the element must be filled out before submitting the form. -->
+            <p class='field required half'>
+                <label class='label required' for='telefon'>Numar de telefon organizator</label>
+                <input class='text-input' id='telefon' name='telefon' type='text' value="<%= anuntFotbalEditat.telefon %> " required>
+            </p>
+
+
+            <p class='field required'>
+                <label class='label' for='info'>Locatie</label>
+                <textarea class='textarea' cols='50' id='info' name='info' rows='4' required><%= anuntFotbalEditat.info %></textarea>
+            </p>
+<!-- Text areas work differently than other input fields. Default values are set by adding your text in between the HTML tags. -->
+
+            <p class='field required'>
+                <label for="dataSiOra" class="label">Alege data si ora pt eveniment <%= anuntFotbalEditat.dataSiOra %></label>
+                <input type="datetime-local" class="form " id="dataSiOra" name="dataSiOra" required value="<%=(new Date(Date.parse(anuntFotbalEditat.dataSiOra))).toISOString() %>">
+            </p>
+
+            <script>
+                var dataSiOra='<%= anuntFotbalEditat.dataSiOra %>';
+
+            </script>
+
+
+
+
+            <p class='field half'>
+                <label class='label' for='portar'>De cati portari ai nevoie?</label>
+                <select class='select' id='portar' name="portar">
+                    <option selected value='0'>Portar</option>
+                    <option value='1' <%= anuntFotbalEditat.portar=== 1 ? 'selected':'' %> >1</option>
+                    <option value='2' <%= anuntFotbalEditat.portar=== 2 ? 'selected':'' %> >2</option>
+                </select>
+            </p>
+
+            <p class='field half'>
+                <label class='label' for='fundas'>De cati fundasi ai nevoie?</label>
+                <select class='select' id='fundas' name="fundas">
+                    <option selected value='0'>Fundas</option>
+                    <option value='1' <%= anuntFotbalEditat.fundas=== 1 ? 'selected':'' %> >1</option>
+                    <option value='2' <%= anuntFotbalEditat.fundas=== 2 ? 'selected':'' %> >2</option>
+                    <option value='3' <%= anuntFotbalEditat.fundas=== 3 ? 'selected':'' %> >3</option>
+                </select>
+            </p>
+
+            <p class='field half'>
+                <label class='label' for='mijlocas'>De cati mijlocasi ai nevoie?</label>
+                <select class='select' id='mijlocas' name="mijlocas">
+                    <option selected value='0'>Mijlocas</option>
+                    <option value='1' <%= anuntFotbalEditat.mijlocas=== 1 ? 'selected':'' %> >1</option>
+                    <option value='2' <%= anuntFotbalEditat.mijlocas=== 2 ? 'selected':'' %> >2</option>
+                    <option value='3' <%= anuntFotbalEditat.mijlocas=== 3 ? 'selected':'' %> >3</option>
+                </select>
+            </p>
+
+            <p class='field half'>
+                <label class='label' for='atacant'>De cati atacanti ai nevoie?</label>
+                <select class='select' id='atacant' name="atacant">
+                    <option selected value='0'>Atacant</option>
+                    <option value='1' <%= anuntFotbalEditat.atacant=== 1 ? 'selected':'' %> >1</option>
+                    <option value='2' <%= anuntFotbalEditat.atacant=== 2 ? 'selected':'' %> >2</option>
+                    <option value='3' <%= anuntFotbalEditat.atacant=== 3 ? 'selected':'' %> >3</option>
+                </select>
+            </p>
+
+
+            <p class='field half'>
+                <input class='button' type='submit' value='Send'>
+            </p>
+        </form>
+
+
+
+
+        <%- include('partial/script.ejs') %>
+</body>
+
+</html>
