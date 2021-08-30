@@ -90,6 +90,10 @@ const { isLoggedIn,isAuthor,isReviewAuthor } = require('./middleware');
 const Review = require('./models/review');
 const Anunt=require('./models/anunt')
 const mongoose = require('mongoose');
+
+//cap59curs1
+const dbUrl=process.env.DB_URL
+mongodb://localhost:27017/licenta
 mongoose.connect('mongodb://localhost:27017/licenta', { useNewUrlParser: true, useUnifiedTopology: true ,useCreateIndex: true,useFindAndModify: false})
     .then(() => {
         console.log('connection open')
@@ -134,7 +138,7 @@ app.post('/anunturiFotbal',isLoggedIn,catchAsync( async(req,res)=>{
     //cap52curs1
     anuntNouFotbal.author = req.user._id;
     await anuntNouFotbal.save()
-    console.log(anuntNouFotbal)
+    
     req.flash('success', 'Ad created successfully!');
     res.redirect(`/anunt/fotbal/${anuntNouFotbal._id}`)
     
@@ -326,7 +330,7 @@ app.put('/anunturiFotbal/:id',isLoggedIn,catchAsync(async (req,res)=>{
     const anuntFotbalEditat = await Anunt.findByIdAndUpdate(id, {
        ...req.body,
     });
-    console.log(anuntFotbalEditat)
+    
    
     anuntFotbalEditat.geometry = geoData.body.features[0].geometry
     await anuntFotbalEditat.save();

@@ -110,7 +110,7 @@ const anunturiSchema=new mongoose.Schema({
 
 
 anunturiSchema.virtual('properties.popUpMarkup').get(function () {
-    console.log(this)
+    
     return `<strong><a href=\\"/anunt/${this.sport}/${this._id}\\">${this.sport} - ${this.organizator}</a><strong>`
     
 });
