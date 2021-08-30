@@ -139,7 +139,7 @@ app.post('/anunturiFotbal', isLoggedIn, catchAsync(async (req, res) => {
 
 
 //tenis
-app.get("/tenis", isLoggedIn, (req, res, next) => {
+app.get("/tenis", isLoggedIn, (req, res) => {
     res.render('tenis.ejs')
 })
 
@@ -164,7 +164,7 @@ app.post('/anunturiTenis', isLoggedIn, catchAsync(async (req, res) => {
 
 
 //baschet
-app.get('/baschet', isLoggedIn, (req, res, next) => {
+app.get('/baschet', isLoggedIn, (req, res) => {
     res.render('baschet.ejs')
 })
 
@@ -329,7 +329,7 @@ app.put('/anunturiBaschet/:id', isLoggedIn, catchAsync(async (req, res) => {
 //fotbal
 app.delete('/anunt/fotbal/:id', isLoggedIn, isAuthor, catchAsync(async (req, res) => {
     const { id } = req.params
-    const anuntFotbalSters = await Anunt.findByIdAndDelete(id)
+    await Anunt.findByIdAndDelete(id)
     req.flash('success', 'Ad deleted successfully!');
     res.redirect('/anunturi/fotbal')
 }))
@@ -337,7 +337,7 @@ app.delete('/anunt/fotbal/:id', isLoggedIn, isAuthor, catchAsync(async (req, res
 //tenis
 app.delete('/anunt/tenis/:id', isLoggedIn, isAuthor, catchAsync(async (req, res) => {
     const { id } = req.params
-    const anuntTenisSters = await Anunt.findByIdAndDelete(id)
+    await Anunt.findByIdAndDelete(id)
     req.flash('success', 'Ad deleted successfully!');
     res.redirect('/anunturi/tenis')
 }))
@@ -345,7 +345,7 @@ app.delete('/anunt/tenis/:id', isLoggedIn, isAuthor, catchAsync(async (req, res)
 //baschet
 app.delete('/anunt/baschet/:id', isLoggedIn, isAuthor, catchAsync(async (req, res) => {
     const { id } = req.params
-    const anuntBaschetSters = await Anunt.findByIdAndDelete(id)
+    await Anunt.findByIdAndDelete(id)
     req.flash('success', 'Ad deleted successfully!');
     res.redirect('/anunturi/baschet')
 }))
@@ -380,7 +380,7 @@ app.all('*', (req, res, next) => {
     next(new ExpressError('Page not found', 404))
 })
 
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
     const { statusCode = 500 } = err
     if (!err.message) err.message = 'Oh No, Something Went Wrong!'
     res.status(statusCode).render('error.ejs', { err })

@@ -7,9 +7,6 @@
 <body>
     <%- include('partial/navbar.ejs') %>
 
-    
-       
-
 
         <form action='/anunturiFotbal' class='form' method="POST" >
 
@@ -20,31 +17,20 @@
                 </select>
             </p>
 
-
-
-        
-
-
-
-
-
             <div class='field required'>
 
                 <label class='label' for='dificultate'>Nivel de dificultate</label>
                 <select class='select' id='dificultate' name="dificultate" >
-                   
+
                     <option value='Amator'>Amator</option>
                     <option value='Semi-amator'>Semi-amator</option>
                     <option value='Mediu'>Mediu</option>
                     <option value='Avansat'>Avansat</option>
                 </select>
 <!-- am ales sa scterg optiunea cu nivel de dificulate pt da daca careva nu selecteaza nivelul
- atunci se trimite nivel de dificulate care nu are setat nici o valuare si nu stiu stiu cum sa 
+ atunci se trimite nivel de dificulate care nu are setat nici o valuare si nu stiu stiu cum sa
  rezolv asa ceva sau numai complica treaba -->
             </div>
-
-
-
 
 
             <p class='field required half'>
@@ -57,7 +43,7 @@
                 <input class='text-input' id='telefon' name='telefon' type='text'  maxlength="10"  minlength="10"required>
             </p>
 
-            
+
             <p class='field required'>
                 <label class='label' for='oras'>Locatie</label>
                 <textarea class='textarea' cols='50' id='oras' name='oras' rows='4' required></textarea>
@@ -122,13 +108,13 @@
         </form>
 
 
-       
+
 
 
 
         <%- include('partial/script.ejs') %>
-        
-      
+
+
 </body>
 
 </html>

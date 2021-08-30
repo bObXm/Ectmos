@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('partial/head.ejs') %> 
+    <%- include('partial/head.ejs') %>
 <body>
-    <%- include('partial/navbar.ejs') %> 
+    <%- include('partial/navbar.ejs') %>
     <%- include('partial/flash.ejs')%>
 
 
 
 
 
-    <div class="cards_container"> 
-        <% for(let anunt of anunturileMele) {%> 
+    <div class="cards_container">
+        <% for(let anunt of anunturileMele) {%>
 
-           <% let icon, title, detailsURL; %> 
+           <% let icon, title, detailsURL; %>
             <% switch (anunt.sport) {
                 case 'fotbal':
                     icon= `<i class="fas fa-futbol card_icon"></i>`
@@ -29,39 +29,39 @@
                     title="Baschet"
                     detailsURL="/anunt/baschet/"+anunt.id
                   break;
-              }%> 
-            
+              }%>
 
-            
+
+
 
             <div class="simple_card">
                 <div class="row">
                     <div class="col-md-2 card_icon_container">
-                        <%- icon %> 
+                        <%- icon %>
                     </div>
                     <div class="col-md-5">
                         <div class="card-body ">
                             <h5 class="card-title"><%= title %> </h5>
-                            <p class="pp"><%= anunt.oras %></p>
+                            <p class="pp"><%= anunt.info %></p>
                             <p class="pp"><%= anunt.dificultate %></p>
                         </div>
                     </div>
                     <div class="col-md-5">
                         <div class="card-body mt-4">
                             <%  const split=anunt.dataSiOra.toString().split(' ')
-                            const ora=split[4] %> 
+                            const ora=split[4] %>
                             <p class="pp mt-2"><%=ora%></p>
                             <p class="pp mt-2"><%=anunt.dataSiOra.toDateString() %></p>
                             <a class="btn btn-primary card_custom_button" href="<%= detailsURL %>">Detalii anunt</a>
                         </div>
-        
-        
+
+
                     </div>
                 </div>
             </div>
             <% }%>
 
-            
+
 
 
 

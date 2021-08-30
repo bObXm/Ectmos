@@ -25,3 +25,7 @@
 .dropdown-item.active, .dropdown-item:active{
     background-color: transparent;
 }
+
+#mainNavbar .nav-link:hover {
+    color: #EA1C2C;
+  }

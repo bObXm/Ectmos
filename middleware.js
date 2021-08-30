@@ -16,7 +16,7 @@ module.exports.isLoggedIn = (req, res, next) => {
 
 
 module.exports.isAuthor = async (req, res, next) => {
-    const { id, sport } = req.params;
+    const { id } = req.params;
     const anunt = await Anunt.findById(id);
     if (!anunt.author.equals(req.user._id)) {
         req.flash('error', 'You do not have permission to do that!');
@@ -27,7 +27,7 @@ module.exports.isAuthor = async (req, res, next) => {
 
 //cap52 curs6
 module.exports.isReviewAuthor = async (req, res, next) => {
-    const { id, reviewId ,anunt,sport} = req.params;
+    const { reviewId} = req.params;
     const review = await Review.findById(reviewId);
     if (!review.author.equals(req.user._id)) {
         req.flash('error', 'You do not have permission to do that!');

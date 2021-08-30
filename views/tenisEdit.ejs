@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <%- include('partial/head.ejs') %> 
+    <%- include('partial/head.ejs') %>
 
 <body>
-    <%- include('partial/navbar.ejs') %> 
+    <%- include('partial/navbar.ejs') %>
     <%- include('partial/flash.ejs')%>
-    
+
 <h1>Editeaza</h1>
 
 
     <form action='/anunturiTenis/<%= anuntTenisEditat.id %>?_method=PUT' class='form' method="POST">
-        
+
         <p class='field half'>
             <label class='label' for='sport'>Sport</label>
             <select class='select' id='sport' name="sport">
@@ -25,7 +25,7 @@
 
             <label class='label' for='dificultate'>Nivel de dificultate</label>
             <select class='select' id='dificultate' name="dificultate">
-               
+
                 <option value='Amator'<%=anuntTenisEditat.dificultate=== 'Amator' ? 'selected':'' %> >Amator</option>
                 <option value='Semi-amator'<%=anuntTenisEditat.dificultate=== 'Semi-amator' ? 'selected':'' %> >Semi-amator</option>
                 <option value='Mediu'<%=anuntTenisEditat.dificultate=== 'Mediu' ? 'selected':'' %> >Mediu</option>
@@ -42,7 +42,7 @@
             <label class='label' for='organizator'>Nume organizator</label>
             <input class='text-input' id='organizator' name='organizator' required  value="<%= anuntTenisEditat.organizator %> ">
         </p>
-       
+
         <p class='field required half'>
             <label class='label required' for='telefon'>Numar de telefon organizator</label>
             <input class='text-input' id='telefon' name='telefon' type='text' value="<%= anuntTenisEditat.telefon %>" required >
@@ -50,8 +50,8 @@
 
 
         <p class='field required'>
-            <label class='label' for='oras'>Locatie</label>
-            <textarea class='textarea' cols='50' id='oras' name='oras' rows='4' required><%= anuntTenisEditat.oras %> </textarea>
+            <label class='label' for='info'>Locatie</label>
+            <textarea class='textarea' cols='50' id='info' name='info' rows='4' required><%= anuntTenisEditat.info %> </textarea>
         </p>
 
 
@@ -78,7 +78,7 @@
             </select>
         </p>
 
-        
+
 
 
 
