@@ -7,36 +7,30 @@
         <%- include('partial/flash.ejs')%>
 
         <h1>Editeaza</h1>
-        
-
-               
+                      
                 <form action='/anunturiBaschet/<%= anuntBaschetEditat.id %>?_method=PUT' class='form' method="POST">
                     
                     <p class='field half'>
-                        <label class='label' for='sport'>Sport</label>
-                        <select class='select' id='sport' name="sport">
+                        <label class='label' for='sport'>Adauga un anunt pentru un meci de baschet</label>
+                        <select class='select' id='sport' name="sport" hidden>
                             <option selected value='baschet'>Baschet</option>
                         </select>
                     </p>
         
-        
-        
+
                     <div class='field required'>
         
                         <label class='label' for='dificultate'>Nivel de dificultate</label>
                         <select class='select' id='dificultate' name="dificultate">
                            
-                    <option value='Amator'<%=anuntBaschetEditat.dificultate=== 'Amator' ? 'selected':'' %> >Amator</option>
-                    <option value='Semi-amator'<%=anuntBaschetEditat.dificultate=== 'Semi-amator' ? 'selected':'' %> >Semi-amator</option>
-                    <option value='Mediu'<%=anuntBaschetEditat.dificultate=== 'Mediu' ? 'selected':'' %> >Mediu</option>
+                    <option value='Amator' <%=anuntBaschetEditat.dificultate=== 'Amator' ? 'selected':'' %> >Amator</option>
+                    <option value='Semi-amator' <%=anuntBaschetEditat.dificultate=== 'Semi-amator' ? 'selected':'' %> >Semi-amator</option>
+                    <option value='Mediu' <%=anuntBaschetEditat.dificultate=== 'Mediu' ? 'selected':'' %> >Mediu</option>
                     <option value='Avansat'<%=anuntBaschetEditat.dificultate=== 'Avansat' ? 'selected':'' %> >Avansat</option>
                         </select>
 
                     </div>
-        
-        
-        
-        
+    
         
                     <p class='field required half'>
                         <label class='label' for='organizator'>Nume organizator</label>
@@ -50,8 +44,7 @@
         
         
                     <p class='field required'>
-                        <label class='label' for='info'>Locatie</label>
-                        <textarea class='textarea' cols='50' id='info' name='info' rows='4' required><%= anuntBaschetEditat.info %> </textarea>
+                        <%-include('locatie.ejs') %>
                     </p>
 
 

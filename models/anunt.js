@@ -29,7 +29,11 @@ const anunturiSchema=new mongoose.Schema({
         min:10,
        
     }, 
-    info:{
+    judet:{
+        type:String,
+        required:true
+    }, 
+    oras:{
         type:String,
         required:true
     }, 
@@ -38,49 +42,9 @@ const anunturiSchema=new mongoose.Schema({
         type:Date
     },
     
-    //fotbal
-    portar:{
-        type:Number 
+    teamId: {
+        type: Schema.Types.ObjectId
     },
-    fundas:{
-        type:Number 
-    },
-    mijlocas:{
-        type:Number 
-    },
-    atacant:{
-        type:Number 
-    },
-
-    //tenis
-    simplu:{
-        type:Number
-    },
-    dublu:{
-        type:Number
-    },
-    
-
-    //baschet
-    center:{
-        type:Number
-    },
-    pForward:{
-        type:Number
-    },
-    sForward:{
-        type:Number
-    },
-    pGuard:{
-        type:Number
-    },
-    sGuard:{
-        type:Number
-    },
-
-    //review
-    //cap46 curs1
-    //info cap44 curs5 min6 pt Schema.Types.ObjectId
     reviews: [
         {
             type: Schema.Types.ObjectId,
