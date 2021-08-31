@@ -468,6 +468,23 @@ html {
     background: none;
     display: block;
   }
+
+  .customSelect, .form .select, .form .textarea, .form .text-input, .form .option-input + label, .form .checkbox-input + label {
+    font: inherit;
+    line-height: normal;
+    width: 100%;
+    box-sizing: border-box;
+    background: #222222;
+    color: white;
+    position: relative;
+  }
+
+  .form .date-time {
+    padding: 0.5em 1em;
+    border-radius: 0;
+    border: none;
+    width: 100%;
+  }
   
   .form .label {
     font-weight: bold;
@@ -488,15 +505,7 @@ html {
     vertical-align: top;
   }
   
-  .customSelect, .form .select, .form .textarea, .form .text-input, .form .option-input + label, .form .checkbox-input + label {
-    font: inherit;
-    line-height: normal;
-    width: 100%;
-    box-sizing: border-box;
-    background: #222222;
-    color: white;
-    position: relative;
-  }
+
   .customSelect:placeholder, .form .select:placeholder, .form .textarea:placeholder, .form .text-input:placeholder, .form .option-input + label:placeholder, .form .checkbox-input + label:placeholder {
     color: white;
   }

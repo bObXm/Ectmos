@@ -1,13 +1,14 @@
+<br /><br /><br />
+
 <p class='field half'>
-    <label class='label' for='sport'><%= toAddSport ? "Add " + titlu : "Edit " + titlu %> Game</label>
+    <label class='label' for='sport'><%= toAddSport ? "Add " : "Edit "%><a><%=titlu%></a> Game</label>
 
     <select class='select' id='sport' name="sport" hidden>
         <option selected value='<%= anunt ? anunt.sport : toAddSport ? toAddSport : "" %>'><%=titlu%></option>
     </select>
 </p>
 
-<div class='field required'>
-    <label class='label' for='dificultate'>Difficulty</label>
+<div class='field half required'>
     <select class='select' id='dificultate' name="dificultate">
         <option value='Amateur' <%= anunt ? (anunt.dificultate === "Amateur" ? "selected" : "") : "" %>>Amateur</option>
         <option value='Semi-amateur' <%= anunt ? (anunt.dificultate === "Semi-amateur" ? "selected" : "") : "" %>>Semi-amateur</option>
@@ -26,12 +27,12 @@
     <input class='text-input' id='telefon' name='telefon' type='text' maxlength="11" value="<%= anunt ? anunt.telefon : "" %>" required />
 </p>
 
-<p class='field required'>
+<p class='field required half'>
     <label class='label' for='oras'>Location</label>
     <input type="text" class='text-input' id='oras' name='oras' placeholder="Location" required value="<%= anunt ? anunt.oras : "" %>" />
 </p>
 
-<p class='field required'>
+<p class='field required half'>
     <label for="dataSiOra" class="label">Date and time</label>
-    <input type="datetime-local" class="form" id="dataSiOra" name="dataSiOra" value="<%= anunt ? anunt.dataSiOra : "" %>" required />
+    <input type="datetime-local" class="date-time" id="dataSiOra" name="dataSiOra" value="<%= anunt ? anunt.dataSiOra : "" %>" required />
 </p>
