@@ -34,5 +34,5 @@
 
 <p class='field required half'>
     <label for="dataSiOra" class="label">Date and time</label>
-    <input type="datetime-local" class="date-time" id="dataSiOra" name="dataSiOra" value="<%= anunt ? anunt.dataSiOra : "" %>" required />
+    <input type="datetime-local" class="date-time" id="dataSiOra" name="dataSiOra" value="<%-anunt ? (new Date(anunt.dataSiOra)).toISOString().slice(0, 16) : "" %>" required />
 </p>
