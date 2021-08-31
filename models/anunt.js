@@ -17,7 +17,7 @@ const anunturiSchema=new mongoose.Schema({
     dificultate:{
         type:String,
         required:true,
-        enum:['Amator','Semi-amator','Mediu','Avansat']
+        enum:['Amateur','Semi-amateur','Medium','Advanced']
     }, 
     organizator:{
         type:String,

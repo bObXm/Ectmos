@@ -18,12 +18,12 @@
 
 <p class='field required half'>
     <label class='label' for='organizator'>Organizer</label>
-    <input class='text-input' id='organizator' name='organizator' required value="<%= anunt ? anunt.organizator : "" %>" required>
+    <input class='text-input' id='organizator' name='organizator' required value="<%= anunt ? anunt.organizator : "" %>" required />
 </p>
 
 <p class='field required half'>
     <label class='label required' for='telefon'>Phone Number</label>
-    <input class='text-input' id='telefon' name='telefon' type='text' value="<%= anunt ? anunt.telefon : "" %>" required>
+    <input class='text-input' id='telefon' name='telefon' type='text' maxlength="11" value="<%= anunt ? anunt.telefon : "" %>" required />
 </p>
 
 <p class='field required'>
@@ -33,5 +33,5 @@
 
 <p class='field required'>
     <label for="dataSiOra" class="label">Date and time</label>
-    <input type="datetime-local" class="form " id="dataSiOra" name="dataSiOra" required>
+    <input type="datetime-local" class="form" id="dataSiOra" name="dataSiOra" value="<%= anunt ? anunt.dataSiOra : "" %>" required />
 </p>
