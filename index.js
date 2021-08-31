@@ -118,9 +118,10 @@ mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCr
     })
 
 
-
-app.listen(8080, () => {
-    console.log('The server is running on port 8080')
+//cap59 curs5
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`The server is running on port ${port}`)
 })
 
 
