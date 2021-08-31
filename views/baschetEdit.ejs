@@ -5,49 +5,49 @@
 <body>
     <%- include('partial/navbar.ejs') %>
     <%- include('partial/flash.ejs')%>
-    <form action='/anunturiBaschet/<%= anunt.id %>?_method=PUT' class='form' method="POST">
+    <form action='/anunturiBaschet/<%= anunt.id %>' method='PUT' class='form'>
         <%-include('partial/editBase.ejs', {anunt: anunt, titlu: "Basketball", toAddSport: ""}); %>
 
         <p class='field half'>
-            <label class='label' for='center'>Cati "Center" vrei?</label>
+            <label class='label' for='center'>CENTER players</label>
             <select class='select' id='center' name="center">
-                <option selected value='0'>Center</option>
+                <option value='0' <%= anunt.center=== 0 ? 'selected':'' %>>0</option>
                 <option value='1' <%= anunt.center=== 1 ? 'selected':'' %>>1</option>
                 <option value='2' <%= anunt.center=== 2 ? 'selected':'' %>>2</option>
             </select>
         </p>
 
         <p class='field half'>
-            <label class='label' for='pForward'>Cati "Power Forward" vrei?</label>
+            <label class='label' for='pForward'>POWER FORWARD players</label>
             <select class='select' id='pForward' name="pForward">
-                <option selected value='0'>Power Forward</option>
+                <option value='0' <%= anunt.pForward=== 0 ? 'selected':'' %>>0</option>
                 <option value='1' <%= anunt.pForward=== 1 ? 'selected':'' %>>1</option>
                 <option value='2' <%= anunt.pForward=== 2 ? 'selected':'' %>>2</option>
             </select>
         </p>
 
         <p class='field half'>
-            <label class='label' for='pForward'>Cati "Small Forward" vrei?</label>
+            <label class='label' for='pForward'>SMALL FORWARD players</label>
             <select class='select' id='pForward' name="sForward">
-                <option selected value='0'>Small Forward</option>
+                <option value='0' <%= anunt.sForward=== 0 ? 'selected':'' %>>0</option>
                 <option value='1' <%= anunt.sForward=== 1 ? 'selected':'' %>>1</option>
                 <option value='2' <%= anunt.sForward=== 2 ? 'selected':'' %>>2</option>
             </select>
         </p>
 
         <p class='field half'>
-            <label class='label' for='pGuard'>Cati "Point Guard" vrei?</label>
+            <label class='label' for='pGuard'>POINT GUARD players</label>
             <select class='select' id='pGuard' name="pGuard">
-                <option selected value='0'>Point Guard</option>
+                <option value='0' <%= anunt.pGuard=== 0 ? 'selected':'' %>>0</option>
                 <option value='1' <%= anunt.pGuard=== 1 ? 'selected':'' %>>1</option>
                 <option value='2' <%= anunt.pGuard=== 2 ? 'selected':'' %>>2</option>
             </select>
         </p>
 
         <p class='field half'>
-            <label class='label' for='sGuard'>Cati "Shooting Guard" vrei?</label>
+            <label class='label' for='sGuard'>SHOOTING GUARD players</label>
             <select class='select' id='sGuard' name="sGuard">
-                <option selected value='0'>Shooting Guard</option>
+                <option value='0' <%= anunt.sGuard=== 0 ? 'selected':'' %>>0</option>
                 <option value='1' <%= anunt.sGuard=== 1 ? 'selected':'' %>>1</option>
                 <option value='2' <%= anunt.sGuard=== 2 ? 'selected':'' %>>2</option>
             </select>
