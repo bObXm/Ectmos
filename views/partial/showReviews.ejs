@@ -1,5 +1,5 @@
 <% if(currentUser){ %>
-    <h2>Spune-ne o părere</h2>
+    <h2>Review</h2>
     <form action="/anunt/<%= anunt.sport %>/<%=anunt._id%>/reviews" method="POST"  class="mb-3 validated-form" novalidate>
        <!-- cap53curs5 -->
        <div class="mb-3">
@@ -25,7 +25,7 @@
                 Looks good!
             </div>
         </div>
-        <button class="btn btn-success">Trimite</button>
+        <button class="btn btn-success">Send</button>
     </form>
     <% } %> 
 
@@ -43,7 +43,7 @@
                 <!-- cap52curs6 -->
                 <%  if( currentUser && review.author.equals(currentUser._id))  {%>
                 <form action="/anunt/<%= anunt.sport %>/<%=anunt._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
-                    <button class="btn btn-sm btn-danger">Șterge</button>
+                    <button class="btn btn-sm btn-danger">Delete</button>
                 </form>
                 <% } %> 
             </div>

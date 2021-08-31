@@ -13,23 +13,22 @@
                 <%- include('partial/anuntBase.ejs', {anunt: anunt}); %>
                 <ul class="list-group list-group-flush ">
                     <li class="list-group-item darkkkk">
-                        <h5>Parteneri:</h5>
+                        <h5>Team:</h5>
                         <br/>
-                        <h5>Simplu:<%= anunt.simplu %> </h5>
-                        <h5>Dublu:<%= anunt.dublu %> </h5>
+                        <h5><%= anunt.teamId %> </h5>
                     </li>
                     <li class="list-group-item autor">Anunt creat de către: <%= anunt.author.username%></li>
                 </ul>
                 <%  if( currentUser && anunt.author.equals(currentUser._id))  {%>
                 <div class="card-body darkkkk">
-                    <a class="card-link btn btn-info" href="/anunturiTenis/<%= anunt.id %>/edit ">Editeaza anuntul</a>
+                    <a class="card-link btn btn-info" href="/anunturiTenis/<%= anunt.id %>/edit ">Modify</a>
                     <form class="d-inline" action="/anunt/tenis/<%= anunt.id %>?_method=DELETE" method="POST">
-                        <button class="btn btn-danger">terge anuntul</button>
+                        <button class="btn btn-danger">Delete</button>
                     </form>
                 </div>
                 <% } %>
                 <div class="card-footer text-muted darkkkk">
-                    <a href="/anunturi/tenis">Inapoi la toate anunturile</a>
+                    <a href="/anunturi/tenis">< Back to list</a>
                 </div>
             </div>
         </div>

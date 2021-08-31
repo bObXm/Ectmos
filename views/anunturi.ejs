@@ -6,8 +6,11 @@
     <%- include('partial/navbar.ejs') %>
     <%- include('partial/flash.ejs')%>
 
-    <div id="listmap" class="pp" style="width: 100%; height: 500px;"></div>
-
+    <div class="cards_container">
+        <a href="#" id="arataHarta" onclick="showMap()"  style="display: none; ">Show games on map</a>
+        <a href="#" id="ascundeHarta" onclick="hideMap()">Hide map</a>
+        <div id="listmap" class="pp" style="width: 100%; height: 500px;"></div>
+    </div>
     <div class="cards_container">
         <% for(let anunt of anunturi) {%>
 
@@ -15,17 +18,17 @@
         <% switch (anunt.sport) {
                 case 'fotbal':
                     icon= `<i class="fas fa-futbol card_icon"></i>`
-                    title="Fotbal"
+                    title="Football"
                     detailsURL="/anunt/fotbal/"+anunt.id
                   break;
                   case 'tenis':
                     icon='<img src="https://img.icons8.com/ios/50/ffffff/tennis.png" class="card_icon" />'
-                    title="Tenis"
+                    title="Tennis"
                     detailsURL="/anunt/tenis/"+anunt.id
                   break;
                   case 'baschet':
                     icon=`<i class="fas fa-basketball-ball card_icon"></i>`
-                    title="Baschet"
+                    title="Basketball"
                     detailsURL="/anunt/baschet/"+anunt.id
                   break;
               }%>
@@ -58,7 +61,6 @@
         <script>
             const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
             const anuntString = '<%-JSON.stringify(anunturi)%>'
-            console.log(anuntString)
             const anunturijs = { 'features': JSON.parse(anuntString) }
         </script>
         <script src="/clusterMap.js"></script>

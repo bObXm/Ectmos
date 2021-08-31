@@ -1,95 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <%- include('partial/head.ejs') %>
-
 <body>
     <%- include('partial/navbar.ejs') %>
 
-
-
-
     <form action='/anunturiTenis' class='form' method="POST">
 
-        <p class='field half'>
-            <label class='label' for='sport'>Sport</label>
-            <select class='select' id='sport' name="sport">
-                <option selected value='tenis'>Tenis</option>
-            </select>
-        </p>
-
-
-
-        <div class='field required'>
-
-            <label class='label' for='dificultate'>Nivel de dificultate</label>
-            <select class='select' id='dificultate' name="dificultate" required>
-
-                <option value='Amator'>Amator</option>
-                <option value='Semi-amator'>Semi-amator</option>
-                <option value='Mediu'>Mediu</option>
-                <option value='Avansat'>Avansat</option>
-            </select>
-
-        </div>
-
-
-
-
-
-        <p class='field required half'>
-            <label class='label' for='organizator'>Nume organizator</label>
-            <input class='text-input' id='organizator' name='organizator' required >
-        </p>
-
-        <p class='field required half'>
-            <label class='label required' for='telefon'>Numar de telefon organizator</label>
-            <input class='text-input' id='telefon' name='telefon' type='text' maxlength="10"  minlength="10"  required>
-        </p>
-
-
-        <p class='field required'>
-            <label class='label' for='info'>Locatie</label>
-            <textarea class='textarea' cols='50' id='info' name='info' rows='4' required></textarea>
-        </p>
-
-
-        <p class='field required' >
-            <label for="dataSiOra" class="label">Alege data si ora pt eveniment</label>
-            <input type="datetime-local" class="form " id="dataSiOra" name="dataSiOra" required >
-        </p>
-
-
-        <p class='field half'>
-            <label class='label' for='simplu'>Nr de jucatori pt simplu?</label>
-            <select class='select' id='simplu' name="simplu">
-                <option selected value='0'>Simplu</option>
-                <option value='1'>1</option>
-                <option value='2'>2</option>
-            </select>
-        </p>
-
-        <p class='field half'>
-            <label class='label' for='dublu'>Nr de jucatori pt dublu?</label>
-            <select class='select' id='dublu' name="dublu">
-                <option selected value='0'>Dublu</option>
-                <option value='1'>1</option>
-                <option value='2'>2</option>
-            </select>
-        </p>
-
-
-
-
+        <%- include('partial/editBase.ejs', {toAddSport: "tenis", titlu: "Tennis", anunt: ""}); %>
 
         <p class='field half'>
             <input class='button' type='submit' value='Send'>
         </p>
-
-
-
-
-
 
     <%- include('partial/script.ejs') %>
 </body>

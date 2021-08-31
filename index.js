@@ -227,6 +227,13 @@ app.get('/anunturi/:sportParam', catchAsync(async (req, res) => {
 }))
 
 
+//ANUNTURILE MELE
+app.get('/anunturile-mele', catchAsync(async (req, res) => {
+    if (req.user) {
+        const anunturi = await Anunt.find({ author: req.user._id })
+        res.render('anunturi.ejs', { anunturi })
+    }
+}))
 
 app.get('/anunt/:sport/:id', catchAsync(async (req, res) => {
     const { id, sport } = req.params
@@ -254,14 +261,6 @@ app.get('/anunt/:sport/:id', catchAsync(async (req, res) => {
         case 'baschet':
             res.render('showBaschet.ejs', { anunt, ora })
             break;
-    }
-}))
-
-//ANUNTURILE MELE
-app.get('/anunturile-mele', catchAsync(async (req, res) => {
-    if (req.user) {
-        const anunturileMele = await Anunt.find({ author: req.user._id })
-        res.render('mele.ejs', { anunturileMele })
     }
 }))
 

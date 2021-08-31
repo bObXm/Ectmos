@@ -1,122 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('partial/head.ejs') %>
+<body>
+    <%- include('partial/navbar.ejs') %>
+    <%- include('partial/flash.ejs')%>
+    <form action='/anunturiBaschet/<%= anuntBaschetEditat.id %>?_method=PUT' class='form' method="POST">
 
-    <body>
-        <%- include('partial/navbar.ejs') %>
-        <%- include('partial/flash.ejs')%>
+        <%-include('partial/editBase.ejs', {anunt: anuntBaschetEditat, titlu: "Basketball", toAddSport: ""}); %>
 
-        <h1>Editeaza</h1>
+        <p class='field half'>
+            <label class='label' for='center'>Cati "Center" vrei?</label>
+            <select class='select' id='center' name="center">
+                <option selected value='0'>Center</option>
+                <option value='1' <%= anuntBaschetEditat.center=== 1 ? 'selected':'' %>>1</option>
+                <option value='2' <%= anuntBaschetEditat.center=== 2 ? 'selected':'' %>>2</option>
+            </select>
+        </p>
 
-                <form action='/anunturiBaschet/<%= anuntBaschetEditat.id %>?_method=PUT' class='form' method="POST">
+        <p class='field half'>
+            <label class='label' for='pForward'>Cati "Power Forward" vrei?</label>
+            <select class='select' id='pForward' name="pForward">
+                <option selected value='0'>Power Forward</option>
+                <option value='1' <%= anuntBaschetEditat.pForward=== 1 ? 'selected':'' %>>1</option>
+                <option value='2' <%= anuntBaschetEditat.pForward=== 2 ? 'selected':'' %>>2</option>
+            </select>
+        </p>
 
-                    <p class='field half'>
-                        <label class='label' for='sport'>Adauga un anunt pentru un meci de baschet</label>
-                        <select class='select' id='sport' name="sport" hidden>
-                            <option selected value='baschet'>Baschet</option>
-                        </select>
-                    </p>
+        <p class='field half'>
+            <label class='label' for='pForward'>Cati "Small Forward" vrei?</label>
+            <select class='select' id='pForward' name="sForward">
+                <option selected value='0'>Small Forward</option>
+                <option value='1' <%= anuntBaschetEditat.sForward=== 1 ? 'selected':'' %>>1</option>
+                <option value='2' <%= anuntBaschetEditat.sForward=== 2 ? 'selected':'' %>>2</option>
+            </select>
+        </p>
 
-
-                    <div class='field required'>
-
-                        <label class='label' for='dificultate'>Nivel de dificultate</label>
-                        <select class='select' id='dificultate' name="dificultate">
-
-                    <option value='Amator' <%=anuntBaschetEditat.dificultate=== 'Amator' ? 'selected':'' %> >Amator</option>
-                    <option value='Semi-amator' <%=anuntBaschetEditat.dificultate=== 'Semi-amator' ? 'selected':'' %> >Semi-amator</option>
-                    <option value='Mediu' <%=anuntBaschetEditat.dificultate=== 'Mediu' ? 'selected':'' %> >Mediu</option>
-                    <option value='Avansat'<%=anuntBaschetEditat.dificultate=== 'Avansat' ? 'selected':'' %> >Avansat</option>
-                        </select>
-
-                    </div>
-
-
-                    <p class='field required half'>
-                        <label class='label' for='organizator'>Nume organizator</label>
-                        <input class='text-input' id='organizator' name='organizator' required value="<%= anuntBaschetEditat.organizator %>" required>
-                    </p>
-
-                    <p class='field required half'>
-                        <label class='label required' for='telefon'>Numar de telefon organizator</label>
-                        <input class='text-input' id='telefon' name='telefon' type='text' value="<%= anuntBaschetEditat.telefon %>" required>
-                    </p>
-
-
-                    <p class='field required'>
-                        <%-include('locatie.ejs') %>
-                    </p>
+        <p class='field half'>
+            <label class='label' for='pGuard'>Cati "Point Guard" vrei?</label>
+            <select class='select' id='pGuard' name="pGuard">
+                <option selected value='0'>Point Guard</option>
+                <option value='1' <%= anuntBaschetEditat.pGuard=== 1 ? 'selected':'' %>>1</option>
+                <option value='2' <%= anuntBaschetEditat.pGuard=== 2 ? 'selected':'' %>>2</option>
+            </select>
+        </p>
 
 
-                    <p class='field required'>
-                        <label for="dataSiOra" class="label">Alege data si ora pt eveniment</label>
-                        <input type="datetime-local" class="form " id="dataSiOra" name="dataSiOra" required>
-                    </p>
+        <p class='field half'>
+            <label class='label' for='pGuard'>Cati "Shooting Guard" vrei?</label>
+            <select class='select' id='pGuard' name="sGuard">
+                <option selected value='0'>Shooting Guard</option>
+                <option value='1' <%= anuntBaschetEditat.sGuard=== 1 ? 'selected':'' %>>1</option>
+                <option value='2' <%= anuntBaschetEditat.sGuard=== 2 ? 'selected':'' %>>2</option>
+            </select>
+        </p>
 
+        <p class='field half'>
+            <input class='button' type='submit' value='Send'>
+        </p>
 
-
-
-
-                <p class='field half'>
-                    <label class='label' for='center'>Cati "Center" vrei?</label>
-                    <select class='select' id='center' name="center">
-                        <option selected value='0'>Center</option>
-                    <option value='1' <%= anuntBaschetEditat.center=== 1 ? 'selected':'' %> >1</option>
-                    <option value='2' <%= anuntBaschetEditat.center=== 2 ? 'selected':'' %> >2</option>
-
-                    </select>
-                </p>
-
-                <p class='field half'>
-                    <label class='label' for='pForward'>Cati "Power Forward" vrei?</label>
-                    <select class='select' id='pForward' name="pForward">
-                        <option selected value='0'>Power Forward</option>
-                    <option value='1' <%= anuntBaschetEditat.pForward=== 1 ? 'selected':'' %> >1</option>
-                    <option value='2' <%= anuntBaschetEditat.pForward=== 2 ? 'selected':'' %> >2</option>
-                    </select>
-                </p>
-
-                <p class='field half'>
-                    <label class='label' for='pForward'>Cati "Small Forward" vrei?</label>
-                    <select class='select' id='pForward' name="sForward">
-                        <option selected value='0'>Small Forward</option>
-                    <option value='1' <%= anuntBaschetEditat.sForward=== 1 ? 'selected':'' %> >1</option>
-                    <option value='2' <%= anuntBaschetEditat.sForward=== 2 ? 'selected':'' %> >2</option>
-                    </select>
-                </p>
-
-                <p class='field half'>
-                    <label class='label' for='pGuard'>Cati "Point Guard" vrei?</label>
-                    <select class='select' id='pGuard' name="pGuard">
-                        <option selected value='0'>Point Guard</option>
-                        <option value='1' <%= anuntBaschetEditat.pGuard=== 1 ? 'selected':'' %> >1</option>
-                        <option value='2' <%= anuntBaschetEditat.pGuard=== 2 ? 'selected':'' %> >2</option>
-                    </select>
-                </p>
-
-
-                <p class='field half'>
-                    <label class='label' for='pGuard'>Cati "Shooting Guard" vrei?</label>
-                    <select class='select' id='pGuard' name="sGuard">
-                        <option selected value='0'>Shooting Guard</option>
-                        <option value='1' <%= anuntBaschetEditat.sGuard=== 1 ? 'selected':'' %> >1</option>
-                        <option value='2' <%= anuntBaschetEditat.sGuard=== 2 ? 'selected':'' %> >2</option>
-                    </select>
-                </p>
-
-
-
-
-                <p class='field half'>
-                    <input class='button' type='submit' value='Send'>
-                </p>
-
-
-
-
-
-
-                <%- include('partial/script.ejs') %>
-    </body>
+        <%- include('partial/script.ejs') %>
+</body>
 
 </html>

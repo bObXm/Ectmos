@@ -13,25 +13,25 @@
                 <%- include('partial/anuntBase.ejs', {anunt: anunt}); %>
                 <ul class="list-group list-group-flush ">
                     <li class="list-group-item darkkkk">
-                        <h5>Posturile dorite:</h5>
+                        <h5>Team:</h5>
                         <br/>
-                        <h5>Portar:<%= anunt.portar %> </h5>
-                        <h5>Fundas:<%= anunt.fundas %> </h5>
-                        <h5>Mijlocas:<%= anunt.mijlocas %> </h5>
-                        <h5>Atacant:<%= anunt.atacant %> </h5>
+                        <h5>Portar:<%= anunt.teamId %> </h5>
+                        <h5>Fundas:<%= anunt.teamId %> </h5>
+                        <h5>Mijlocas:<%= anunt.teamId %> </h5>
+                        <h5>Atacant:<%= anunt.teamId %> </h5>
                     </li>
                     <li class="list-group-item autor">Anunt creat de către: <%= anunt.author.username%></li>
                 </ul>
                 <%  if( currentUser && anunt.author.equals(currentUser._id))  {%>
                 <div class="card-body darkkkk">
-                    <a class="card-link btn btn-info" href="/anunturiFotbal/<%= anunt.id %>/edit ">Editeaza anuntul</a>
+                    <a class="card-link btn btn-info" href="/anunturiFotbal/<%= anunt.id %>/edit ">Modify</a>
                     <form class="d-inline" action="/anunt/fotbal/<%= anunt.id %>?_method=DELETE" method="POST">
-                        <button class="btn btn-danger">Sterge anuntul</button>
+                        <button class="btn btn-danger">Delete</button>
                     </form>
                 </div>
                 <% } %>
                 <div class="card-footer text-muted darkkkk">
-                    <a href="/anunturi/fotbal">Inapoi la toate anunturile</a>
+                    <a href="/anunturi/fotbal">< Back to list</a>
                 </div>
             </div>
         </div>

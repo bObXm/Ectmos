@@ -29,10 +29,6 @@ const anunturiSchema=new mongoose.Schema({
         min:10,
        
     }, 
-    judet:{
-        type:String,
-        required:true
-    }, 
     oras:{
         type:String,
         required:true

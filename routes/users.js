@@ -1,12 +1,9 @@
-// cap51 curs4
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const catchAsync = require('../utils/catchAsync');
 const User = require('../models/user');
 
-
-//REGISTER
 router.get('/register', (req, res) => {
     res.render('users/register.ejs');
 });
@@ -28,10 +25,6 @@ router.post('/register',catchAsync(async (req, res,next) => {
     }
 }))
 
-
-
-// cap51 curs6
-// LOGIN
 router.get('/login', (req, res) => {
     res.render('users/login.ejs');
 })
@@ -41,27 +34,10 @@ router.post('/login', passport.authenticate('local', { failureFlash: true, failu
     res.redirect('/');
 })
 
-
-
-
-// cap51 curs8
-//LOGOUT
 router.get('/logout', (req, res) => {
     req.logout();
     req.flash('success', "Goodbye!");
     res.redirect('/');
 })
 
-
-
-
-
-
-
-
-
 module.exports = router;
-
-
-
-

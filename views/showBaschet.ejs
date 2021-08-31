@@ -11,13 +11,14 @@
             <div class="card mb-3 ">
                 <%- include('partial/anuntBase.ejs', {anunt: anunt}); %>
                 <ul class="list-group list-group-flush ">
-                    <li class="list-group-item darkkkk"><h2>Locatie:<%= anunt.info %> </h2></li>
-                    <li class="list-group-item darkkkk"><h2>Posturile dorite</h2>
-                        <h2>Center:<%= anunt.center %> </h2>
-                        <h2>Power Forward:<%= anunt.pForward %> </h2>
-                        <h2>Small Forward:<%= anunt.sForward %> </h2>
-                        <h2>Point Guard:<%= anunt.pGuard %> </h2>
-                        <h2>Shooting Guard:<%= anunt.sGuard %> </h2>
+                    <li class="list-group-item darkkkk">
+                        <h5>Team</h5>
+                        <br/>
+                        <h5>Center:<%= anunt.teamId %> </h5>
+                        <h5>Power Forward:<%= anunt.teamId %> </h5>
+                        <h5>Small Forward:<%= anunt.teamId %> </h5>
+                        <h5>Point Guard:<%= anunt.teamId %> </h5>
+                        <h5>Shooting Guard:<%= anunt.teamId %> </h5>
                     </li>
                     <!-- cap52curs1 -->
                     <li class="list-group-item autor">Submitted by <%= anunt.author.username%></li>
@@ -25,14 +26,14 @@
                 <!-- cap52curs2 -->
                 <%  if( currentUser && anunt.author.equals(currentUser._id))  {%>
                 <div class="card-body darkkkk">
-                    <a class="card-link btn btn-info" href="/anunturiBaschet/<%= anunt.id %>/edit ">Editeaza anuntul</a>
+                    <a class="card-link btn btn-info" href="/anunturiBaschet/<%= anunt.id %>/edit ">Modify</a>
                     <form class="d-inline" action="/anunt/baschet/<%= anunt.id %>?_method=DELETE" method="POST">
-                        <button class="btn btn-danger">Sterge anuntul</button>
+                        <button class="btn btn-danger">Delete</button>
                     </form>
                 </div>
                 <% } %> 
                 <div class="card-footer text-muted darkkkk">
-                    <a href="/anunturi/baschet">Inapoi la toate anunturile</a>
+                    <a href="/anunturi/baschet">< Back to list</a>
                 </div>
             </div>
         </div>

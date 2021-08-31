@@ -125,3 +125,12 @@ map.on('load', () => {
         map.getCanvas().style.cursor = '';
     });
 });
+
+
+function showMap(){
+    $('#listmap').toggle();  $('#arataHarta').hide(); $('#ascundeHarta').show();
+}
+
+function hideMap(){
+    $('#listmap').toggle();   $('#arataHarta').show();  $('#ascundeHarta').hide();
+}

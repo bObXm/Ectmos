@@ -9,7 +9,9 @@
 
 
         <form action='/anunturiFotbal' class='form' method="POST" >
+            <%- include('partial/editBase.ejs', {toAddSport: "fotbal", titlu: "Football", anunt: ""}); %>
 
+            
             <p class='field half'>
                 <label class='label' for='sport'>Sport</label>
                 <select class='select' id='sport' name="sport">
@@ -46,7 +48,7 @@
 
             <p class='field required'>
                 <label class='label' for='oras'>Locatie</label>
-                <textarea class='textarea' cols='50' id='oras' name='oras' rows='4' required></textarea>
+                <input type="text" class='text-input' id='oras' name='oras' required value="" />
             </p>
 
 

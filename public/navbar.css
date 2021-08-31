@@ -1,3 +1,11 @@
+
+
+@font-face {
+    font-family: "SportypoReguler";
+    src: url("/SportypoReguler.ttf");
+  }
+
+
 .nav-link {
     padding: 0.25rem 0;
     font-weight: 700;
@@ -17,8 +25,8 @@
 
 }
 
-.btn-secondary, .btn-secondary:hover{
-    color: #333;
+.btn-home, .btn-home:hover, .btn-home:active{
+    color: #333 !important;
     text-shadow: none;
 }
 
@@ -29,3 +37,17 @@
 #mainNavbar .nav-link:hover {
     color: #EA1C2C;
   }
+
+.navbar-brand {
+    font-family: SportypoReguler;
+    color: red !important;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 30px;
+    opacity: 1;
+}
+
+a, a:hover, a:active {
+    color: red;
+    opacity: 0.7;
+}
