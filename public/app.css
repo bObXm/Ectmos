@@ -4,7 +4,14 @@ h1,h2,li,p{
 
 
 
+.navbar.scrolled {
+  background: #25cf97;
+  transition: background 1s;
+}
 
+#headingGroup span {
+  color: #EA1C2C;
+}
 
 /* culoare pt pg showFotbal.ejs */
 .ceva:hover {
