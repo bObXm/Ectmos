@@ -1,122 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <%- include('partial/head.ejs') %>
+<%- include('partial/head.ejs') %>
 
 <body>
     <%- include('partial/navbar.ejs') %>
+    <form action='/anunturiFotbal' class='form' method="POST">
+        <%- include('partial/editBase.ejs', {toAddSport: "fotbal", titlu: "Football", anunt: ""}); %>
 
+        <p class='field half'>
+            <label class='label' for='sport'>Sport</label>
+            <select class='select' id='sport' name="sport">
+                <option selected value='fotbal'>Fotbal</option>
+            </select>
+        </p>
 
-        <form action='/anunturiFotbal' class='form' method="POST" >
-            <%- include('partial/editBase.ejs', {toAddSport: "fotbal", titlu: "Football", anunt: ""}); %>
-
-            
-            <p class='field half'>
-                <label class='label' for='sport'>Sport</label>
-                <select class='select' id='sport' name="sport">
-                    <option selected value='fotbal'>Fotbal</option>
-                </select>
-            </p>
-
-            <div class='field required'>
-
-                <label class='label' for='dificultate'>Nivel de dificultate</label>
-                <select class='select' id='dificultate' name="dificultate" >
-
-                    <option value='Amator'>Amator</option>
-                    <option value='Semi-amator'>Semi-amator</option>
-                    <option value='Mediu'>Mediu</option>
-                    <option value='Avansat'>Avansat</option>
-                </select>
-<!-- am ales sa scterg optiunea cu nivel de dificulate pt da daca careva nu selecteaza nivelul
+        <div class='field required'>
+            <label class='label' for='dificultate'>Nivel de dificultate</label>
+            <select class='select' id='dificultate' name="dificultate">
+                <option value='Amator'>Amator</option>
+                <option value='Semi-amator'>Semi-amator</option>
+                <option value='Mediu'>Mediu</option>
+                <option value='Avansat'>Avansat</option>
+            </select>
+            <!-- am ales sa scterg optiunea cu nivel de dificulate pt da daca careva nu selecteaza nivelul
  atunci se trimite nivel de dificulate care nu are setat nici o valuare si nu stiu stiu cum sa
  rezolv asa ceva sau numai complica treaba -->
-            </div>
+        </div>
 
 
-            <p class='field required half'>
-                <label class='label' for='organizator'>Nume organizator</label>
-                <input class='text-input' id='organizator' name='organizator' required >
-            </p>
-            <!-- required=it specifies that the element must be filled out before submitting the form. -->
-            <p class='field half required'>
-                <label class='label required' for='telefon'>Numar de telefon organizator</label>
-                <input class='text-input' id='telefon' name='telefon' type='text'  maxlength="10"  minlength="10"required>
-            </p>
+        <p class='field required half'>
+            <label class='label' for='organizator'>Nume organizator</label>
+            <input class='text-input' id='organizator' name='organizator' required>
+        </p>
+        <!-- required=it specifies that the element must be filled out before submitting the form. -->
+        <p class='field half required'>
+            <label class='label required' for='telefon'>Numar de telefon organizator</label>
+            <input class='text-input' id='telefon' name='telefon' type='text' maxlength="10" minlength="10" required>
+        </p>
 
 
-            <p class='field required'>
-                <label class='label' for='oras'>Locatie</label>
-                <input type="text" class='text-input' id='oras' name='oras' required value="" />
-            </p>
-
-
-
-            <p class='field required' >
-                <label for="dataSiOra" class="label">Alege data si ora pt eveniment</label>
-                <input type="datetime-local" class="form " id="dataSiOra" name="dataSiOra"  required>
-            </p>
+        <p class='field required'>
+            <label class='label' for='oras'>Locatie</label>
+            <input type="text" class='text-input' id='oras' name='oras' required value="" />
+        </p>
 
 
 
-            <p class='field half'>
-                <label class='label' for='portar'>De cati portari ai nevoie?</label>
-                <select class='select' id='portar' name="portar">
-                    <option selected value='0'>Portar</option>
-                    <option value='1'>1</option>
-                    <option value='2'>2</option>
-                </select>
-            </p>
-
-            <p class='field half'>
-                <label class='label' for='fundas'>De cati fundasi ai nevoie?</label>
-                <select class='select' id='fundas' name="fundas">
-                    <option selected value='0'>Fundas</option>
-                    <option value='1'>1</option>
-                    <option value='2'>2</option>
-                    <option value='3'>3</option>
-                </select>
-            </p>
-
-            <p class='field half'>
-                <label class='label' for='mijlocas'>De cati mijlocasi ai nevoie?</label>
-                <select class='select' id='mijlocas' name="mijlocas">
-                    <option selected value='0'>Mijlocas</option>
-                    <option value='1'>1</option>
-                    <option value='2'>2</option>
-                    <option value='3'>3</option>
-                </select>
-            </p>
-
-            <p class='field half'>
-                <label class='label' for='atacant'>De cati atacanti ai nevoie?</label>
-                <select class='select' id='atacant' name="atacant">
-                    <option selected value='0'>Atacant</option>
-                    <option value='1'>1</option>
-                    <option value='2'>2</option>
-                    <option value='3'>3</option>
-                </select>
-            </p>
+        <p class='field required'>
+            <label for="dataSiOra" class="label">Alege data si ora pt eveniment</label>
+            <input type="datetime-local" class="form " id="dataSiOra" name="dataSiOra" required>
+        </p>
 
 
 
+        <p class='field half'>
+            <label class='label' for='portar'>De cati portari ai nevoie?</label>
+            <select class='select' id='portar' name="portar">
+                <option selected value='0'>Portar</option>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+            </select>
+        </p>
 
+        <p class='field half'>
+            <label class='label' for='fundas'>De cati fundasi ai nevoie?</label>
+            <select class='select' id='fundas' name="fundas">
+                <option selected value='0'>Fundas</option>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+            </select>
+        </p>
 
+        <p class='field half'>
+            <label class='label' for='mijlocas'>De cati mijlocasi ai nevoie?</label>
+            <select class='select' id='mijlocas' name="mijlocas">
+                <option selected value='0'>Mijlocas</option>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+            </select>
+        </p>
 
-            <p class='field half'>
-                <input class='button' type='submit' value='Send'>
-            </p>
-        </form>
-
-
-
-
-
-
-        <%- include('partial/script.ejs') %>
-
-
+        <p class='field half'>
+            <label class='label' for='atacant'>De cati atacanti ai nevoie?</label>
+            <select class='select' id='atacant' name="atacant">
+                <option selected value='0'>Atacant</option>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+            </select>
+        </p>
+        <p class='field half'>
+            <input class='button' type='submit' value='Send'>
+        </p>
+    </form>
+    <%- include('partial/script.ejs') %>
 </body>
 
 </html>

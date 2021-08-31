@@ -43,9 +43,8 @@ app.use(express.urlencoded({ extended: true })) //cap37 curs4 min2
 
 //cap59 curs2
 const dbUrl='mongodb://localhost:27017/licenta'
+
 const MongoDBStore = require("connect-mongo")(session);
-
-
 const store = new MongoDBStore({
     url: dbUrl,
     secret:'thisshouldbeabettersecret!',
@@ -105,9 +104,6 @@ const Review = require('./models/review');
 const Anunt = require('./models/anunt')
 const mongoose = require('mongoose');
 const EchipaBaschet = require('./models/echipaBaschet');
-
-// const dbUrl=process.env.DB_URL
-
 
 mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false })
     .then(() => {

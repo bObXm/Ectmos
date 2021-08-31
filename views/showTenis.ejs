@@ -13,8 +13,8 @@
                 <%- include('partial/anuntBase.ejs', {anunt: anunt}); %>
                 <ul class="list-group list-group-flush ">
                     <li class="list-group-item darkkkk">
-                        <h5>Team:</h5>
-                        <br/>
+                        <h5>Team</h5>
+                        <br />
                         <h5><%= anunt.teamId %> </h5>
                     </li>
                     <li class="list-group-item autor">Anunt creat de către: <%= anunt.author.username%></li>
@@ -28,14 +28,14 @@
                 </div>
                 <% } %>
                 <div class="card-footer text-muted darkkkk">
-                    <a href="/anunturi/tenis">< Back to list</a>
+                    <a href="/anunturi/tenis">
+                        < Back to list</a>
                 </div>
             </div>
         </div>
         <div class="col-5">
             <%- include('partial/showReviews', {currentUser: currentUser, anunt: anunt}); %>
         </div>
-
     </div>
 
     <%- include('partial/initMapDetails', {anunt: anunt}); %>

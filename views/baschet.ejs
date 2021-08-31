@@ -4,10 +4,8 @@
 
 <body>
     <%- include('partial/navbar.ejs') %>
-
     <form action='/anunturiBaschet' class='form' method="POST">
         <%- include('partial/editBase.ejs', {toAddSport: "basket", titlu: "Basketball", anunt: ""}); %>
-
 
         <p class='field half'>
             <label class='label' for='center'>Cati "Center" vrei?</label>
@@ -53,12 +51,11 @@
                 <option value='2'>2</option>
             </select>
         </p>
-
         <p class='field half'>
             <input class='button' type='submit' value='Send'>
         </p>
-
-        <%- include('partial/script.ejs') %>
+    </form>
+    <%- include('partial/script.ejs') %>
 </body>
 
 </html>

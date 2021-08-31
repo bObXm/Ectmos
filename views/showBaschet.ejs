@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('partial/head.ejs') %> 
+<%- include('partial/head.ejs') %>
+
 <body>
-    <%- include('partial/navbar.ejs') %> 
+    <%- include('partial/navbar.ejs') %>
     <%- include('partial/flash.ejs')%>
-    
+
     <div class="row">
         <div class="col-6 me-5">
             <div id='map' class="mb-3" style='width: 100%; height: 400px;'></div>
@@ -13,17 +14,15 @@
                 <ul class="list-group list-group-flush ">
                     <li class="list-group-item darkkkk">
                         <h5>Team</h5>
-                        <br/>
+                        <br />
                         <h5>Center:<%= anunt.teamId %> </h5>
                         <h5>Power Forward:<%= anunt.teamId %> </h5>
                         <h5>Small Forward:<%= anunt.teamId %> </h5>
                         <h5>Point Guard:<%= anunt.teamId %> </h5>
                         <h5>Shooting Guard:<%= anunt.teamId %> </h5>
                     </li>
-                    <!-- cap52curs1 -->
                     <li class="list-group-item autor">Submitted by <%= anunt.author.username%></li>
                 </ul>
-                <!-- cap52curs2 -->
                 <%  if( currentUser && anunt.author.equals(currentUser._id))  {%>
                 <div class="card-body darkkkk">
                     <a class="card-link btn btn-info" href="/anunturiBaschet/<%= anunt.id %>/edit ">Modify</a>
@@ -31,26 +30,20 @@
                         <button class="btn btn-danger">Delete</button>
                     </form>
                 </div>
-                <% } %> 
+                <% } %>
                 <div class="card-footer text-muted darkkkk">
-                    <a href="/anunturi/baschet">< Back to list</a>
+                    <a href="/anunturi/baschet">
+                        < Back to list</a>
                 </div>
             </div>
         </div>
-            <!-- cap46 curs2 -->
-            <!-- pt review[] cap39 curs8 min 1:30 -->
-            <div class="col-5">
-                           <%- include('partial/showReviews', {currentUser: currentUser, anunt: anunt}); %>
-            </div>
-
+        <div class="col-5">
+            <%- include('partial/showReviews', {currentUser: currentUser, anunt: anunt}); %>
+        </div>
     </div>
 
     <%- include('partial/initMapDetails', {anunt: anunt}); %>
     <%- include('partial/script.ejs') %>
 </body>
+
 </html>
-
-
-
-
-
