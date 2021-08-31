@@ -5,15 +5,15 @@
 <body>
     <%- include('partial/navbar.ejs') %>
     <%- include('partial/flash.ejs')%>
-    <form action='/anunturiFotbal/<%= anuntFotbalEditat.id %>?_method=PUT' class='form' method="POST">
-        <%- include('partial/editBase.ejs', {anunt: anuntFotbalEditat, titlu: "Football", toAddSport: ""}); %>
+    <form action='/anunturiFotbal/<%= anunt.id %>?_method=PUT' class='form' method="POST">
+        <%- include('partial/editBase.ejs', {anunt: anunt, titlu: "Football", toAddSport: ""}); %>
 
         <p class='field half'>
             <label class='label' for='portar'>De cati portari ai nevoie?</label>
             <select class='select' id='portar' name="portar">
                 <option selected value='0'>Portar</option>
-                <option value='1' <%= anuntFotbalEditat.portar=== 1 ? 'selected':'' %>>1</option>
-                <option value='2' <%= anuntFotbalEditat.portar=== 2 ? 'selected':'' %>>2</option>
+                <option value='1' <%= anunt.portar=== 1 ? 'selected':'' %>>1</option>
+                <option value='2' <%= anunt.portar=== 2 ? 'selected':'' %>>2</option>
             </select>
         </p>
 
@@ -21,9 +21,9 @@
             <label class='label' for='fundas'>De cati fundasi ai nevoie?</label>
             <select class='select' id='fundas' name="fundas">
                 <option selected value='0'>Fundas</option>
-                <option value='1' <%= anuntFotbalEditat.fundas=== 1 ? 'selected':'' %>>1</option>
-                <option value='2' <%= anuntFotbalEditat.fundas=== 2 ? 'selected':'' %>>2</option>
-                <option value='3' <%= anuntFotbalEditat.fundas=== 3 ? 'selected':'' %>>3</option>
+                <option value='1' <%= anunt.fundas=== 1 ? 'selected':'' %>>1</option>
+                <option value='2' <%= anunt.fundas=== 2 ? 'selected':'' %>>2</option>
+                <option value='3' <%= anunt.fundas=== 3 ? 'selected':'' %>>3</option>
             </select>
         </p>
 
@@ -31,9 +31,9 @@
             <label class='label' for='mijlocas'>De cati mijlocasi ai nevoie?</label>
             <select class='select' id='mijlocas' name="mijlocas">
                 <option selected value='0'>Mijlocas</option>
-                <option value='1' <%= anuntFotbalEditat.mijlocas=== 1 ? 'selected':'' %>>1</option>
-                <option value='2' <%= anuntFotbalEditat.mijlocas=== 2 ? 'selected':'' %>>2</option>
-                <option value='3' <%= anuntFotbalEditat.mijlocas=== 3 ? 'selected':'' %>>3</option>
+                <option value='1' <%= anunt.mijlocas=== 1 ? 'selected':'' %>>1</option>
+                <option value='2' <%= anunt.mijlocas=== 2 ? 'selected':'' %>>2</option>
+                <option value='3' <%= anunt.mijlocas=== 3 ? 'selected':'' %>>3</option>
             </select>
         </p>
 
@@ -41,9 +41,9 @@
             <label class='label' for='atacant'>De cati atacanti ai nevoie?</label>
             <select class='select' id='atacant' name="atacant">
                 <option selected value='0'>Atacant</option>
-                <option value='1' <%= anuntFotbalEditat.atacant=== 1 ? 'selected':'' %>>1</option>
-                <option value='2' <%= anuntFotbalEditat.atacant=== 2 ? 'selected':'' %>>2</option>
-                <option value='3' <%= anuntFotbalEditat.atacant=== 3 ? 'selected':'' %>>3</option>
+                <option value='1' <%= anunt.atacant=== 1 ? 'selected':'' %>>1</option>
+                <option value='2' <%= anunt.atacant=== 2 ? 'selected':'' %>>2</option>
+                <option value='3' <%= anunt.atacant=== 3 ? 'selected':'' %>>3</option>
             </select>
         </p>
         <p class='field half'>

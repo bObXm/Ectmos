@@ -107,7 +107,7 @@ const EchipaBaschet = require('./models/echipaBaschet');
 
 mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false })
     .then(() => {
-        console.log('connection open')
+        console.log('MongoDB connection open!')
     })
     .catch(err => {
         console.log('eroare')
@@ -143,15 +143,15 @@ app.post('/anunturiFotbal', isLoggedIn, catchAsync(async (req, res) => {
         limit: 1
     }).send()
 
-    const anuntNouFotbal = new Anunt(req.body)
+    const anuntNou = new Anunt(req.body)
     //cap55curs3
-    anuntNouFotbal.geometry = geoData.body.features[0].geometry;
+    anuntNou.geometry = geoData.body.features[0].geometry;
     //cap52curs1
-    anuntNouFotbal.author = req.user._id;
-    await anuntNouFotbal.save()
-    console.log(anuntNouFotbal)
+    anuntNou.author = req.user._id;
+    await anuntNou.save()
+    console.log(anuntNou)
     req.flash('success', 'Ad created successfully!');
-    res.redirect(`/anunt/fotbal/${anuntNouFotbal._id}`)
+    res.redirect(`/anunt/fotbal/${anuntNou._id}`)
 
 }))
 
@@ -169,14 +169,20 @@ app.post('/anunturiTenis', isLoggedIn, catchAsync(async (req, res) => {
         limit: 1
     }).send()
 
-    const anuntNouTenis = new Anunt(req.body)
+    const anuntNou = new Anunt(req.body)
     //cap55curs3
-    anuntNouTenis.geometry = geoData.body.features[0].geometry;
+    anuntNou.geometry = geoData.body.features[0].geometry;
     //cap52curs1
-    anuntNouTenis.author = req.user._id;
-    await anuntNouTenis.save()
+    anuntNou.author = req.user._id;
+
+    const team = new EchipaTenis({
+        partener: ""
+    }).save();
+    anuntNou.teamId = team.id;
+
+    await anuntNou.save()
     req.flash('success', 'Ad created successfully!');
-    res.redirect(`/anunt/tenis/${anuntNouTenis._id}`)
+    res.redirect(`/anunt/tenis/${anuntNou._id}`)
 
 }))
 
@@ -194,11 +200,11 @@ app.post('/anunturiBaschet', isLoggedIn, catchAsync(async (req, res) => {
         limit: 1
     }).send()
 
-    const anuntNouBaschet = new Anunt(req.body)
+    const anuntNou = new Anunt(req.body)
     //cap55curs3
-    anuntNouBaschet.geometry = geoData.body.features[0].geometry
+    anuntNou.geometry = geoData.body.features[0].geometry
     //cap52curs1
-    anuntNouBaschet.author = req.user._id;
+    anuntNou.author = req.user._id;
 
     const team = new EchipaBaschet({
         center: [],
@@ -207,12 +213,11 @@ app.post('/anunturiBaschet', isLoggedIn, catchAsync(async (req, res) => {
         pGuard: [],
         sGuard: []
     }).save();
-    anuntNouBaschet.teamId = team.id;
+    anuntNou.teamId = team.id;
 
-    await anuntNouBaschet.save()
-    req.flash('success', 'Anuntul a fost creat cu success !');
-    res.redirect(`/anunt/baschet/${anuntNouBaschet._id}`)
-
+    await anuntNou.save()
+    req.flash('success', 'Ad created successfully!!');
+    res.redirect(`/anunt/baschet/${anuntNou._id}`)
 }))
 
 
@@ -264,8 +269,8 @@ app.get('/anunt/:sport/:id', catchAsync(async (req, res) => {
 //fotbal
 app.get('/anunturiFotbal/:id/edit', isLoggedIn, isAuthor, catchAsync(async (req, res) => {
     const { id } = req.params
-    const anuntFotbalEditat = await Anunt.findById(id)
-    res.render('fotbalEdit.ejs', { anuntFotbalEditat })
+    const anunt = await Anunt.findById(id)
+    res.render('fotbalEdit.ejs', { anunt })
 }))
 
 
@@ -278,23 +283,22 @@ app.put('/anunturiFotbal/:id', isLoggedIn, catchAsync(async (req, res) => {
             limit: 1,
         })
         .send();
-    const anuntFotbalEditat = await Anunt.findByIdAndUpdate(id, {
+    const anuntEditat = await Anunt.findByIdAndUpdate(id, {
         ...req.body,
     });
-    console.log(anuntFotbalEditat)
 
-    anuntFotbalEditat.geometry = geoData.body.features[0].geometry
-    await anuntFotbalEditat.save();
+    anuntEditat.geometry = geoData.body.features[0].geometry
+    await anuntEditat.save();
     req.flash('success', 'Update completed successfully!');
-    res.redirect(`/anunt/fotbal/${anuntFotbalEditat.id}`)
+    res.redirect(`/anunt/fotbal/${anuntEditat.id}`)
 
 }))
 
 //tenis
 app.get('/anunturiTenis/:id/edit', isLoggedIn, isAuthor, catchAsync(async (req, res) => {
     const { id } = req.params
-    const anuntTenisEditat = await Anunt.findById(id)
-    res.render('tenisEdit.ejs', { anuntTenisEditat })
+    const anunt = await Anunt.findById(id)
+    res.render('tenisEdit.ejs', { anunt })
 }))
 
 app.put('/anunturiTenis/:id', isLoggedIn, catchAsync(async (req, res) => {
@@ -305,15 +309,15 @@ app.put('/anunturiTenis/:id', isLoggedIn, catchAsync(async (req, res) => {
             limit: 1,
         })
         .send();
-    const anuntTenisEditat = await Anunt.findByIdAndUpdate(id, {
+    const anuntEditat = await Anunt.findByIdAndUpdate(id, {
         ...req.body,
     });
 
-    anuntTenisEditat.geometry = geoData.body.features[0].geometry
-    await anuntTenisEditat.save();
+    anuntEditat.geometry = geoData.body.features[0].geometry
+    await anuntEditat.save();
 
     req.flash('success', 'Update completed successfully!');
-    res.redirect(`/anunt/tenis/${anuntTenisEditat.id}`)
+    res.redirect(`/anunt/tenis/${anuntEditat.id}`)
 
 }))
 
@@ -321,8 +325,8 @@ app.put('/anunturiTenis/:id', isLoggedIn, catchAsync(async (req, res) => {
 //baschet
 app.get('/anunturiBaschet/:id/edit', isLoggedIn, isAuthor, catchAsync(async (req, res) => {
     const { id } = req.params
-    const anuntBaschetEditat = await Anunt.findById(id)
-    res.render('baschetEdit.ejs', { anuntBaschetEditat })
+    const anunt = await Anunt.findById(id)
+    res.render('baschetEdit.ejs', { anunt })
 }))
 
 app.put('/anunturiBaschet/:id', isLoggedIn, catchAsync(async (req, res) => {
@@ -333,15 +337,15 @@ app.put('/anunturiBaschet/:id', isLoggedIn, catchAsync(async (req, res) => {
             limit: 1,
         })
         .send();
-    const anuntBaschetEditat = await Anunt.findByIdAndUpdate(id, {
+    const anuntEditat = await Anunt.findByIdAndUpdate(id, {
         ...req.body,
     });
 
-    anuntBaschetEditat.geometry = geoData.body.features[0].geometry
-    await anuntBaschetEditat.save();
+    anuntEditat.geometry = geoData.body.features[0].geometry
+    await anuntEditat.save();
 
     req.flash('success', 'Update completed successfully!');
-    res.redirect(`/anunt/baschet/${anuntBaschetEditat.id}`)
+    res.redirect(`/anunt/baschet/${anuntEditat.id}`)
 }))
 
 //fotbal
