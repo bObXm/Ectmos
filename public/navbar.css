@@ -19,6 +19,10 @@
     border-bottom-color:rgba(255,255,255,0.5);
 }
 
+.navbar-dark .navbar-nav .nav-link {
+    opacity: 1;
+}
+
 .nav-link.active {
     color: white;
     border-bottom-color:white;
