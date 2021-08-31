@@ -4,7 +4,7 @@
 
 <body>
     <%- include('partial/navbar.ejs') %>
-
+    <%- include('partial/flash.ejs')%>
     <form action='/anunturiTenis' class='form' method="POST">
         <%- include('partial/editBase.ejs', {toAddSport: "tenis", titlu: "Tennis", anunt: ""}); %>
 

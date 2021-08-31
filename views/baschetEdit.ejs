@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('partial/head.ejs') %>
+
 <body>
     <%- include('partial/navbar.ejs') %>
     <%- include('partial/flash.ejs')%>
     <form action='/anunturiBaschet/<%= anuntBaschetEditat.id %>?_method=PUT' class='form' method="POST">
-
         <%-include('partial/editBase.ejs', {anunt: anuntBaschetEditat, titlu: "Basketball", toAddSport: ""}); %>
 
         <p class='field half'>
@@ -44,20 +44,18 @@
             </select>
         </p>
 
-
         <p class='field half'>
-            <label class='label' for='pGuard'>Cati "Shooting Guard" vrei?</label>
-            <select class='select' id='pGuard' name="sGuard">
+            <label class='label' for='sGuard'>Cati "Shooting Guard" vrei?</label>
+            <select class='select' id='sGuard' name="sGuard">
                 <option selected value='0'>Shooting Guard</option>
                 <option value='1' <%= anuntBaschetEditat.sGuard=== 1 ? 'selected':'' %>>1</option>
                 <option value='2' <%= anuntBaschetEditat.sGuard=== 2 ? 'selected':'' %>>2</option>
             </select>
         </p>
-
         <p class='field half'>
             <input class='button' type='submit' value='Send'>
         </p>
-
+    </form>
         <%- include('partial/script.ejs') %>
 </body>
 

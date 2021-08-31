@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('partial/head.ejs') %>
+
 <body>
     <%- include('partial/navbar.ejs') %>
     <%- include('partial/flash.ejs')%>
     <form action='/anunturiTenis/<%= anuntTenisEditat.id %>?_method=PUT' class='form' method="POST">
-
         <%- include('partial/editBase.ejs', {anunt: anuntTenisEditat, titlu: "Tennis", toAddSport: ""}); %>
 
         <p class='field half'>
             <input class='button' type='submit' value='Send'>
         </p>
-
+    </form>
         <%- include('partial/script.ejs') %>
 </body>
 

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('partial/head.ejs') %>
+
 <body>
     <%- include('partial/navbar.ejs') %>
     <%- include('partial/flash.ejs')%>
     <form action='/anunturiFotbal/<%= anuntFotbalEditat.id %>?_method=PUT' class='form' method="POST">
-
         <%- include('partial/editBase.ejs', {anunt: anuntFotbalEditat, titlu: "Football", toAddSport: ""}); %>
 
         <p class='field half'>
@@ -46,12 +46,10 @@
                 <option value='3' <%= anuntFotbalEditat.atacant=== 3 ? 'selected':'' %>>3</option>
             </select>
         </p>
-
         <p class='field half'>
             <input class='button' type='submit' value='Send'>
         </p>
     </form>
-
     <%- include('partial/script.ejs') %>
 </body>
 
