@@ -43,7 +43,7 @@ app.use(express.urlencoded({ extended: true })) //cap37 curs4 min2
 
 
 //cap59 curs2+4
-const dbUrl= 'mongodb://localhost:27017/licenta'
+const dbUrl=process.env.DB_URL || 'mongodb://localhost:27017/licenta'
 const secret = process.env.SECRET || 'thisshouldbeabettersecret!';
 
 const MongoDBStore = require("connect-mongo")(session);
