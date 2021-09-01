@@ -4,22 +4,22 @@ const Schema = mongoose.Schema;
 
 const echipaFotbalSchema = new mongoose.Schema({
     //fotbal
-    portar:{
+    portar:[{
         type: Schema.Types.ObjectId,
         ref: 'User'
-    },
-    fundas:{
+    }],
+    fundas:[{
         type: Schema.Types.ObjectId,
         ref: 'User'
-    },
-    mijlocas:{
+    }],
+    mijlocas:[{
         type: Schema.Types.ObjectId,
         ref: 'User'
-    },
-    atacant:{
+    }],
+    atacant:[{
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }    
+    }]    
 })
 
 const EchipaFotbal = mongoose.model('EchipaFotbal',echipaFotbalSchema)

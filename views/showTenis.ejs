@@ -14,8 +14,17 @@
                 <ul class="list-group list-group-flush ">
                     <li class="list-group-item darkkkk">
                         <h5>Team</h5>
-                        <br />
-                        <h5><%=anunt.teamId %></h5>
+                        <% for(let echipa of anunt.team.partener) {%>
+                            <h5> <%=echipa.username %> </h5>
+                        <% } %>
+                        <%  if( currentUser && !anunt.author.equals(currentUser._id))  {%>
+                            <br />
+                            <h5>
+                                <% if(currentUser) { %>
+                                    <button onclick="addParticipant('partener', '<%=anunt.id%>')">Add me as player</button>
+                                <% } %>
+                            </h5>
+                        <% } %>
                     </li>
                     <li class="list-group-item autor">Anunt creat de către: <%= anunt.author.username%></li>
                 </ul>
@@ -38,6 +47,26 @@
             <%- include('partial/showReviews', {currentUser: currentUser, anunt: anunt}); %>
         </div>
     </div>
+
+    <script type="text/javascript">
+        function addParticipant(pozitie, idAnunt) {
+            fetch(`./../../anunt/adauga-membru/${idAnunt}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ pozitie: pozitie, user: "<%=currentUser ? currentUser.id : ''%>" })
+            })
+                .then(response => response.json())
+                .then(result => {
+                    console.log('Success:', result);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+
 
     <%- include('partial/initMapDetails', {anunt: anunt}); %>
     <%- include('partial/script.ejs') %>
