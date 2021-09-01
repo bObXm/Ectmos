@@ -43,6 +43,7 @@ app.use(express.urlencoded({ extended: true })) //cap37 curs4 min2
 
 
 //cap59 curs2+4
+// const dbUrl=  'mongodb://localhost:27017/licenta'
 const dbUrl=process.env.DB_URL || 'mongodb://localhost:27017/licenta'
 const secret = process.env.SECRET || 'thisshouldbeabettersecret!';
 
@@ -259,7 +260,9 @@ app.post('/anunturiFotbal/:id', bodyParser.json(), isLoggedIn, catchAsync(async 
 
 app.get('/anunturi/:sportParam', catchAsync(async (req, res) => {
     const { sportParam } = req.params
-    const anunturi = await Anunt.find({ sport: sportParam })
+    const anunturi = await Anunt.find({ 
+        sport: sportParam, 
+        author: { $ne: req.user._id } })
     res.render('anunturi.ejs', { anunturi })
 }))
 
@@ -274,18 +277,19 @@ app.get('/anunturile-mele', catchAsync(async (req, res) => {
 
 app.get('/anunt/:sport/:id', catchAsync(async (req, res) => {
     const { id, sport } = req.params
-    // let ref;
-    // switch (sport) {
-    //     case 'fotbal':
-    //         ref = "EchipaFotbal"
-    //         break;
-    //     case 'tenis':
-    //         ref = "EchipaTenis"
-    //         break;
-    //     case 'baschet':
-    //         ref = "EchipaBasket"
-    //         break;
-    // }
+    let pathToPopulate;
+    switch (sport) {
+        case 'fotbal':
+            break;
+        case 'tenis':
+            pathToPopulate = {
+                populate: {
+                path: 'partner.players'
+            }}
+            break;
+        case 'baschet':
+            break;
+    }
 
     const anunt = await Anunt.findById(id).populate('reviews').populate({
         path: 'reviews',
@@ -294,9 +298,7 @@ app.get('/anunt/:sport/:id', catchAsync(async (req, res) => {
         }
     }).populate('author').populate('team').populate({
         path: 'team',
-        populate: {
-            path: 'players'
-        }
+        ...pathToPopulate
     });
 
     if (!anunt) {
@@ -330,7 +332,12 @@ app.get('/anunturiFotbal/:id/edit', isLoggedIn, isAuthor, catchAsync(async (req,
 //tenis
 app.get('/anunturiTenis/:id/edit', isLoggedIn, isAuthor, catchAsync(async (req, res) => {
     const { id } = req.params
-    const anunt = await Anunt.findById(id)
+    const anunt = await Anunt.findById(id).populate('team').populate({
+        path: 'team',
+        populate: {
+            path: 'players'
+        }
+    });
     res.render('tenisEdit.ejs', { anunt })
 }))
 
@@ -346,7 +353,12 @@ app.post('/anunturiTenis/:id', isLoggedIn, catchAsync(async (req, res) => {
         ...req.body,
     });
 
-    anuntEditat.geometry = geoData.body.features[0].geometry
+    anuntEditat.geometry = geoData.body.features[0].geometry;
+
+    const echipa = await EchipaTenis.findById(anuntEditat.team);
+    echipa.partner.counter = req.body.partnerCounter;
+    await echipa.save();
+
     await anuntEditat.save();
 
     req.flash('success', 'Update completed successfully!');

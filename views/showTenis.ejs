@@ -10,19 +10,28 @@
         <div class="col-6 me-5">
             
             <div class="card mb-3 ">
+                <%  if( currentUser && !anunt.author.equals(currentUser._id)) {%>
+                    <li class="list-group-item autor">Submited by: <%= anunt.author.username%></li>
+                <% } %>
                 <%- include('partial/anuntBase.ejs', {anunt: anunt}); %>
                 <ul class="list-group list-group-flush ">
                     <li class="list-group-item darkkkk">
-                        <h5>Team</h5>
+                        <h5>Team of <%=anunt.team.partner.counter%> player(s)</h5>
+
                         <% for(let echipa of anunt.team.partner.players) {%>
                             <h5> <%=echipa.username %> </h5>
                         <% } %>
-                        <%  if( currentUser && !anunt.author.equals(currentUser._id))  {%>
-                            <br />
-                            <button onclick="addParticipant('partner', '<%=anunt.id%>')">Add me as player</button>
-                        <% } %>
+
+                        <%  if( currentUser && !anunt.author.equals(currentUser._id)) {%>
+                            <%  if(anunt.team.partner.counter > anunt.team.partner.players.length) {%>
+                                <br />
+                                <button onclick="addParticipant('partner', '<%=anunt.id%>')">Join as player</button>
+                            <% } else { %>
+                                <p style="color: blueviolet;">The team is completed. Choose another add!</p>
+                            <%}
+
+                        } %>
                     </li>
-                    <li class="list-group-item autor">Anunt creat de către: <%= anunt.author.username%></li>
                 </ul>
                 <%  if( currentUser && anunt.author.equals(currentUser._id))  {%>
                 <div class="card-body darkkkk">
