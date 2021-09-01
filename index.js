@@ -43,7 +43,7 @@ app.use(express.urlencoded({ extended: true })) //cap37 curs4 min2
 
 
 //cap59 curs2+4
-const dbUrl=process.env.DB_URL || 'mongodb://localhost:27017/licenta'
+const dbUrl= 'mongodb://localhost:27017/licenta'
 const secret = process.env.SECRET || 'thisshouldbeabettersecret!';
 
 const MongoDBStore = require("connect-mongo")(session);
@@ -184,7 +184,10 @@ app.post('/anunturiTenis', isLoggedIn, catchAsync(async (req, res) => {
     }).send()
 
     const team = new EchipaTenis({
-        partener: []
+        partner: {
+            counter: req.body.partnerCounter,
+            players: []
+        }
     });
     await team.save();
     const anuntNou = await Anunt.create({
@@ -235,7 +238,7 @@ app.post('/anunturiBaschet', isLoggedIn, catchAsync(async (req, res) => {
     res.redirect(`/anunt/baschet/${anuntNou._id}`)
 }))
 
-app.put('/anunturiFotbal/:id', isLoggedIn, catchAsync(async (req, res) => {
+app.post('/anunturiFotbal/:id', bodyParser.json(), isLoggedIn, catchAsync(async (req, res) => {
     const { id } = req.params;
     const geoData = await geocoder
         .forwardGeocode({
@@ -292,7 +295,7 @@ app.get('/anunt/:sport/:id', catchAsync(async (req, res) => {
     }).populate('author').populate('team').populate({
         path: 'team',
         populate: {
-            path: 'partener'
+            path: 'players'
         }
     });
 
@@ -331,7 +334,7 @@ app.get('/anunturiTenis/:id/edit', isLoggedIn, isAuthor, catchAsync(async (req, 
     res.render('tenisEdit.ejs', { anunt })
 }))
 
-app.put('/anunturiTenis/:id', isLoggedIn, catchAsync(async (req, res) => {
+app.post('/anunturiTenis/:id', isLoggedIn, catchAsync(async (req, res) => {
     const { id } = req.params;
     const geoData = await geocoder
         .forwardGeocode({
@@ -357,13 +360,16 @@ app.put('/anunt/adauga-membru/:idAnunt', bodyParser.json(), isLoggedIn, catchAsy
         // TODO - switch based on sport
         const echipa = await EchipaTenis.findById(anuntul.team);
         // TODO - populate based on sport an position
-        echipa[`${req.body.pozitie}`].push(req.body.user);
+        echipa[`${req.body.pozitie}`].players.push(req.body.user);
 
         await echipa.save();
     } else {
         // TODO - switch based on sport
         const team = new EchipaTenis({
-            partener: [req.body.user]
+            partner: {
+                counter: 1,
+                players: [req.body.user]
+            }
         });
         await team.save();
         anuntul.team = team._id;
@@ -387,7 +393,7 @@ app.get('/anunturiBaschet/:id/edit', isLoggedIn, isAuthor, catchAsync(async (req
     res.render('baschetEdit.ejs', { anunt })
 }))
 
-app.put('/anunturiBaschet/:id', isLoggedIn, catchAsync(async (req, res) => {
+app.post('/anunturiBaschet/:id', bodyParser.json(), isLoggedIn, catchAsync(async (req, res) => {
     const { id } = req.params;
     const geoData = await geocoder
         .forwardGeocode({

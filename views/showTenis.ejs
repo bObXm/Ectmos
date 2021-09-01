@@ -14,12 +14,12 @@
                 <ul class="list-group list-group-flush ">
                     <li class="list-group-item darkkkk">
                         <h5>Team</h5>
-                        <% for(let echipa of anunt.team.partener) {%>
+                        <% for(let echipa of anunt.team.partner.players) {%>
                             <h5> <%=echipa.username %> </h5>
                         <% } %>
                         <%  if( currentUser && !anunt.author.equals(currentUser._id))  {%>
                             <br />
-                            <button onclick="addParticipant('partener', '<%=anunt.id%>')">Add me as player</button>
+                            <button onclick="addParticipant('partner', '<%=anunt.id%>')">Add me as player</button>
                         <% } %>
                     </li>
                     <li class="list-group-item autor">Anunt creat de către: <%= anunt.author.username%></li>
