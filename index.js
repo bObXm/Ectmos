@@ -9,9 +9,10 @@ const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
 
 
 const express = require('express');
+const bodyParser = require('body-parser')
+
 const app = express();
 const path = require('path');
-
 
 
 app.set('view engine', 'ejs')
@@ -157,7 +158,7 @@ app.post('/anunturiFotbal', isLoggedIn, catchAsync(async (req, res) => {
         mijlocas: [],
         atacant: []
     }).save();
-    anuntNou.teamId = team.id;
+    anuntNou.team = team.id;
 
     await anuntNou.save()
 
@@ -180,18 +181,20 @@ app.post('/anunturiTenis', isLoggedIn, catchAsync(async (req, res) => {
         limit: 1
     }).send()
 
-    const anuntNou = new Anunt(req.body)
-    //cap55curs3
-    anuntNou.geometry = geoData.body.features[0].geometry;
-    //cap52curs1
-    anuntNou.author = req.user._id;
-
+    
     const team = new EchipaTenis({
         partener: []
-    }).save();
-    anuntNou.teamId = team.id;
+    });
+    await team.save();
+    const anuntNou = await Anunt.create({
+        ...req.body,
+        geometry: geoData.body.features[0].geometry,
+        author: req.user._id,
+        
+        team: team._id,
+        onModel: 'EchipaTenis'
+      });
 
-    await anuntNou.save()
     req.flash('success', 'Ad created successfully!');
     res.redirect(`/anunt/tenis/${anuntNou._id}`)
 
@@ -224,7 +227,7 @@ app.post('/anunturiBaschet', isLoggedIn, catchAsync(async (req, res) => {
         pGuard: [],
         sGuard: []
     }).save();
-    anuntNou.teamId = team.id;
+    anuntNou.team = team.id;
 
     await anuntNou.save()
     req.flash('success', 'Ad created successfully!!');
@@ -267,12 +270,32 @@ app.get('/anunturile-mele', catchAsync(async (req, res) => {
 
 app.get('/anunt/:sport/:id', catchAsync(async (req, res) => {
     const { id, sport } = req.params
+    let ref;
+    switch (sport) {
+        case 'fotbal':
+            ref = "EchipaFotbal"
+            break;
+        case 'tenis':
+            ref = "EchipaTenis"
+            break;
+        case 'baschet':
+            ref = "EchipaBasket"
+            break;
+    }
+
+    console.log("ref ", ref)
+
     const anunt = await Anunt.findById(id).populate('reviews').populate({
         path: 'reviews',
         populate: {
             path: 'author'
         }
-    }).populate('author');
+    }).populate('author').populate('team').populate({
+        path: 'team',
+        populate: {
+            path: 'partener'
+        }
+    });
 
     if (!anunt) {
         req.flash('error', 'Ad not found!');
@@ -302,10 +325,6 @@ app.get('/anunturiFotbal/:id/edit', isLoggedIn, isAuthor, catchAsync(async (req,
     res.render('fotbalEdit.ejs', { anunt })
 }))
 
-
-
-
-
 //tenis
 app.get('/anunturiTenis/:id/edit', isLoggedIn, isAuthor, catchAsync(async (req, res) => {
     const { id } = req.params
@@ -330,7 +349,33 @@ app.put('/anunturiTenis/:id', isLoggedIn, catchAsync(async (req, res) => {
 
     req.flash('success', 'Update completed successfully!');
     res.redirect(`/anunt/tenis/${anuntEditat.id}`)
+}))
 
+app.put('/anunt/adauga-membru/:idAnunt', bodyParser.json(), isLoggedIn, catchAsync(async (req, res) => {
+    const { idAnunt } = req.params;
+    const anuntul = await Anunt.findById(idAnunt);
+    if(anuntul.team){
+        // TODO - switch based on sport
+        const echipa = await EchipaTenis.findById(anuntul.team);
+        // TODO - populate based on sport an position
+        echipa[`${req.body.pozitie}`].push(req.body.user);
+        await echipa.save();
+    } else {
+        const team = new EchipaTenis({
+            partener: [req.body.user]
+        });
+        await team.save();
+        anuntul.team = team._id;
+        // TODO - switch based on sport
+        anuntul.onModel = "EchipaTenis";
+        await anuntul.save();
+    }
+
+    res.send({
+        'success': true,
+        "message": 'Added you as member!',
+        anuntul
+    })
 }))
 
 

@@ -38,8 +38,15 @@ const anunturiSchema=new mongoose.Schema({
         type:Date
     },
     
-    teamId: {
-        type: Schema.Types.ObjectId
+    team: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        refPath: 'onModel'
+    },
+    onModel: {
+        type: String,
+        required: true,
+        enum: ['EchipaBaschet', 'EchipaFotbal', "EchipaTenis"]
     },
     reviews: [
         {
