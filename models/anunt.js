@@ -37,10 +37,8 @@ const anunturiSchema=new mongoose.Schema({
         required:true,
         type:Date
     },
-    
     team: {
         type: Schema.Types.ObjectId,
-        required: true,
         refPath: 'onModel'
     },
     onModel: {

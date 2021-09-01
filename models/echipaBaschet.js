@@ -3,10 +3,15 @@ const Schema = mongoose.Schema;
 
 const echipaBaschetSchema = new mongoose.Schema({
     //baschet
-    center:[{
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    }],
+    center:{
+        counter: {
+            type: Number
+        },
+        players: [{
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }]
+    },
     pForward:[{
         type: Schema.Types.ObjectId,
         ref: 'User'

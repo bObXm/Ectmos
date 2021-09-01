@@ -19,11 +19,7 @@
                         <% } %>
                         <%  if( currentUser && !anunt.author.equals(currentUser._id))  {%>
                             <br />
-                            <h5>
-                                <% if(currentUser) { %>
-                                    <button onclick="addParticipant('partener', '<%=anunt.id%>')">Add me as player</button>
-                                <% } %>
-                            </h5>
+                            <button onclick="addParticipant('partener', '<%=anunt.id%>')">Add me as player</button>
                         <% } %>
                     </li>
                     <li class="list-group-item autor">Anunt creat de către: <%= anunt.author.username%></li>

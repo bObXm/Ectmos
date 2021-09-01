@@ -146,21 +146,21 @@ app.post('/anunturiFotbal', isLoggedIn, catchAsync(async (req, res) => {
         limit: 1
     }).send()
 
-    const anuntNou = new Anunt(req.body)
-    //cap55curs3
-    anuntNou.geometry = geoData.body.features[0].geometry;
-    //cap52curs1
-    anuntNou.author = req.user._id;
-
     const team = new EchipaFotbal({
         portar: [],
         fundas: [],
         mijlocas: [],
         atacant: []
     }).save();
-    anuntNou.team = team.id;
 
-    await anuntNou.save()
+    const anuntNou = await Anunt.create({
+        ...req.body,
+        geometry: geoData.body.features[0].geometry,
+        author: req.user._id,
+        
+        team: team._id,
+        onModel: 'EchipaFotbal'
+    });
 
     req.flash('success', 'Ad created successfully!');
     res.redirect(`/anunt/fotbal/${anuntNou._id}`)
@@ -181,7 +181,6 @@ app.post('/anunturiTenis', isLoggedIn, catchAsync(async (req, res) => {
         limit: 1
     }).send()
 
-    
     const team = new EchipaTenis({
         partener: []
     });
@@ -193,7 +192,7 @@ app.post('/anunturiTenis', isLoggedIn, catchAsync(async (req, res) => {
         
         team: team._id,
         onModel: 'EchipaTenis'
-      });
+    });
 
     req.flash('success', 'Ad created successfully!');
     res.redirect(`/anunt/tenis/${anuntNou._id}`)
@@ -213,13 +212,6 @@ app.post('/anunturiBaschet', isLoggedIn, catchAsync(async (req, res) => {
         query: req.body.oras,
         limit: 1
     }).send()
-
-    const anuntNou = new Anunt(req.body)
-    //cap55curs3
-    anuntNou.geometry = geoData.body.features[0].geometry
-    //cap52curs1
-    anuntNou.author = req.user._id;
-
     const team = new EchipaBaschet({
         center: [],
         pForward: [],
@@ -227,9 +219,16 @@ app.post('/anunturiBaschet', isLoggedIn, catchAsync(async (req, res) => {
         pGuard: [],
         sGuard: []
     }).save();
-    anuntNou.team = team.id;
 
-    await anuntNou.save()
+    const anuntNou = await Anunt.create({
+        ...req.body,
+        geometry: geoData.body.features[0].geometry,
+        author: req.user._id,
+        
+        team: team._id,
+        onModel: 'EchipaBaschet'
+    });
+
     req.flash('success', 'Ad created successfully!!');
     res.redirect(`/anunt/baschet/${anuntNou._id}`)
 }))
@@ -270,20 +269,18 @@ app.get('/anunturile-mele', catchAsync(async (req, res) => {
 
 app.get('/anunt/:sport/:id', catchAsync(async (req, res) => {
     const { id, sport } = req.params
-    let ref;
-    switch (sport) {
-        case 'fotbal':
-            ref = "EchipaFotbal"
-            break;
-        case 'tenis':
-            ref = "EchipaTenis"
-            break;
-        case 'baschet':
-            ref = "EchipaBasket"
-            break;
-    }
-
-    console.log("ref ", ref)
+    // let ref;
+    // switch (sport) {
+    //     case 'fotbal':
+    //         ref = "EchipaFotbal"
+    //         break;
+    //     case 'tenis':
+    //         ref = "EchipaTenis"
+    //         break;
+    //     case 'baschet':
+    //         ref = "EchipaBasket"
+    //         break;
+    // }
 
     const anunt = await Anunt.findById(id).populate('reviews').populate({
         path: 'reviews',
@@ -359,8 +356,10 @@ app.put('/anunt/adauga-membru/:idAnunt', bodyParser.json(), isLoggedIn, catchAsy
         const echipa = await EchipaTenis.findById(anuntul.team);
         // TODO - populate based on sport an position
         echipa[`${req.body.pozitie}`].push(req.body.user);
+
         await echipa.save();
     } else {
+        // TODO - switch based on sport
         const team = new EchipaTenis({
             partener: [req.body.user]
         });
