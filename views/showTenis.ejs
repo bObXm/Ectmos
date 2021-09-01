@@ -14,25 +14,30 @@
                     <li class="list-group-item autor">Submited by: <%= anunt.author.username%></li>
                 <% } %>
                 <%- include('partial/anuntBase.ejs', {anunt: anunt}); %>
-                <ul class="list-group list-group-flush ">
-                    <li class="list-group-item darkkkk">
-                        <h5>Team of <%=anunt.team.partner.counter%> player(s)</h5>
 
-                        <% for(let echipa of anunt.team.partner.players) {%>
-                            <h5> <%=echipa.username %> </h5>
-                        <% } %>
+                <%  if(anunt.team.partner.counter) { %>
+                    <ul class="list-group list-group-flush ">
+                        <li class="list-group-item darkkkk">
+                            <h5>Team of <%=anunt.team.partner.counter%> player(s)</h5>
+                            <p id="players">
+                                <% for(let echipa of anunt.team.partner.players) {%>
+                                    <h5> <%=echipa.username %> </h5>
+                                <% } %>
+                            </p>
+                            <%  if( currentUser && !anunt.author.equals(currentUser._id)) {%>
+                                <%  if(anunt.team.partner.counter > anunt.team.partner.players.length) {%>
+                                    <br />
+                                    <button onclick="addParticipant('partner', '<%=anunt.id%>')">Join as player</button>
+                                <% } else { %>
+                                    <p style="color: blueviolet;">The team is completed. Choose another add!</p>
+                                <%}
 
-                        <%  if( currentUser && !anunt.author.equals(currentUser._id)) {%>
-                            <%  if(anunt.team.partner.counter > anunt.team.partner.players.length) {%>
-                                <br />
-                                <button onclick="addParticipant('partner', '<%=anunt.id%>')">Join as player</button>
-                            <% } else { %>
-                                <p style="color: blueviolet;">The team is completed. Choose another add!</p>
-                            <%}
-
-                        } %>
-                    </li>
-                </ul>
+                            } %>
+                        </li>
+                    </ul>
+                <% } else { %>
+                    <p style="color: blueviolet;">Something is wrong with this add. Was created with 0 players!</p>
+                <%} %>
                 <%  if( currentUser && anunt.author.equals(currentUser._id))  {%>
                 <div class="card-body darkkkk">
                     <a class="card-link btn btn-info" href="/anunturiTenis/<%= anunt.id %>/edit ">Modify</a>
@@ -64,7 +69,7 @@
             })
                 .then(response => response.json())
                 .then(result => {
-                    console.log('Success:', result);
+                    window.location.reload()
                 })
                 .catch(error => {
                     console.error('Error:', error);

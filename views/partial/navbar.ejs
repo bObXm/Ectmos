@@ -27,9 +27,9 @@
                             ADD NEW
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item ceva" id="mainNavbar" href="/fotbal">FOOTBALL GAME</a></li>
-                            <li><a class="dropdown-item ceva" id="mainNavbar" href="/tenis">TENNIS GAME</a></li>
-                            <li><a class="dropdown-item ceva" id="mainNavbar" href="/baschet">BASKETBALL GAME</a></li>
+                            <li><a class="dropdown-item ceva" href="/fotbal">FOOTBALL GAME</a></li>
+                            <li><a class="dropdown-item ceva" href="/tenis">TENNIS GAME</a></li>
+                            <li><a class="dropdown-item ceva" href="/baschet">BASKETBALL GAME</a></li>
 
                         </ul>
                     </li>
@@ -38,10 +38,13 @@
 
                 <div class="navbar-nav ml-auto">
                     <% if(!currentUser) {%>
-                    <a class="nav-link" href="/login">Login</a>
-                    <a class="nav-link" href="/register">Register</a>
-                    <% } else {%>
-                    <a class="nav-link" href="/logout">Logout</a>
+                        <a class="nav-link" href="/login">Login</a>
+                        <a class="nav-link" href="/register">Register</a>
+                    <% } else { %>
+                        <span class="navbar-text">
+                            Hello, <%=currentUser.username%>
+                          </span>
+                        <a class="nav-link" href="/logout">Logout</a>
                     <% } %>
                 </div>
             </div>

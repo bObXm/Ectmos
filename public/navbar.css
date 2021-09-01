@@ -5,6 +5,9 @@
     src: url("/SportypoReguler.ttf");
   }
 
+.navbar-text {
+    padding: 0.25rem 0;
+}
 
 .nav-link {
     padding: 0.25rem 0;
@@ -38,9 +41,9 @@
     background-color: transparent;
 }
 
-#mainNavbar .nav-link:hover {
+#mainNavbar .nav-link:hover, .active {
     color: #EA1C2C;
-  }
+}
 
 .navbar-brand {
     font-family: SportypoReguler;

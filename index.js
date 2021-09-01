@@ -260,9 +260,14 @@ app.post('/anunturiFotbal/:id', bodyParser.json(), isLoggedIn, catchAsync(async 
 
 app.get('/anunturi/:sportParam', catchAsync(async (req, res) => {
     const { sportParam } = req.params
-    const anunturi = await Anunt.find({ 
-        sport: sportParam, 
-        author: { $ne: req.user._id } })
+    let anunturi = [];
+    if(req.user) {
+        anunturi = await Anunt.find({ 
+            sport: sportParam, 
+            author: { $ne: req.user._id } }).populate('author')
+    } else {
+        anunturi = await Anunt.find({ sport: sportParam }).populate('author')
+    }
     res.render('anunturi.ejs', { anunturi })
 }))
 
@@ -390,10 +395,12 @@ app.put('/anunt/adauga-membru/:idAnunt', bodyParser.json(), isLoggedIn, catchAsy
         await anuntul.save();
     }
 
+const user = req.user;
+
     res.send({
         'success': true,
         "message": 'Added you as member!',
-        anuntul
+        user
     })
 }))
 
