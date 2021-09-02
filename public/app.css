@@ -36,9 +36,20 @@ footer p {
 }
 /* butonul de stergere */
 
+.oras {
+  margin-top: 0.75rem; 
+  text-transform: capitalize;
+}
+
+.oras i {
+  font-size: 23px; 
+  margin-right: 7px; 
+  color: white;
+}
 
 .pp{
   color: #25cf97;
+  font-size: 1rem;
 }
 .dark {
   background: #110f16;
@@ -338,6 +349,7 @@ input[type="datetime-local "]::-webkit-calendar-picker-indicator {
 .card_icon{
   height: fit-content;
   margin-top: -30%;
+  margin-left: 20px;
 }
 .card_custom_button{
   background-color: #163436;

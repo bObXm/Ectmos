@@ -138,11 +138,11 @@ app.get('/home', (req, res) => {
 
 
 //curs6 CREATE
-//fotbal
+//fotbal - create view
 app.get('/fotbal', isLoggedIn, (req, res) => {
     res.render('fotbal.ejs')
 })
-
+//fotbal - create action
 app.post('/anunturiFotbal', isLoggedIn, catchAsync(async (req, res) => {
     const geoData = await geocoder.forwardGeocode({
         query: req.body.oras,
@@ -184,11 +184,11 @@ app.post('/anunturiFotbal', isLoggedIn, catchAsync(async (req, res) => {
 
 
 
-//tenis
+//tenis - create view
 app.get("/tenis", isLoggedIn, (req, res) => {
     res.render('tenis.ejs')
 })
-
+//tenis - create action
 app.post('/anunturiTenis', isLoggedIn, catchAsync(async (req, res) => {
     //cap55curs3
     const geoData = await geocoder.forwardGeocode({
@@ -219,11 +219,11 @@ app.post('/anunturiTenis', isLoggedIn, catchAsync(async (req, res) => {
 
 
 
-//baschet
+//baschet - create view
 app.get('/baschet', isLoggedIn, (req, res) => {
     res.render('baschet.ejs')
 })
-
+//baschet - create action
 app.post('/anunturiBaschet', isLoggedIn, catchAsync(async (req, res) => {
     //cap55curs3
     const geoData = await geocoder.forwardGeocode({
@@ -267,32 +267,8 @@ app.post('/anunturiBaschet', isLoggedIn, catchAsync(async (req, res) => {
     res.redirect(`/anunt/baschet/${anuntNou._id}`)
 }))
 
-app.post('/anunturiFotbal/:id', bodyParser.json(), isLoggedIn, catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const geoData = await geocoder
-        .forwardGeocode({
-            query: req.body.oras,
-            limit: 1,
-        })
-        .send();
-    const anuntEditat = await Anunt.findByIdAndUpdate(id, {
-        ...req.body,
-    });
 
-    anuntEditat.geometry = geoData.body.features[0].geometry
 
-    const echipa = await EchipaFotbal.findById(anuntEditat.team);
-    echipa.portar.counter = req.body.portarCounter;
-    echipa.mijlocas.counter = req.body.mijlocasCounter;
-    echipa.fundas.counter = req.body.fundasCounter;
-    echipa.atacant.counter = req.body.atacantCounter;
-    await echipa.save();
-
-    await anuntEditat.save();
-    req.flash('success', 'Update completed successfully!');
-    res.redirect(`/anunt/fotbal/${anuntEditat.id}`)
-
-}))
 
 // lista anunturi
 app.get('/anunturi/:sportParam', catchAsync(async (req, res) => {
@@ -308,7 +284,6 @@ app.get('/anunturi/:sportParam', catchAsync(async (req, res) => {
     res.render('anunturi.ejs', { anunturi })
 }))
 
-
 //ANUNTURILE MELE
 app.get('/anunturile-mele', catchAsync(async (req, res) => {
     if (req.user) {
@@ -318,7 +293,8 @@ app.get('/anunturile-mele', catchAsync(async (req, res) => {
 }))
 
 
-// pagina detalii anunt
+
+// pagina detalii anunt - orice tip de anunt
 app.get('/anunt/:sport/:id', catchAsync(async (req, res) => {
     const { id, sport } = req.params
     let pathToPopulate;
@@ -373,8 +349,11 @@ app.get('/anunt/:sport/:id', catchAsync(async (req, res) => {
     }
 }))
 
+
+
+
 //curs7 PRODUCT UPDATE 
-//fotbal
+//fotbal - edit view
 app.get('/anunturiFotbal/:id/edit', isLoggedIn, isAuthor, catchAsync(async (req, res) => {
     const { id } = req.params
     const anunt = await Anunt.findById(id).populate('team').populate({
@@ -386,7 +365,36 @@ app.get('/anunturiFotbal/:id/edit', isLoggedIn, isAuthor, catchAsync(async (req,
     res.render('fotbalEdit.ejs', { anunt })
 }))
 
-//tenis
+//fotbal - edit action
+app.post('/anunturiFotbal/:id', bodyParser.json(), isLoggedIn, catchAsync(async (req, res) => {
+    const { id } = req.params;
+    const geoData = await geocoder
+        .forwardGeocode({
+            query: req.body.oras,
+            limit: 1,
+        })
+        .send();
+    const anuntEditat = await Anunt.findByIdAndUpdate(id, {
+        ...req.body,
+    });
+
+    anuntEditat.geometry = geoData.body.features[0].geometry
+
+    const echipa = await EchipaFotbal.findById(anuntEditat.team);
+    echipa.portar.counter = req.body.portarCounter;
+    echipa.mijlocas.counter = req.body.mijlocasCounter;
+    echipa.fundas.counter = req.body.fundasCounter;
+    echipa.atacant.counter = req.body.atacantCounter;
+    await echipa.save();
+
+    await anuntEditat.save();
+    req.flash('success', 'Update completed successfully!');
+    res.redirect(`/anunt/fotbal/${anuntEditat.id}`)
+
+}))
+
+
+//tenis - edit view
 app.get('/anunturiTenis/:id/edit', isLoggedIn, isAuthor, catchAsync(async (req, res) => {
     const { id } = req.params
     const anunt = await Anunt.findById(id).populate('team').populate({
@@ -398,18 +406,7 @@ app.get('/anunturiTenis/:id/edit', isLoggedIn, isAuthor, catchAsync(async (req, 
     res.render('tenisEdit.ejs', { anunt })
 }))
 
-//baschet
-app.get('/anunturiBaschet/:id/edit', isLoggedIn, isAuthor, catchAsync(async (req, res) => {
-    const { id } = req.params
-    const anunt = await Anunt.findById(id).populate('team').populate({
-        path: 'team',
-        populate: {
-            path: 'center.players pForward.players sForward.players pGuard.players sGuard.players'
-        }
-    });
-    res.render('baschetEdit.ejs', { anunt })
-}))
-
+//tenis - edit action
 app.post('/anunturiTenis/:id', isLoggedIn, catchAsync(async (req, res) => {
     const { id } = req.params;
     const geoData = await geocoder
@@ -434,6 +431,51 @@ app.post('/anunturiTenis/:id', isLoggedIn, catchAsync(async (req, res) => {
     res.redirect(`/anunt/tenis/${anuntEditat.id}`)
 }))
 
+
+//baschet - edit view
+app.get('/anunturiBaschet/:id/edit', isLoggedIn, isAuthor, catchAsync(async (req, res) => {
+    const { id } = req.params
+    const anunt = await Anunt.findById(id).populate('team').populate({
+        path: 'team',
+        populate: {
+            path: 'center.players pForward.players sForward.players pGuard.players sGuard.players'
+        }
+    });
+    res.render('baschetEdit.ejs', { anunt })
+}))
+
+//baschet - edit action
+app.post('/anunturiBaschet/:id', bodyParser.json(), isLoggedIn, catchAsync(async (req, res) => {
+    const { id } = req.params;
+    const geoData = await geocoder
+        .forwardGeocode({
+            query: req.body.oras,
+            limit: 1,
+        })
+        .send();
+    const anuntEditat = await Anunt.findByIdAndUpdate(id, {
+        ...req.body,
+    });
+
+    anuntEditat.geometry = geoData.body.features[0].geometry
+
+    const echipa = await EchipaBaschet.findById(anuntEditat.team);
+    echipa.center.counter = req.body.centerCounter;
+    echipa.pForward.counter = req.body.pForwardCounter;
+    echipa.sForward.counter = req.body.sForwardCounter;
+    echipa.pGuard.counter = req.body.pGuardCounter;
+    echipa.sGuard.counter = req.body.sGuardCounter;
+    await echipa.save();
+
+    await anuntEditat.save();
+
+    req.flash('success', 'Update completed successfully!');
+    res.redirect(`/anunt/baschet/${anuntEditat.id}`)
+}))
+
+
+// add new member for any type of ad
+// current implementation supports only adding an ad for tennis
 app.put('/anunt/adauga-membru/:idAnunt', bodyParser.json(), isLoggedIn, catchAsync(async (req, res) => {
     const { idAnunt } = req.params;
     const anuntul = await Anunt.findById(idAnunt);
@@ -468,36 +510,6 @@ app.put('/anunt/adauga-membru/:idAnunt', bodyParser.json(), isLoggedIn, catchAsy
     })
 }))
 
-
-
-
-app.post('/anunturiBaschet/:id', bodyParser.json(), isLoggedIn, catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const geoData = await geocoder
-        .forwardGeocode({
-            query: req.body.oras,
-            limit: 1,
-        })
-        .send();
-    const anuntEditat = await Anunt.findByIdAndUpdate(id, {
-        ...req.body,
-    });
-
-    anuntEditat.geometry = geoData.body.features[0].geometry
-
-    const echipa = await EchipaBaschet.findById(anuntEditat.team);
-    echipa.center.counter = req.body.centerCounter;
-    echipa.pForward.counter = req.body.pForwardCounter;
-    echipa.sForward.counter = req.body.sForwardCounter;
-    echipa.pGuard.counter = req.body.pGuardCounter;
-    echipa.sGuard.counter = req.body.sGuardCounter;
-    await echipa.save();
-
-    await anuntEditat.save();
-
-    req.flash('success', 'Update completed successfully!');
-    res.redirect(`/anunt/baschet/${anuntEditat.id}`)
-}))
 
 //delete ad
 app.delete('/anunt/:sport/:id', isLoggedIn, isAuthor, catchAsync(async (req, res) => {

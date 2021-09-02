@@ -10,9 +10,6 @@
         <div class="col-6 me-5">
             
             <div class="card mb-3 ">
-                <%  if( !currentUser || !anunt.author.equals(currentUser._id)) {%>
-                    <li class="list-group-item autor">Submited by: <%= anunt.author.username%></li>
-                <% } %>
                 <%- include('partial/anuntBase.ejs', {anunt: anunt}); %>
 
                 <%  if(anunt.team.partner.counter) { %>

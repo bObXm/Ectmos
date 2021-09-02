@@ -8,10 +8,7 @@
 
     <div class="row">
         <div class="col-6 me-5">
-            <div class="card mb-3 ">
-                <%  if( currentUser && !anunt.author.equals(currentUser._id)) {%>
-                    <li class="list-group-item autor">Submited by: <%= anunt.author.username%></li>
-                <% } %>
+            <div class="card mb-3">
                 <%- include('partial/anuntBase.ejs', {anunt: anunt}); %>
                 <ul class="list-group list-group-flush ">
                     <li class="list-group-item darkkkk">

@@ -40,20 +40,21 @@
                 </div>
                 <div class="col-md-5">
                     <div class="card-body ">
-                        <h5 class="card-title"><%= title %> </h5>
+                        <h5 class="card-title" style="margin: 0;"><%= title %> </h5>
                         <%  if( !currentUser || !anunt.author.equals(currentUser._id)) {%>
-                            <p style="font-size: 12px;" class="pp">Submited by: <b><%= anunt.author.username%></b></p>
+                            <p style="font-size: 12px;" class="pp">Submited by: <b style="text-transform: capitalize;"><%= anunt.author.username%></b></p>
                         <% } %>
-                        <p class="pp"><%= anunt.oras %></p>
+                        <p class="pp oras"><i class="fas fa-map-marker-alt"></i><%= anunt.oras %></p>
                         <p class="pp"><%= anunt.dificultate %></p>
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <div class="card-body mt-4">
+                    <div class="card-body">
                         <%  const split=anunt.dataSiOra.toString().split(' ')
-                            const ora=split[4] %>
-                        <p class="pp mt-2"><%=ora%></p>
-                        <p class="pp mt-2"><%=anunt.dataSiOra.toDateString() %></p>
+                            const ora=split[4];
+                            const options = { year: 'numeric', month: 'long', day: 'numeric' }; %>
+                        <p class="pp mt-2"><%=ora.substring(0, 5)%></p>
+                        <p class="pp mt-2"><%=anunt.dataSiOra.toLocaleDateString("en-GB", options) %></p>
                         <a class="btn btn-primary card_custom_button" href="<%= detailsURL %>">Details</a>
                     </div>
                 </div>
