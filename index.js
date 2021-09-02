@@ -231,12 +231,28 @@ app.post('/anunturiBaschet', isLoggedIn, catchAsync(async (req, res) => {
         limit: 1
     }).send()
     const team = new EchipaBaschet({
-        center: [],
-        pForward: [],
-        sForward: [],
-        pGuard: [],
-        sGuard: []
-    }).save();
+        center: {
+            counter: req.body.centerCounter,
+            players: []
+        },
+        pForward: {
+            counter: req.body.pForwardCounter,
+            players: []
+        },
+        sForward: {
+            counter: req.body.sForwardCounter,
+            players: []
+        },
+        pGuard: {
+            counter: req.body.pGuardCounter,
+            players: []
+        },
+        sGuard: {
+            counter: req.body.sGuardCounter,
+            players: []
+        }
+    });
+    await team.save();
 
     const anuntNou = await Anunt.create({
         ...req.body,
@@ -320,6 +336,10 @@ app.get('/anunt/:sport/:id', catchAsync(async (req, res) => {
             }}
             break;
         case 'baschet':
+            pathToPopulate = {
+                populate: {
+                path: 'center.players pForward.players sForward.players pGuard.players sGuard.players'
+            }}
             break;
     }
 
@@ -376,6 +396,18 @@ app.get('/anunturiTenis/:id/edit', isLoggedIn, isAuthor, catchAsync(async (req, 
         }
     });
     res.render('tenisEdit.ejs', { anunt })
+}))
+
+//baschet
+app.get('/anunturiBaschet/:id/edit', isLoggedIn, isAuthor, catchAsync(async (req, res) => {
+    const { id } = req.params
+    const anunt = await Anunt.findById(id).populate('team').populate({
+        path: 'team',
+        populate: {
+            path: 'center.players pForward.players sForward.players pGuard.players sGuard.players'
+        }
+    });
+    res.render('baschetEdit.ejs', { anunt })
 }))
 
 app.post('/anunturiTenis/:id', isLoggedIn, catchAsync(async (req, res) => {
@@ -437,12 +469,7 @@ app.put('/anunt/adauga-membru/:idAnunt', bodyParser.json(), isLoggedIn, catchAsy
 }))
 
 
-//baschet
-app.get('/anunturiBaschet/:id/edit', isLoggedIn, isAuthor, catchAsync(async (req, res) => {
-    const { id } = req.params
-    const anunt = await Anunt.findById(id)
-    res.render('baschetEdit.ejs', { anunt })
-}))
+
 
 app.post('/anunturiBaschet/:id', bodyParser.json(), isLoggedIn, catchAsync(async (req, res) => {
     const { id } = req.params;
@@ -457,6 +484,15 @@ app.post('/anunturiBaschet/:id', bodyParser.json(), isLoggedIn, catchAsync(async
     });
 
     anuntEditat.geometry = geoData.body.features[0].geometry
+
+    const echipa = await EchipaBaschet.findById(anuntEditat.team);
+    echipa.center.counter = req.body.centerCounter;
+    echipa.pForward.counter = req.body.pForwardCounter;
+    echipa.sForward.counter = req.body.sForwardCounter;
+    echipa.pGuard.counter = req.body.pGuardCounter;
+    echipa.sGuard.counter = req.body.sGuardCounter;
+    await echipa.save();
+
     await anuntEditat.save();
 
     req.flash('success', 'Update completed successfully!');

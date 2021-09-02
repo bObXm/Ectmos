@@ -17,11 +17,12 @@
                     <li class="list-group-item darkkkk">
                         <h5>Team</h5>
                         <br />
-                        <h5>Center:<%=anunt.team %> </h5>
-                        <h5>Power Forward:<%=anunt.team %> </h5>
-                        <h5>Small Forward:<%=anunt.team %> </h5>
-                        <h5>Point Guard:<%=anunt.team %> </h5>
-                        <h5>Shooting Guard:<%=anunt.team %> </h5>
+                        <h5>Center: <span style="color: red;"><%=anunt.team ? anunt.team.center.counter : "0" %></span> player(s)</h5>
+                        <h5>Power Forward: <span style="color: red;"><%=anunt.team ? anunt.team.pForward.counter : "0" %></span> player(s)</h5>
+                        <h5>Small Forward: <span style="color: red;"><%=anunt.team ? anunt.team.sForward.counter : "0" %></span> player(s)</h5>
+                        <h5>Point Guard: <span style="color: red;"><%=anunt.team ? anunt.team.pGuard.counter : "0" %></span> player(s)</h5>
+                        <h5>Shooting Guard: <span style="color: red;"><%=anunt.team ? anunt.team.sGuard.counter : "0" %></span> player(s)</h5>
+                   
                     </li>
                 </ul>
                 <%  if( currentUser && anunt.author.equals(currentUser._id))  {%>
