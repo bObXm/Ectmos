@@ -275,7 +275,7 @@ app.get('/anunturi/:sportParam', catchAsync(async (req, res) => {
 //ANUNTURILE MELE
 app.get('/anunturile-mele', catchAsync(async (req, res) => {
     if (req.user) {
-        const anunturi = await Anunt.find({ author: req.user._id })
+        const anunturi = await Anunt.find({ author: req.user._id }).populate('author')
         res.render('anunturi.ejs', { anunturi })
     }
 }))
@@ -395,11 +395,11 @@ app.put('/anunt/adauga-membru/:idAnunt', bodyParser.json(), isLoggedIn, catchAsy
         await anuntul.save();
     }
 
-const user = req.user;
+    const user = req.user;
 
+    req.flash('success', 'Successfully added you as a team player!');
     res.send({
         'success': true,
-        "message": 'Added you as member!',
         user
     })
 }))

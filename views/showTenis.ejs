@@ -10,7 +10,7 @@
         <div class="col-6 me-5">
             
             <div class="card mb-3 ">
-                <%  if( currentUser && !anunt.author.equals(currentUser._id)) {%>
+                <%  if( !currentUser || !anunt.author.equals(currentUser._id)) {%>
                     <li class="list-group-item autor">Submited by: <%= anunt.author.username%></li>
                 <% } %>
                 <%- include('partial/anuntBase.ejs', {anunt: anunt}); %>
@@ -18,21 +18,43 @@
                 <%  if(anunt.team.partner.counter) { %>
                     <ul class="list-group list-group-flush ">
                         <li class="list-group-item darkkkk">
-                            <h5>Team of <%=anunt.team.partner.counter%> player(s)</h5>
+                            <h5>Team of <%=anunt.team.partner.counter%> player(s). </h5>
+                                <%  let remainingPlayers = anunt.team.partner.counter-anunt.team.partner.players.length;
+                                    if( remainingPlayers > 0) { %>
+                                    <h5>We still need <%=remainingPlayers%> player(s) to join the team!</h5>
+                                <% } else { %>
+                                    <p style="color: green;">The team is completed!</p>
+                                <% } %>
                             <p id="players">
-                                <% for(let echipa of anunt.team.partner.players) {%>
-                                    <h5> <%=echipa.username %> </h5>
+                                <% 
+                                    let loggedUserIsInThisTeam = false;
+                                    for(let player of anunt.team.partner.players) { %>
+                                        <h5> <%=player.username %> </h5>
+                                        <% if (currentUser && player.id === currentUser.id ) {
+                                                loggedUserIsInThisTeam = true;
+                                            } 
+                                        %>
                                 <% } %>
                             </p>
-                            <%  if( currentUser && !anunt.author.equals(currentUser._id)) {%>
-                                <%  if(anunt.team.partner.counter > anunt.team.partner.players.length) {%>
-                                    <br />
-                                    <button onclick="addParticipant('partner', '<%=anunt.id%>')">Join as player</button>
-                                <% } else { %>
-                                    <p style="color: blueviolet;">The team is completed. Choose another add!</p>
-                                <%}
-
+                            <% if(!currentUser) {
+                                if(remainingPlayers > 0) { %>
+                                <p style="color: blueviolet;"><a href="/login">Login</a> to join the team!</p>
+                            <% }
+                            } else { 
+                                if(!anunt.author.equals(currentUser.id) && !loggedUserIsInThisTeam) { %>
+                                    <%  if(anunt.team.partner.counter >= anunt.team.partner.players.length) { %>
+                                        <br />
+                                        <button onclick="addParticipant('partner', '<%=anunt.id%>')">Join as player</button>
+                                    <% } else { %>
+                                        <p style="color: blueviolet;">The team is completed. Choose another add!</p>
+                                    <% }
+                                } else if(!anunt.author.equals(currentUser._id) && loggedUserIsInThisTeam) { %>
+                                    <p style="color: green;">You are part of this team!</p>
+                                <%
+                                } 
+                                
                             } %>
+                                
                         </li>
                     </ul>
                 <% } else { %>

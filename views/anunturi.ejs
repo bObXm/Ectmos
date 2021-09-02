@@ -41,7 +41,7 @@
                 <div class="col-md-5">
                     <div class="card-body ">
                         <h5 class="card-title"><%= title %> </h5>
-                        <%  if( currentUser && !anunt.author.equals(currentUser._id)) {%>
+                        <%  if( !currentUser || !anunt.author.equals(currentUser._id)) {%>
                             <p style="font-size: 12px;" class="pp">Submited by: <b><%= anunt.author.username%></b></p>
                         <% } %>
                         <p class="pp"><%= anunt.oras %></p>
