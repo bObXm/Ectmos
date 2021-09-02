@@ -9,41 +9,41 @@
         <%- include('partial/editBase.ejs', {anunt: anunt, titlu: "Football", toAddSport: ""}); %>
 
         <p class='field half'>
-            <label class='label' for='portar'>GOALKEEPER players</label>
-            <select class='select' id='portar' name="portar">
-                <option value='0' <%= anunt.portar=== 0 ? 'selected':'' %>>0</option>
-                <option value='1' <%= anunt.portar=== 1 ? 'selected':'' %>>1</option>
-                <option value='2' <%= anunt.portar=== 2 ? 'selected':'' %>>2</option>
+            <label class='label' for='portarCounter'>GOALKEEPER players</label>
+            <select class='select' id='portarCounter' name="portarCounter">
+                <option value='0' <%= anunt.team.portar.counter=== 0 ? 'selected':'' %>>0</option>
+                <option value='1' <%= anunt.team.portar.counter=== 1 ? 'selected':'' %>>1</option>
+                <option value='2' <%= anunt.team.portar.counter=== 2 ? 'selected':'' %>>2</option>
             </select>
         </p>
 
         <p class='field half'>
-            <label class='label' for='fundas'>FULL BACK players</label>
-            <select class='select' id='fundas' name="fundas">
-                <option value='0' <%= anunt.fundas=== 0 ? 'selected':'' %>>0</option>
-                <option value='1' <%= anunt.fundas=== 1 ? 'selected':'' %>>1</option>
-                <option value='2' <%= anunt.fundas=== 2 ? 'selected':'' %>>2</option>
-                <option value='3' <%= anunt.fundas=== 3 ? 'selected':'' %>>3</option>
+            <label class='label' for='fundasCounter'>FULL BACK players</label>
+            <select class='select' id='fundasCounter' name="fundasCounter">
+                <option value='0' <%= anunt.team.fundas.counter=== 0 ? 'selected':'' %>>0</option>
+                <option value='1' <%= anunt.team.fundas.counter=== 1 ? 'selected':'' %>>1</option>
+                <option value='2' <%= anunt.team.fundas.counter=== 2 ? 'selected':'' %>>2</option>
+                <option value='3' <%= anunt.team.fundas.counter=== 3 ? 'selected':'' %>>3</option>
             </select>
         </p>
 
         <p class='field half'>
-            <label class='label' for='mijlocas'>CENTER-BACK players</label>
-            <select class='select' id='mijlocas' name="mijlocas">
-                <option value='0' <%= anunt.mijlocas=== 0 ? 'selected':'' %>>0</option>
-                <option value='1' <%= anunt.mijlocas=== 1 ? 'selected':'' %>>1</option>
-                <option value='2' <%= anunt.mijlocas=== 2 ? 'selected':'' %>>2</option>
-                <option value='3' <%= anunt.mijlocas=== 3 ? 'selected':'' %>>3</option>
+            <label class='label' for='mijlocasCounter'>CENTER-BACK players</label>
+            <select class='select' id='mijlocasCounter' name="mijlocasCounter">
+                <option value='0' <%= anunt.team.mijlocas.counter=== 0 ? 'selected':'' %>>0</option>
+                <option value='1' <%= anunt.team.mijlocas.counter=== 1 ? 'selected':'' %>>1</option>
+                <option value='2' <%= anunt.team.mijlocas.counter=== 2 ? 'selected':'' %>>2</option>
+                <option value='3' <%= anunt.team.mijlocas.counter=== 3 ? 'selected':'' %>>3</option>
             </select>
         </p>
 
         <p class='field half'>
-            <label class='label' for='atacant'>ATTACKER players</label>
-            <select class='select' id='atacant' name="atacant">
-                <option value='0' <%= anunt.atacant=== 0 ? 'selected':'' %>>0</option>
-                <option value='1' <%= anunt.atacant=== 1 ? 'selected':'' %>>1</option>
-                <option value='2' <%= anunt.atacant=== 2 ? 'selected':'' %>>2</option>
-                <option value='3' <%= anunt.atacant=== 3 ? 'selected':'' %>>3</option>
+            <label class='label' for='atacantCounter'>ATTACKER players</label>
+            <select class='select' id='atacantCounter' name="atacantCounter">
+                <option value='0' <%= anunt.team.atacant.counter=== 0 ? 'selected':'' %>>0</option>
+                <option value='1' <%= anunt.team.atacant.counter=== 1 ? 'selected':'' %>>1</option>
+                <option value='2' <%= anunt.team.atacant.counter=== 2 ? 'selected':'' %>>2</option>
+                <option value='3' <%= anunt.team.atacant.counter=== 3 ? 'selected':'' %>>3</option>
             </select>
         </p>
         <p class='field half'>

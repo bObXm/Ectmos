@@ -150,12 +150,24 @@ app.post('/anunturiFotbal', isLoggedIn, catchAsync(async (req, res) => {
     }).send()
 
     const team = new EchipaFotbal({
-        portar: [],
-        fundas: [],
-        mijlocas: [],
-        atacant: []
-    }).save();
-
+        portar: {
+            counter: req.body.portarCounter,
+            players: []
+        },
+        fundas: {
+            counter: req.body.fundasCounter,
+            players: []
+        },
+        mijlocas: {
+            counter: req.body.mijlocasCounter,
+            players: []
+        },
+        atacant: {
+            counter: req.body.atacantCounter,
+            players: []
+        }
+    });
+    await team.save();
     const anuntNou = await Anunt.create({
         ...req.body,
         geometry: geoData.body.features[0].geometry,
@@ -165,7 +177,7 @@ app.post('/anunturiFotbal', isLoggedIn, catchAsync(async (req, res) => {
         onModel: 'EchipaFotbal'
     });
 
-    req.flash('success', 'Ad created successfully!');
+    req.flash('success', 'Football ad created successfully!');
     res.redirect(`/anunt/fotbal/${anuntNou._id}`)
 
 }))
@@ -252,12 +264,21 @@ app.post('/anunturiFotbal/:id', bodyParser.json(), isLoggedIn, catchAsync(async 
     });
 
     anuntEditat.geometry = geoData.body.features[0].geometry
+
+    const echipa = await EchipaFotbal.findById(anuntEditat.team);
+    echipa.portar.counter = req.body.portarCounter;
+    echipa.mijlocas.counter = req.body.mijlocasCounter;
+    echipa.fundas.counter = req.body.fundasCounter;
+    echipa.atacant.counter = req.body.atacantCounter;
+    await echipa.save();
+
     await anuntEditat.save();
     req.flash('success', 'Update completed successfully!');
     res.redirect(`/anunt/fotbal/${anuntEditat.id}`)
 
 }))
 
+// lista anunturi
 app.get('/anunturi/:sportParam', catchAsync(async (req, res) => {
     const { sportParam } = req.params
     let anunturi = [];
@@ -280,16 +301,22 @@ app.get('/anunturile-mele', catchAsync(async (req, res) => {
     }
 }))
 
+
+// pagina detalii anunt
 app.get('/anunt/:sport/:id', catchAsync(async (req, res) => {
     const { id, sport } = req.params
     let pathToPopulate;
     switch (sport) {
-        case 'fotbal':
-            break;
         case 'tenis':
             pathToPopulate = {
                 populate: {
                 path: 'partner.players'
+            }}
+            break;
+        case 'fotbal':
+            pathToPopulate = {
+                populate: {
+                path: 'portar.players fundas.players mijlocas.players atacant.players'
             }}
             break;
         case 'baschet':
@@ -330,7 +357,12 @@ app.get('/anunt/:sport/:id', catchAsync(async (req, res) => {
 //fotbal
 app.get('/anunturiFotbal/:id/edit', isLoggedIn, isAuthor, catchAsync(async (req, res) => {
     const { id } = req.params
-    const anunt = await Anunt.findById(id)
+    const anunt = await Anunt.findById(id).populate('team').populate({
+        path: 'team',
+        populate: {
+            path: 'portar.players fundas.players mijlocas.players atacant.players'
+        }
+    });
     res.render('fotbalEdit.ejs', { anunt })
 }))
 
@@ -431,28 +463,12 @@ app.post('/anunturiBaschet/:id', bodyParser.json(), isLoggedIn, catchAsync(async
     res.redirect(`/anunt/baschet/${anuntEditat.id}`)
 }))
 
-//fotbal
-app.delete('/anunt/fotbal/:id', isLoggedIn, isAuthor, catchAsync(async (req, res) => {
-    const { id } = req.params
+//delete ad
+app.delete('/anunt/:sport/:id', isLoggedIn, isAuthor, catchAsync(async (req, res) => {
+    const { sport, id } = req.params
     await Anunt.findByIdAndDelete(id)
     req.flash('success', 'Ad deleted successfully!');
-    res.redirect('/anunturi/fotbal')
-}))
-
-//tenis
-app.delete('/anunt/tenis/:id', isLoggedIn, isAuthor, catchAsync(async (req, res) => {
-    const { id } = req.params
-    await Anunt.findByIdAndDelete(id)
-    req.flash('success', 'Ad deleted successfully!');
-    res.redirect('/anunturi/tenis')
-}))
-
-//baschet
-app.delete('/anunt/baschet/:id', isLoggedIn, isAuthor, catchAsync(async (req, res) => {
-    const { id } = req.params
-    await Anunt.findByIdAndDelete(id)
-    req.flash('success', 'Ad deleted successfully!');
-    res.redirect('/anunturi/baschet')
+    res.redirect('/anunturi/'+sport)
 }))
 
 //cap46 curs3 CREATE REVIEW

@@ -17,10 +17,10 @@
                     <li class="list-group-item darkkkk">
                         <h5>Team</h5>
                         <br />
-                        <h5>Portar:<%=anunt.team %> </h5>
-                        <h5>Fundas:<%=anunt.team %> </h5>
-                        <h5>Mijlocas:<%=anunt.team %> </h5>
-                        <h5>Atacant:<%=anunt.team %> </h5>
+                        <h5>GOALKEEPER: <span style="color: red;"><%=anunt.team ? anunt.team.portar.counter : "0" %></span> player(s)</h5>
+                        <h5>FULL-BACK: <span style="color: red;"><%=anunt.team ? anunt.team.fundas.counter : "0" %></span> player(s)</h5>
+                        <h5>CENTER-BACK: <span style="color: red;"><%=anunt.team ? anunt.team.mijlocas.counter : "0" %></span> player(s)</h5>
+                        <h5>ATTACKER: <span style="color: red;"><%=anunt.team ? anunt.team.atacant.counter : "0" %></span> player(s)</h5>
                     </li>
                 </ul>
                 <%  if( currentUser && anunt.author.equals(currentUser._id))  {%>

@@ -4,22 +4,42 @@ const Schema = mongoose.Schema;
 
 const echipaFotbalSchema = new mongoose.Schema({
     //fotbal
-    portar:[{
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    }],
-    fundas:[{
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    }],
-    mijlocas:[{
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    }],
-    atacant:[{
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    }]    
+    portar:{
+        counter: {
+            type: Number
+        },
+        players: [{
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }]
+    },
+    fundas:{
+        counter: {
+            type: Number
+        },
+        players: [{
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }]
+    },
+    mijlocas:{
+        counter: {
+            type: Number
+        },
+        players: [{
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }]
+    },
+    atacant:{
+        counter: {
+            type: Number
+        },
+        players: [{
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }]
+    }  
 })
 
 const EchipaFotbal = mongoose.model('EchipaFotbal',echipaFotbalSchema)

@@ -18,7 +18,7 @@
                 <%  if(anunt.team.partner.counter) { %>
                     <ul class="list-group list-group-flush ">
                         <li class="list-group-item darkkkk">
-                            <h5>Team of <%=anunt.team.partner.counter%> player(s). </h5>
+                            <h5>Team of <span style="color: red;"><%=anunt.team.partner.counter%></span> player(s). </h5>
                                 <%  let remainingPlayers = anunt.team.partner.counter-anunt.team.partner.players.length;
                                     if( remainingPlayers > 0) { %>
                                     <h5>We still need <%=remainingPlayers%> player(s) to join the team!</h5>

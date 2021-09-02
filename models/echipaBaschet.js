@@ -11,23 +11,43 @@ const echipaBaschetSchema = new mongoose.Schema({
             type: Schema.Types.ObjectId,
             ref: 'User'
         }]
-    },
-    pForward:[{
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    }],
-    sForward:[{
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    }],
-    pGuard:[{
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    }],
-    sGuard:[{
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    }]
+    },    
+    pForward:{
+        counter: {
+            type: Number
+        },
+        players: [{
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }]
+    },    
+    sForward:{
+        counter: {
+            type: Number
+        },
+        players: [{
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }]
+    },   
+    pGuard:{
+        counter: {
+            type: Number
+        },
+        players: [{
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }]
+    },    
+    sGuard:{
+        counter: {
+            type: Number
+        },
+        players: [{
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }]
+    }
 })
 
 const EchipaBaschet = mongoose.model('EchipaBaschet', echipaBaschetSchema)
