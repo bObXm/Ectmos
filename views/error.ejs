@@ -2,18 +2,18 @@
 <html lang="en">
 <%- include('partial/head.ejs') %>
 <body>
-    <%- include('partial/navbar.ejs') %>
+<%- include('partial/navbar.ejs') %>
 
-    <div class="row">
-        <div class="col-6 offset-3">
-            <div class="alert alert" role="alert">
-                <h4 class="alert-heading"><%=err.message%></h4>
-                <p><%= err.stack %></p>
-            </div>
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="alert alert" role="alert">
+            <h4 class="alert-heading"><%= err.message %></h4>
+            <p><%= err.stack %></p>
         </div>
     </div>
+</div>
 
-    <%- include('partial/script.ejs') %>
+<%- include('partial/script.ejs') %>
 </body>
 
 </html>

@@ -1,18 +1,9 @@
-//cap38 curs3
-const mongoose=require('mongoose')
+const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 const User = require('./user')
 
-// const echipaTenisSchema = new mongoose.Schema({
-//     partner:[{
-//         type: Schema.Types.ObjectId,
-//         ref: 'User'
-//         }]  
-// })
-
-
 const echipaTenisSchema = new mongoose.Schema({
-    partner:{
+    partner: {
         counter: {
             type: Number
         },
@@ -20,31 +11,8 @@ const echipaTenisSchema = new mongoose.Schema({
             type: Schema.Types.ObjectId,
             ref: 'User'
         }]
-    }  
+    }
 })
 
 const EchipaTenis = mongoose.model('EchipaTenis', echipaTenisSchema)
 module.exports = EchipaTenis
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

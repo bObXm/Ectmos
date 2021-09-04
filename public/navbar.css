@@ -1,9 +1,12 @@
-
-
 @font-face {
     font-family: "SportypoReguler";
     src: url("/SportypoReguler.ttf");
-  }
+}
+
+.navbar.scrolled {
+    background: #25cf97;
+    transition: background 1s;
+}
 
 .navbar-text {
     padding: 0.25rem 0;
@@ -12,14 +15,14 @@
 .nav-link {
     padding: 0.25rem 0;
     font-weight: 700;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255, 255, 255, 0.5);
     margin-left: 1rem;
     border-bottom: 0.25rem solid transparent;
 }
 
-.nav-link:hover{
-    color: rgba(255,255,255,0.5);
-    border-bottom-color:rgba(255,255,255,0.5);
+.nav-link:hover {
+    color: rgba(255, 255, 255, 0.5);
+    border-bottom-color: rgba(255, 255, 255, 0.5);
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -28,16 +31,16 @@
 
 .nav-link.active {
     color: white;
-    border-bottom-color:white;
+    border-bottom-color: white;
 
 }
 
-.btn-home, .btn-home:hover, .btn-home:active{
+.btn-home, .btn-home:hover, .btn-home:active {
     color: #333 !important;
     text-shadow: none;
 }
 
-.dropdown-item.active, .dropdown-item:active{
+.dropdown-item.active, .dropdown-item:active {
     background-color: transparent;
 }
 
@@ -51,10 +54,11 @@
     font-weight: bold;
     font-size: 30px;
     line-height: 30px;
-    opacity: 1;
+    opacity: 1 !important;
 }
 
-a, a:hover, a:active {
+
+a:not(.btn):not(.dropdown-item), a:not(.btn):not(.dropdown-item):hover, a:not(.btn):not(.dropdown-item):active {
     color: red;
     opacity: 0.7;
 }

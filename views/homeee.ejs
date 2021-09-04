@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('partial/head.ejs') %>
+<%- include('partial/head.ejs') %>
 <body class="d-flex text-center text-white bg-dark">
-    <%- include('partial/navbar.ejs') %>
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-               
-        
-        <main class="px-3 pt-5 mt-5">
-            <%- include('partial/flash.ejs')%>
-            <h1 class="navbar-brand">Ectmos</h1>
-            <p class="lead"> Welcome to Ectmos! <br> Jump right in and explore the available games. <br>
-                Feel free to share some of your own and comment on others!</p>
-            <a href="/home" class="btn btn-lg btn-secondary btn-home font-weight-bold border-white bg-white">How it works</a>
-        </main>
+<%- include('partial/navbar.ejs') %>
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
 
-        <footer class="mt-auto text-white-50">
-            <p>&copy; 2021, designed by Mihaita Fabian-Bob </p>
-        </footer>
-    </div>
-    <%- include('partial/script.ejs') %>
+
+    <main class="px-3 pt-5 mt-5">
+        <%- include('partial/flash.ejs') %>
+        <h1 class="navbar-brand">Ectmos</h1>
+        <p class="lead"> Welcome to Ectmos! <br> Jump right in and explore the available games. <br>
+            Feel free to share some of your own and comment on others!</p>
+        <a href="/home" class="btn btn-lg btn-secondary btn-home font-weight-bold border-white bg-white">How it works</a>
+    </main>
+
+    <footer class="mt-auto text-white-50">
+        <p>&copy; 2021, designed by Mihaita Fabian-Bob </p>
+    </footer>
+</div>
+<%- include('partial/script.ejs') %>
 </body>
 </html>

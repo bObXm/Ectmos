@@ -3,54 +3,54 @@
 <%- include('partial/head.ejs') %>
 
 <body>
-    <%- include('partial/navbar.ejs') %>
-    <%- include('partial/flash.ejs')%>
-    <form action='/anunturiFotbal' class='form' method="POST">
-        <%- include('partial/editBase.ejs', {toAddSport: "fotbal", titlu: "Football", anunt: ""}); %>
+<%- include('partial/navbar.ejs') %>
+<%- include('partial/flash.ejs') %>
+<form action='/anunturiFotbal' class='form' method="POST">
+    <%- include('partial/editBase.ejs', {toAddSport: "fotbal", titlu: "Football", anunt: ""}); %>
 
-        <p class='field half'>
-            <label class='label' for='portarCounter'>GOALKEEPER players</label>
-            <select class='select' id='portarCounter' name="portarCounter">
-                <option value='0'>0</option>
-                <option value='1' selected>1</option>
-                <option value='2'>2</option>
-            </select>
-        </p>
+    <p class='field half'>
+        <label class='label' for='portarCounter'>GOALKEEPER players</label>
+        <select class='select' id='portarCounter' name="portarCounter">
+            <option value='0'>0</option>
+            <option value='1' selected>1</option>
+            <option value='2'>2</option>
+        </select>
+    </p>
 
-        <p class='field half'>
-            <label class='label' for='fundasCounter'>FULL BACK players</label>
-            <select class='select' id='fundasCounter' name="fundasCounter">
-                <option value='0'>0</option>
-                <option value='1' selected>1</option>
-                <option value='2'>2</option>
-                <option value='3'>3</option>
-            </select>
-        </p>
+    <p class='field half'>
+        <label class='label' for='fundasCounter'>FULL BACK players</label>
+        <select class='select' id='fundasCounter' name="fundasCounter">
+            <option value='0'>0</option>
+            <option value='1' selected>1</option>
+            <option value='2'>2</option>
+            <option value='3'>3</option>
+        </select>
+    </p>
 
-        <p class='field half'>
-            <label class='label' for='mijlocasCounter'>CENTER-BACK players</label>
-            <select class='select' id='mijlocasCounter' name="mijlocasCounter">
-                <option value='0'>0</option>
-                <option value='1' selected>1</option>
-                <option value='2'>2</option>
-                <option value='3'>3</option>
-            </select>
-        </p>
+    <p class='field half'>
+        <label class='label' for='mijlocasCounter'>CENTER-BACK players</label>
+        <select class='select' id='mijlocasCounter' name="mijlocasCounter">
+            <option value='0'>0</option>
+            <option value='1' selected>1</option>
+            <option value='2'>2</option>
+            <option value='3'>3</option>
+        </select>
+    </p>
 
-        <p class='field half'>
-            <label class='label' for='atacantCounter'>ATTACKER players</label>
-            <select class='select' id='atacantCounter' name="atacantCounter">
-                <option value='0'>0</option>
-                <option value='1' selected>1</option>
-                <option value='2'>2</option>
-                <option value='3'>3</option>
-            </select>
-        </p>
-        <p class='field half'>
-            <input class='button' type='submit' value='Send'>
-        </p>
-    </form>
-    <%- include('partial/script.ejs') %>
+    <p class='field half'>
+        <label class='label' for='atacantCounter'>ATTACKER players</label>
+        <select class='select' id='atacantCounter' name="atacantCounter">
+            <option value='0'>0</option>
+            <option value='1' selected>1</option>
+            <option value='2'>2</option>
+            <option value='3'>3</option>
+        </select>
+    </p>
+    <p class='field half'>
+        <input class='button' type='submit' value='Send'>
+    </p>
+</form>
+<%- include('partial/script.ejs') %>
 </body>
 
 </html>

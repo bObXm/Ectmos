@@ -3,24 +3,24 @@
 <%- include('partial/head.ejs') %>
 
 <body>
-    <%- include('partial/navbar.ejs') %>
-    <%- include('partial/flash.ejs')%>
-    <form action='/anunturiTenis' class='form' method="POST">
-        <%- include('partial/editBase.ejs', {toAddSport: "tenis", titlu: "Tennis", anunt: ""}); %>
-        
-        <p class='field half'>
-            <label class='label' for='partnerCounter'>Partner</label>
-            <select class='select' id='partnerCounter' name="partnerCounter">
-                <option value='1'>1</option>
-                <option value='2'>2</option>
-                <option value='3'>3</option>
-            </select>
-        </p>
-        <p class='field half'>
-            <input class='button' type='submit' value='Send'>
-        </p>
-    </form>
-    <%- include('partial/script.ejs') %>
+<%- include('partial/navbar.ejs') %>
+<%- include('partial/flash.ejs') %>
+<form action='/anunturiTenis' class='form' method="POST">
+    <%- include('partial/editBase.ejs', {toAddSport: "tenis", titlu: "Tennis", anunt: ""}); %>
+
+    <p class='field half'>
+        <label class='label' for='partnerCounter'>Partner</label>
+        <select class='select' id='partnerCounter' name="partnerCounter">
+            <option value='1'>1</option>
+            <option value='2'>2</option>
+            <option value='3'>3</option>
+        </select>
+    </p>
+    <p class='field half'>
+        <input class='button' type='submit' value='Send'>
+    </p>
+</form>
+<%- include('partial/script.ejs') %>
 </body>
 
 </html>

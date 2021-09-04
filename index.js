@@ -1,11 +1,9 @@
-//cap54curs4
 if (process.env.NODE_ENV !== "production") {
     require('dotenv').config();
 }
-//cap55curs2
 const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
 const mapBoxToken = process.env.MAPBOX_TOKEN;
-const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
+const geocoder = mbxGeocoding({accessToken: mapBoxToken});
 
 
 const express = require('express');
@@ -19,32 +17,26 @@ app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, '/views'))
 
 
-// cap51 curs3
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user')
 
 
-//cap49 curs4
 const session = require('express-session');
 const flash = require('connect-flash');
 
-const methodOverride = require('method-override')////cap38, curs7 min 5:30
+const methodOverride = require('method-override')
 app.use(methodOverride('_method'))
 
 
-//cap43 curs4
 const catchAsync = require('./utils/catchAsync');
 const ExpressError = require('./utils/ExpressError');
 
 app.use(express.static(path.join(__dirname, 'public')))
-app.use(express.urlencoded({ extended: true })) //cap37 curs4 min2
+app.use(express.urlencoded({extended: true}))
 
 
-
-//cap59 curs2+4
-// const dbUrl=  'mongodb://localhost:27017/licenta'
-const dbUrl=process.env.DB_URL || 'mongodb://localhost:27017/licenta'
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/licenta'
 const secret = process.env.SECRET || 'thisshouldbeabettersecret!';
 
 const MongoDBStore = require("connect-mongo")(session);
@@ -58,7 +50,6 @@ store.on("error", function (e) {
     console.log("SESSION STORE ERROR", e)
 })
 
-//cap49,curs4
 const sessionConfig = {
     store,
     secret,
@@ -72,25 +63,19 @@ const sessionConfig = {
 }
 app.use(session(sessionConfig))
 
-//cap49,curs5
 app.use(flash());
 
 
-//cap 51 curs3
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
-//sa introduci user un session si ca sa il scoti din session
+
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// cap51 curs4
 const userRoutes = require('./routes/users');
 
-
-//min2:30 explicatia
 app.use((req, res, next) => {
-    //cap51 curs9
     res.locals.currentUser = req.user;
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
@@ -99,9 +84,7 @@ app.use((req, res, next) => {
 
 app.use('/', userRoutes);
 
-//cap51 curs7
-const { isLoggedIn, isAuthor, isReviewAuthor } = require('./middleware');
-
+const {isLoggedIn, isAuthor, isReviewAuthor} = require('./middleware');
 
 const Review = require('./models/review');
 const Anunt = require('./models/anunt')
@@ -110,7 +93,12 @@ const EchipaBaschet = require('./models/echipaBaschet');
 const EchipaTenis = require('./models/echipaTenis');
 const EchipaFotbal = require('./models/echipaFotbal');
 
-mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false })
+mongoose.connect(dbUrl, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+})
     .then(() => {
         console.log('MongoDB connection open!')
     })
@@ -119,13 +107,10 @@ mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         console.log(err)
     })
 
-
-//cap59 curs5
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`The server is running on port ${port}`)
 })
-
 
 app.get('/', (req, res) => {
     res.render('homeee.ejs')
@@ -134,10 +119,7 @@ app.get('/', (req, res) => {
 app.get('/home', (req, res) => {
     res.render('home.ejs')
 })
-//cap51 curs7
 
-
-//curs6 CREATE
 //fotbal - create view
 app.get('/fotbal', isLoggedIn, (req, res) => {
     res.render('fotbal.ejs')
@@ -172,7 +154,7 @@ app.post('/anunturiFotbal', isLoggedIn, catchAsync(async (req, res) => {
         ...req.body,
         geometry: geoData.body.features[0].geometry,
         author: req.user._id,
-        
+
         team: team._id,
         onModel: 'EchipaFotbal'
     });
@@ -183,14 +165,12 @@ app.post('/anunturiFotbal', isLoggedIn, catchAsync(async (req, res) => {
 }))
 
 
-
 //tenis - create view
 app.get("/tenis", isLoggedIn, (req, res) => {
     res.render('tenis.ejs')
 })
 //tenis - create action
 app.post('/anunturiTenis', isLoggedIn, catchAsync(async (req, res) => {
-    //cap55curs3
     const geoData = await geocoder.forwardGeocode({
         query: req.body.oras,
         limit: 1
@@ -207,7 +187,7 @@ app.post('/anunturiTenis', isLoggedIn, catchAsync(async (req, res) => {
         ...req.body,
         geometry: geoData.body.features[0].geometry,
         author: req.user._id,
-        
+
         team: team._id,
         onModel: 'EchipaTenis'
     });
@@ -218,14 +198,12 @@ app.post('/anunturiTenis', isLoggedIn, catchAsync(async (req, res) => {
 }))
 
 
-
 //baschet - create view
 app.get('/baschet', isLoggedIn, (req, res) => {
     res.render('baschet.ejs')
 })
 //baschet - create action
 app.post('/anunturiBaschet', isLoggedIn, catchAsync(async (req, res) => {
-    //cap55curs3
     const geoData = await geocoder.forwardGeocode({
         query: req.body.oras,
         limit: 1
@@ -258,7 +236,7 @@ app.post('/anunturiBaschet', isLoggedIn, catchAsync(async (req, res) => {
         ...req.body,
         geometry: geoData.body.features[0].geometry,
         author: req.user._id,
-        
+
         team: team._id,
         onModel: 'EchipaBaschet'
     });
@@ -268,54 +246,55 @@ app.post('/anunturiBaschet', isLoggedIn, catchAsync(async (req, res) => {
 }))
 
 
-
-
 // lista anunturi
 app.get('/anunturi/:sportParam', catchAsync(async (req, res) => {
-    const { sportParam } = req.params
+    const {sportParam} = req.params
     let anunturi = [];
-    if(req.user) {
-        anunturi = await Anunt.find({ 
-            sport: sportParam, 
-            author: { $ne: req.user._id } }).populate('author')
+    if (req.user) {
+        anunturi = await Anunt.find({
+            sport: sportParam,
+            author: {$ne: req.user._id}
+        }).populate('author')
     } else {
-        anunturi = await Anunt.find({ sport: sportParam }).populate('author')
+        anunturi = await Anunt.find({sport: sportParam}).populate('author')
     }
-    res.render('anunturi.ejs', { anunturi })
+    res.render('anunturi.ejs', {anunturi})
 }))
 
 //ANUNTURILE MELE
 app.get('/anunturile-mele', catchAsync(async (req, res) => {
     if (req.user) {
-        const anunturi = await Anunt.find({ author: req.user._id }).populate('author')
-        res.render('anunturi.ejs', { anunturi })
+        const anunturi = await Anunt.find({author: req.user._id}).populate('author')
+        res.render('anunturi.ejs', {anunturi})
     }
 }))
 
 
-
 // pagina detalii anunt - orice tip de anunt
 app.get('/anunt/:sport/:id', catchAsync(async (req, res) => {
-    const { id, sport } = req.params
+    const {id, sport} = req.params
     let pathToPopulate;
     switch (sport) {
         case 'tenis':
             pathToPopulate = {
                 populate: {
-                path: 'partner.players'
-            }}
+                    path: 'partner.players'
+                }
+            }
             break;
         case 'fotbal':
             pathToPopulate = {
                 populate: {
-                path: 'portar.players fundas.players mijlocas.players atacant.players'
-            }}
+                    path: 'portar.players fundas.players mijlocas.players atacant.players'
+                }
+            }
             break;
         case 'baschet':
             pathToPopulate = {
                 populate: {
-                path: 'center.players pForward.players sForward.players pGuard.players sGuard.players'
-            }}
+                    path: 'center.players pForward.players sForward.players pGuard.players sGuard.players'
+                }
+            }
             break;
     }
 
@@ -338,36 +317,33 @@ app.get('/anunt/:sport/:id', catchAsync(async (req, res) => {
     const ora = split[4]
     switch (sport) {
         case 'fotbal':
-            res.render('showFotbal.ejs', { anunt, ora })
+            res.render('showFotbal.ejs', {anunt, ora})
             break;
         case 'tenis':
-            res.render('showTenis.ejs', { anunt, ora })
+            res.render('showTenis.ejs', {anunt, ora})
             break;
         case 'baschet':
-            res.render('showBaschet.ejs', { anunt, ora })
+            res.render('showBaschet.ejs', {anunt, ora})
             break;
     }
 }))
 
 
-
-
-//curs7 PRODUCT UPDATE 
 //fotbal - edit view
 app.get('/anunturiFotbal/:id/edit', isLoggedIn, isAuthor, catchAsync(async (req, res) => {
-    const { id } = req.params
+    const {id} = req.params
     const anunt = await Anunt.findById(id).populate('team').populate({
         path: 'team',
         populate: {
             path: 'portar.players fundas.players mijlocas.players atacant.players'
         }
     });
-    res.render('fotbalEdit.ejs', { anunt })
+    res.render('fotbalEdit.ejs', {anunt})
 }))
 
 //fotbal - edit action
 app.post('/anunturiFotbal/:id', bodyParser.json(), isLoggedIn, catchAsync(async (req, res) => {
-    const { id } = req.params;
+    const {id} = req.params;
     const geoData = await geocoder
         .forwardGeocode({
             query: req.body.oras,
@@ -396,19 +372,19 @@ app.post('/anunturiFotbal/:id', bodyParser.json(), isLoggedIn, catchAsync(async 
 
 //tenis - edit view
 app.get('/anunturiTenis/:id/edit', isLoggedIn, isAuthor, catchAsync(async (req, res) => {
-    const { id } = req.params
+    const {id} = req.params
     const anunt = await Anunt.findById(id).populate('team').populate({
         path: 'team',
         populate: {
             path: 'players'
         }
     });
-    res.render('tenisEdit.ejs', { anunt })
+    res.render('tenisEdit.ejs', {anunt})
 }))
 
 //tenis - edit action
 app.post('/anunturiTenis/:id', isLoggedIn, catchAsync(async (req, res) => {
-    const { id } = req.params;
+    const {id} = req.params;
     const geoData = await geocoder
         .forwardGeocode({
             query: req.body.oras,
@@ -434,19 +410,19 @@ app.post('/anunturiTenis/:id', isLoggedIn, catchAsync(async (req, res) => {
 
 //baschet - edit view
 app.get('/anunturiBaschet/:id/edit', isLoggedIn, isAuthor, catchAsync(async (req, res) => {
-    const { id } = req.params
+    const {id} = req.params
     const anunt = await Anunt.findById(id).populate('team').populate({
         path: 'team',
         populate: {
             path: 'center.players pForward.players sForward.players pGuard.players sGuard.players'
         }
     });
-    res.render('baschetEdit.ejs', { anunt })
+    res.render('baschetEdit.ejs', {anunt})
 }))
 
 //baschet - edit action
 app.post('/anunturiBaschet/:id', bodyParser.json(), isLoggedIn, catchAsync(async (req, res) => {
-    const { id } = req.params;
+    const {id} = req.params;
     const geoData = await geocoder
         .forwardGeocode({
             query: req.body.oras,
@@ -477,9 +453,9 @@ app.post('/anunturiBaschet/:id', bodyParser.json(), isLoggedIn, catchAsync(async
 // add new member for any type of ad
 // current implementation supports only adding an ad for tennis
 app.put('/anunt/adauga-membru/:idAnunt', bodyParser.json(), isLoggedIn, catchAsync(async (req, res) => {
-    const { idAnunt } = req.params;
+    const {idAnunt} = req.params;
     const anuntul = await Anunt.findById(idAnunt);
-    if(anuntul.team){
+    if (anuntul.team) {
         // TODO - switch based on sport
         const echipa = await EchipaTenis.findById(anuntul.team);
         // TODO - populate based on sport an position
@@ -513,13 +489,13 @@ app.put('/anunt/adauga-membru/:idAnunt', bodyParser.json(), isLoggedIn, catchAsy
 
 //delete ad
 app.delete('/anunt/:sport/:id', isLoggedIn, isAuthor, catchAsync(async (req, res) => {
-    const { sport, id } = req.params
+    const {sport, id} = req.params
     await Anunt.findByIdAndDelete(id)
     req.flash('success', 'Ad deleted successfully!');
-    res.redirect('/anunturi/'+sport)
+    res.redirect('/anunturi/' + sport)
 }))
 
-//cap46 curs3 CREATE REVIEW
+//CREATE REVIEW
 app.post('/anunt/:sport/:id/reviews', isLoggedIn, catchAsync(async (req, res) => {
     const anunt = await Anunt.findById(req.params.id);
     const review = new Review(req.body.review);
@@ -532,11 +508,11 @@ app.post('/anunt/:sport/:id/reviews', isLoggedIn, catchAsync(async (req, res) =>
 }))
 
 
-// cap 46 curs7 DELETE REVIEW
+// DELETE REVIEW
 app.delete("/anunt/:sport/:id/reviews/:reviewId", isLoggedIn, isReviewAuthor, catchAsync(async (req, res) => {
     const anunt = await Anunt.findById(req.params.id);
-    const { id, reviewId } = req.params
-    await Anunt.findByIdAndUpdate(id, { $pull: { reviews: reviewId } })
+    const {id, reviewId} = req.params
+    await Anunt.findByIdAndUpdate(id, {$pull: {reviews: reviewId}})
     await Review.findByIdAndDelete(reviewId);
     req.flash('success', 'Review successfully deleted !');
     res.redirect(`/anunt/${anunt.sport}/${anunt._id}`)
@@ -550,7 +526,7 @@ app.all('*', (req, res, next) => {
 })
 
 app.use((err, req, res) => {
-    const { statusCode = 500 } = err
+    const {statusCode = 500} = err
     if (!err.message) err.message = 'Oh No, Something Went Wrong!'
-    res.status(statusCode).render('error.ejs', { err })
+    res.status(statusCode).render('error.ejs', {err})
 })

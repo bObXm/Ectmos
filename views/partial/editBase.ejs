@@ -1,10 +1,10 @@
-<br /><br /><br />
+<br/><br/><br/>
 
 <p class='field half'>
-    <label class='label' for='sport'><%= toAddSport ? "Add " : "Edit "%><a><%=titlu%></a> Game</label>
+    <label class='label' style="font-size: 1.25em;" for='sport'><%= toAddSport ? "Add " : "Edit " %><a><%= titlu %></a> Game</label>
 
     <select class='select' id='sport' name="sport" hidden>
-        <option selected value='<%= anunt ? anunt.sport : toAddSport ? toAddSport : "" %>'><%=titlu%></option>
+        <option selected value='<%= anunt ? anunt.sport : toAddSport ? toAddSport : "" %>'><%= titlu %></option>
     </select>
 </p>
 
@@ -19,20 +19,20 @@
 
 <p class='field required half'>
     <label class='label' for='organizator'>Organizer</label>
-    <input class='text-input' id='organizator' name='organizator' required value="<%= anunt ? anunt.organizator : "" %>" required />
+    <input class='text-input' id='organizator' name='organizator' value="<%= anunt ? anunt.organizator : "" %>" required/>
 </p>
 
 <p class='field required half'>
     <label class='label required' for='telefon'>Phone Number</label>
-    <input class='text-input' id='telefon' name='telefon' type='text' maxlength="11" value="<%= anunt ? anunt.telefon : "" %>" required />
+    <input class='text-input' id='telefon' name='telefon' type='text' maxlength="11" value="<%= anunt ? anunt.telefon : "" %>" required/>
 </p>
 
 <p class='field required half'>
     <label class='label' for='oras'>Location</label>
-    <input type="text" class='text-input' id='oras' name='oras' placeholder="Location" required value="<%= anunt ? anunt.oras : "" %>" />
+    <input type="text" class='text-input' id='oras' name='oras' placeholder="Location" required value="<%= anunt ? anunt.oras : "" %>"/>
 </p>
 
 <p class='field required half'>
     <label for="dataSiOra" class="label">Date and time</label>
-    <input type="datetime-local" class="date-time" id="dataSiOra" name="dataSiOra" value="<%-anunt ? (new Date(anunt.dataSiOra)).toISOString().slice(0, 16) : "" %>" required />
+    <input type="datetime-local" class="date-time" id="dataSiOra" name="dataSiOra" value="<%- anunt ? (new Date(anunt.dataSiOra)).toISOString().slice(0, 16) : "" %>" required/>
 </p>

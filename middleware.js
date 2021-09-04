@@ -1,9 +1,6 @@
-//cap52 curs4
 const Anunt=require('./models/anunt')
 const Review = require('./models/review');
 
-
-//cap51 curs7
 module.exports.isLoggedIn = (req, res, next) => {
     if (!req.isAuthenticated()) {
         req.session.returnTo = req.originalUrl
@@ -12,8 +9,6 @@ module.exports.isLoggedIn = (req, res, next) => {
     }
     next();
 }
-
-
 
 module.exports.isAuthor = async (req, res, next) => {
     const { id } = req.params;
@@ -25,7 +20,6 @@ module.exports.isAuthor = async (req, res, next) => {
     next();
 }
 
-//cap52 curs6
 module.exports.isReviewAuthor = async (req, res, next) => {
     const { reviewId} = req.params;
     const review = await Review.findById(reviewId);
@@ -35,7 +29,3 @@ module.exports.isReviewAuthor = async (req, res, next) => {
     }
     next();
 }
-
-
-
-

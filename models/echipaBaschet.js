@@ -1,9 +1,8 @@
-const mongoose=require('mongoose')
+const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 const echipaBaschetSchema = new mongoose.Schema({
-    //baschet
-    center:{
+    center: {
         counter: {
             type: Number
         },
@@ -11,8 +10,8 @@ const echipaBaschetSchema = new mongoose.Schema({
             type: Schema.Types.ObjectId,
             ref: 'User'
         }]
-    },    
-    pForward:{
+    },
+    pForward: {
         counter: {
             type: Number
         },
@@ -20,8 +19,8 @@ const echipaBaschetSchema = new mongoose.Schema({
             type: Schema.Types.ObjectId,
             ref: 'User'
         }]
-    },    
-    sForward:{
+    },
+    sForward: {
         counter: {
             type: Number
         },
@@ -29,8 +28,8 @@ const echipaBaschetSchema = new mongoose.Schema({
             type: Schema.Types.ObjectId,
             ref: 'User'
         }]
-    },   
-    pGuard:{
+    },
+    pGuard: {
         counter: {
             type: Number
         },
@@ -38,8 +37,8 @@ const echipaBaschetSchema = new mongoose.Schema({
             type: Schema.Types.ObjectId,
             ref: 'User'
         }]
-    },    
-    sGuard:{
+    },
+    sGuard: {
         counter: {
             type: Number
         },
@@ -52,26 +51,3 @@ const echipaBaschetSchema = new mongoose.Schema({
 
 const EchipaBaschet = mongoose.model('EchipaBaschet', echipaBaschetSchema)
 module.exports = EchipaBaschet
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

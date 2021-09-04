@@ -101,8 +101,7 @@ map.on('load', () => {
     // the location of the feature, with
     // description HTML from its properties.
     map.on('click', 'unclustered-point', function (e) {
-        const { popUpMarkup } = e.features[0].properties;
-        console.log(e) 
+        const {popUpMarkup} = e.features[0].properties;
         const coordinates = e.features[0].geometry.coordinates.slice();
 
         // Ensure that if the map is zoomed out such that
@@ -127,10 +126,14 @@ map.on('load', () => {
 });
 
 
-function showMap(){
-    $('#listmap').toggle();  $('#arataHarta').hide(); $('#ascundeHarta').show();
+function showMap() {
+    $('#listmap').toggle();
+    $('#arataHarta').hide();
+    $('#ascundeHarta').show();
 }
 
-function hideMap(){
-    $('#listmap').toggle();   $('#arataHarta').show();  $('#ascundeHarta').hide();
+function hideMap() {
+    $('#listmap').toggle();
+    $('#arataHarta').show();
+    $('#ascundeHarta').hide();
 }

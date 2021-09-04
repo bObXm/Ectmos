@@ -3,7 +3,7 @@
         <nav id="mainNavbar" class="navbar navbar-dark navbar-expand-md py-0 fixed-top">
             <a href="/" class="navbar-brand">ECTMOS</a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navLinks"
-                aria-label="Toggle navigation">
+                    aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navLinks">
@@ -17,34 +17,34 @@
                     <li class="nav-item">
                         <a href="/anunturi/baschet" class="nav-link">BASKETBALL</a>
                     </li>
-                    <% if(currentUser) {%>
-                    <li class="nav-item">
-                        <a href="/anunturile-mele" class="nav-link">MY GAMES</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            ADD NEW
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item ceva" href="/fotbal">FOOTBALL GAME</a></li>
-                            <li><a class="dropdown-item ceva" href="/tenis">TENNIS GAME</a></li>
-                            <li><a class="dropdown-item ceva" href="/baschet">BASKETBALL GAME</a></li>
+                    <% if(currentUser) { %>
+                        <li class="nav-item">
+                            <a href="/anunturile-mele" class="nav-link">MY GAMES</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                ADD NEW
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item ceva" href="/fotbal">FOOTBALL GAME</a></li>
+                                <li><a class="dropdown-item ceva" href="/tenis">TENNIS GAME</a></li>
+                                <li><a class="dropdown-item ceva" href="/baschet">BASKETBALL GAME</a></li>
 
-                        </ul>
-                    </li>
+                            </ul>
+                        </li>
                     <% } %>
                 </ul>
 
                 <div class="navbar-nav ml-auto">
-                    <% if(!currentUser) {%>
+                    <% if(!currentUser) { %>
                         <a class="nav-link" href="/login">Login</a>
                         <a class="nav-link" href="/register">Register</a>
                     <% } else { %>
-                        <span class="navbar-text">
-                            Hello, <%=currentUser.username%>
+                    <span class="navbar-text">
+                            Hello, <%= currentUser.username %>
                           </span>
-                        <a class="nav-link" href="/logout">Logout</a>
+                    <a class="nav-link" href="/logout">Logout</a>
                     <% } %>
                 </div>
             </div>

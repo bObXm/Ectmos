@@ -1,6 +1,6 @@
 <script>
-    const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
-    const anuntjs = JSON.parse('<%-JSON.stringify(anunt)%> ')
+    const mapToken = '<%- process.env.MAPBOX_TOKEN %>';
+    const anuntjs = JSON.parse('<%- JSON.stringify(anunt) %> ')
 
 
     mapboxgl.accessToken = mapToken;
@@ -15,7 +15,7 @@
     new mapboxgl.Marker()
         .setLngLat(anuntjs.geometry.coordinates)
         .setPopup(
-            new mapboxgl.Popup({ offset: 25 })
+            new mapboxgl.Popup({offset: 25})
                 .setHTML(
                     `<h5 class='pp'>${anuntjs.oras}</h5>`
                 )

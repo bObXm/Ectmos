@@ -3,60 +3,60 @@
 <%- include('partial/head.ejs') %>
 
 <body>
-    <%- include('partial/navbar.ejs') %>
-    <%- include('partial/flash.ejs')%>
-    <form action='/anunturiBaschet/<%= anunt.id %>' method='POST' class='form'>
-        <%-include('partial/editBase.ejs', {anunt: anunt, titlu: "Basketball", toAddSport: ""}); %>
+<%- include('partial/navbar.ejs') %>
+<%- include('partial/flash.ejs') %>
+<form action='/anunturiBaschet/<%= anunt.id %>' method='POST' class='form'>
+    <%- include('partial/editBase.ejs', {anunt: anunt, titlu: "Basketball", toAddSport: ""}); %>
 
-        <p class='field half'>
-            <label class='label' for='centerCounter'>CENTER players</label>
-            <select class='select' id='centerCounter' name="centerCounter">
-                <option value='0' <%= anunt.team.center.counter=== 0 ? 'selected':'' %>>0</option>
-                <option value='1' <%= anunt.team.center.counter=== 1 ? 'selected':'' %>>1</option>
-                <option value='2' <%= anunt.team.center.counter=== 2 ? 'selected':'' %>>2</option>
-            </select>
-        </p>
+    <p class='field half'>
+        <label class='label' for='centerCounter'>CENTER players</label>
+        <select class='select' id='centerCounter' name="centerCounter">
+            <option value='0' <%= anunt.team.center.counter === 0 ? 'selected' : '' %>>0</option>
+            <option value='1' <%= anunt.team.center.counter === 1 ? 'selected' : '' %>>1</option>
+            <option value='2' <%= anunt.team.center.counter === 2 ? 'selected' : '' %>>2</option>
+        </select>
+    </p>
 
-        <p class='field half'>
-            <label class='label' for='pForwardCounter'>POWER FORWARD players</label>
-            <select class='select' id='pForwardCounter' name="pForwardCounter">
-                <option value='0' <%= anunt.team.pForward.counter=== 0 ? 'selected':'' %>>0</option>
-                <option value='1' <%= anunt.team.pForward.counter=== 1 ? 'selected':'' %>>1</option>
-                <option value='2' <%= anunt.team.pForward.counter=== 2 ? 'selected':'' %>>2</option>
-            </select>
-        </p>
+    <p class='field half'>
+        <label class='label' for='pForwardCounter'>POWER FORWARD players</label>
+        <select class='select' id='pForwardCounter' name="pForwardCounter">
+            <option value='0' <%= anunt.team.pForward.counter === 0 ? 'selected' : '' %>>0</option>
+            <option value='1' <%= anunt.team.pForward.counter === 1 ? 'selected' : '' %>>1</option>
+            <option value='2' <%= anunt.team.pForward.counter === 2 ? 'selected' : '' %>>2</option>
+        </select>
+    </p>
 
-        <p class='field half'>
-            <label class='label' for='sForwardCounter'>SMALL FORWARD players</label>
-            <select class='select' id='sForwardCounter' name="sForwardCounter">
-                <option value='0' <%= anunt.team.sForward.counter=== 0 ? 'selected':'' %>>0</option>
-                <option value='1' <%= anunt.team.sForward.counter=== 1 ? 'selected':'' %>>1</option>
-                <option value='2' <%= anunt.team.sForward.counter=== 2 ? 'selected':'' %>>2</option>
-            </select>
-        </p>
+    <p class='field half'>
+        <label class='label' for='sForwardCounter'>SMALL FORWARD players</label>
+        <select class='select' id='sForwardCounter' name="sForwardCounter">
+            <option value='0' <%= anunt.team.sForward.counter === 0 ? 'selected' : '' %>>0</option>
+            <option value='1' <%= anunt.team.sForward.counter === 1 ? 'selected' : '' %>>1</option>
+            <option value='2' <%= anunt.team.sForward.counter === 2 ? 'selected' : '' %>>2</option>
+        </select>
+    </p>
 
-        <p class='field half'>
-            <label class='label' for='pGuardCounter'>POINT GUARD players</label>
-            <select class='select' id='pGuardCounter' name="pGuardCounter">
-                <option value='0' <%= anunt.team.pGuard.counter=== 0 ? 'selected':'' %>>0</option>
-                <option value='1' <%= anunt.team.pGuard.counter=== 1 ? 'selected':'' %>>1</option>
-                <option value='2' <%= anunt.team.pGuard.counter=== 2 ? 'selected':'' %>>2</option>
-            </select>
-        </p>
+    <p class='field half'>
+        <label class='label' for='pGuardCounter'>POINT GUARD players</label>
+        <select class='select' id='pGuardCounter' name="pGuardCounter">
+            <option value='0' <%= anunt.team.pGuard.counter === 0 ? 'selected' : '' %>>0</option>
+            <option value='1' <%= anunt.team.pGuard.counter === 1 ? 'selected' : '' %>>1</option>
+            <option value='2' <%= anunt.team.pGuard.counter === 2 ? 'selected' : '' %>>2</option>
+        </select>
+    </p>
 
-        <p class='field half'>
-            <label class='label' for='sGuardCounter'>SHOOTING GUARD players</label>
-            <select class='select' id='sGuardCounter' name="sGuardCounter">
-                <option value='0' <%= anunt.team.sGuard.counter=== 0 ? 'selected':'' %>>0</option>
-                <option value='1' <%= anunt.team.sGuard.counter=== 1 ? 'selected':'' %>>1</option>
-                <option value='2' <%= anunt.team.sGuard.counter=== 2 ? 'selected':'' %>>2</option>
-            </select>
-        </p>
-        <p class='field half'>
-            <input class='button' type='submit' value='Send'>
-        </p>
-    </form>
-        <%- include('partial/script.ejs') %>
+    <p class='field half'>
+        <label class='label' for='sGuardCounter'>SHOOTING GUARD players</label>
+        <select class='select' id='sGuardCounter' name="sGuardCounter">
+            <option value='0' <%= anunt.team.sGuard.counter === 0 ? 'selected' : '' %>>0</option>
+            <option value='1' <%= anunt.team.sGuard.counter === 1 ? 'selected' : '' %>>1</option>
+            <option value='2' <%= anunt.team.sGuard.counter === 2 ? 'selected' : '' %>>2</option>
+        </select>
+    </p>
+    <p class='field half'>
+        <input class='button' type='submit' value='Send'>
+    </p>
+</form>
+<%- include('partial/script.ejs') %>
 </body>
 
 </html>

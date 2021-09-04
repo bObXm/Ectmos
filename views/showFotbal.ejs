@@ -3,45 +3,44 @@
 <%- include('partial/head.ejs') %>
 
 <body>
-    <%- include('partial/navbar.ejs') %>
-    <%- include('partial/flash.ejs')%>
+<%- include('partial/navbar.ejs') %>
+<%- include('partial/flash.ejs') %>
 
-    <div class="row">
-        <div class="col-6 me-5">
-            <div class="card mb-3 ">
-                <%- include('partial/anuntBase.ejs', {anunt: anunt}); %>
-                <ul class="list-group list-group-flush ">
-                    <li class="list-group-item darkkkk">
-                        <h5>Team</h5>
-                        <br />
-                        <h5>GOALKEEPER: <span style="color: red;"><%=anunt.team ? anunt.team.portar.counter : "0" %></span> player(s)</h5>
-                        <h5>FULL-BACK: <span style="color: red;"><%=anunt.team ? anunt.team.fundas.counter : "0" %></span> player(s)</h5>
-                        <h5>CENTER-BACK: <span style="color: red;"><%=anunt.team ? anunt.team.mijlocas.counter : "0" %></span> player(s)</h5>
-                        <h5>ATTACKER: <span style="color: red;"><%=anunt.team ? anunt.team.atacant.counter : "0" %></span> player(s)</h5>
-                    </li>
-                </ul>
-                <%  if( currentUser && anunt.author.equals(currentUser._id))  {%>
+<div class="row">
+    <div class="col-6 me-5">
+        <div class="card mb-3 ">
+            <%- include('partial/anuntBase.ejs', {anunt: anunt}); %>
+            <ul class="list-group list-group-flush ">
+                <li class="list-group-item darkkkk">
+                    <h5>Team</h5>
+                    <br/>
+                    <h5>GOALKEEPER: <span class="red"><%= anunt.team ? anunt.team.portar.counter : "0" %></span> player(s)</h5>
+                    <h5>FULL-BACK: <span class="red"><%= anunt.team ? anunt.team.fundas.counter : "0" %></span> player(s)</h5>
+                    <h5>CENTER-BACK: <span class="red"><%= anunt.team ? anunt.team.mijlocas.counter : "0" %></span> player(s)</h5>
+                    <h5>ATTACKER: <span class="red"><%= anunt.team ? anunt.team.atacant.counter : "0" %></span> player(s)</h5>
+                </li>
+            </ul>
+            <% if( currentUser && anunt.author.equals(currentUser._id))  { %>
                 <div class="card-body darkkkk">
                     <a class="card-link btn btn-info" href="/anunturiFotbal/<%= anunt.id %>/edit ">Modify</a>
-                    <form class="d-inline" action="/anunt/fotbal/<%= anunt.id %>?_method=DELETE" method="POST">
+                    <form class="d-inline" action="/anunt/fotbal/<%= anunt.id %>" method="POST">
                         <button class="btn btn-danger">Delete</button>
                     </form>
                 </div>
-                <% } %>
-                <div class="card-footer text-muted darkkkk">
-                    <a href="/anunturi/fotbal">
-                        < Back to list</a>
-                </div>
+            <% } %>
+            <div class="card-footer text-muted darkkkk">
+                <a href="/anunturi/fotbal">< Back to list</a>
             </div>
         </div>
-        <div class="col-5">
-            <div id='map' class="mb-3" style='width: 100%; height: 400px;'></div>
-            <%- include('partial/showReviews', {currentUser: currentUser, anunt: anunt}); %>
-        </div>
     </div>
+    <div class="col-5">
+        <div id='map' class="mb-3" style='width: 100%; height: 400px;'></div>
+        <%- include('partial/showReviews', {currentUser: currentUser, anunt: anunt}); %>
+    </div>
+</div>
 
-    <%- include('partial/initMapDetails', {anunt: anunt}); %>
-    <%- include('partial/script.ejs') %>
+<%- include('partial/initMapDetails', {anunt: anunt}); %>
+<%- include('partial/script.ejs') %>
 </body>
 
 </html>

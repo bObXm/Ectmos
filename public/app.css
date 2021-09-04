@@ -1,390 +1,132 @@
-h1,h2,li,p{
-  color: white;
+html {
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    margin-top: 3rem;
+    padding: 2em;
+    background-color: #191919;
+    font-family: "Titillium Web", sans-serif;
+    color: white;
+    text-shadow: none !important;
+    font-size: 1.25em;
+}
+
+h1, h2, li, p {
+    color: white;
 }
 
 footer p {
-  color: rgba(255,255,255,.5)!important
+    color: rgba(255, 255, 255, .5) !important
 }
 
-.navbar.scrolled {
-  background: #25cf97;
-  transition: background 1s;
-}
 
 #headingGroup span {
-  color: #EA1C2C;
+    color: #EA1C2C;
+}
+
+.red {
+    color: #EA1C2C;
+}
+
+.violet {
+    color: blueviolet;
 }
 
 /* culoare pt pg showFotbal.ejs */
 .ceva:hover {
-  color: #EA1C2C;
+    color: #EA1C2C;
 }
-/* navbar pt alea 3 anunturi sa se faca rosi */
-
-.formm .buttonn {
-  font: inherit;
-  line-height: normal;
-  cursor: pointer;
-  background: #E8474C;
-  color: white;
-  font-weight: bold;
-  width: auto;
-  margin-left: 20rem;
-  font-weight: bold;
-  padding: 0.75em 1em;
-  border: 0px;
-}
-/* butonul de stergere */
 
 .oras {
-  margin-top: 0.75rem; 
-  text-transform: capitalize;
+    margin-top: 0.75rem;
+    text-transform: capitalize;
 }
-
 .oras i {
-  font-size: 23px; 
-  margin-right: 7px; 
-  color: white;
+    font-size: 23px;
+    margin-right: 7px;
+    color: white;
 }
 
-.pp{
-  color: #25cf97;
-  font-size: 1rem;
+.pp {
+    color: #25cf97;
+    font-size: 1rem;
 }
+
 .dark {
-  background: #110f16;
-  margin-left: 10rem;
+    background: #110f16;
+    margin-left: 10rem;
 }
 
 .autor {
-  background: #358387;
+    background: #358387;
+    text-transform: capitalize;
 }
 
 .darkkkk {
-  background: #110f16;
- 
+    background: #110f16;
+
 }
-body{
-  color: white;
-}
-/* aici ii afisarea anunturi cum sunt afisate in pagina */
-
-
-/* pt data si ora  culoare la iconita calendar si de background*/
-
-input[type="datetime-local"]{
-  cursor: pointer;
-  background-color: #191919;
-  color:white;
-  
-}
-
-input[type="datetime-local "]::-webkit-calendar-picker-indicator {
-  cursor: pointer;
-  opacity: 0.6;
-  filter: invert(0.8);
-}
-
-
-
-
-
-
-
-
 
 /**********************************************/
-/********** STELE REVIEWS ***************/
-/**********************************************/
-
-
-
-.starability-result {
-  position: relative;
-  width: 150px;
-  height: 30px;
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAA8CAMAAABGivqtAAAAxlBMVEUAAACZmZn2viTHuJ72viOampqampr1viSampr3vySampqdnZ34wiX1vSSampr1vSOZmZmampr1viT2vSOampr2viT2viSampr2viSampr2vyX4vyWbm5v3vSSdnZ32wSadnZ36wCWcnJyZmZn/wSr/2ySampr2vSP2viSZmZn2vSSZmZn2vST2viSampr2viSbm5ubm5uZmZn1vSSampqbm5v2vSWampqampr3vSf5wiT5vyagoKD/xCmkpKT/yCSZmZn1vSO4V2dEAAAAQHRSTlMA+vsG9fO6uqdgRSIi7+3q39XVqZWVgnJyX09HPDw1NTAwKRkYB+jh3L6+srKijY2Ef2lpYllZUU5CKigWFQ4Oneh1twAAAZlJREFUOMuV0mdzAiEQBmDgWq4YTWIvKRqT2Htv8P//VJCTGfYQZnw/3fJ4tyO76KE0m1b2fZu+U/pu4QGlA7N+Up5PIz9d+cmkbSrSNr9seT3GKeNYIyeO5j16S28exY5suK0U/QKmmeCCX6xs22hJLVkitMImxCvEs8EG3SCRCN/ViFPqnq5epIzZ07QJJvkM9Tkz1xnkmXbfSvR7f4H8AtXBkLGj74mMvjM1+VHZpAZ4LM4K/LBWEI9jwP71v1ZEQ6dyvQMf8A/1pmdZnKce/VH1iIsdte4U8VEtY23xOujxtFpWDgKbfjD2YeEhY0OzfjGeLyO/XfnNpAcmcjDwKOXRfU1IyiTRyEkaiz67pb9oJHJb9vVqKfgjLBPyF5Sq9T0KmSUhQmtiQrJGPHVi0DoSabj31G2gW3buHd0pY85lNdcCk8xlNDPXMuSyNiwl+theIb9C7RLIpKvviYy+M6H8qGwSAp6Is19+GP6KxwnggJ/kq6Jht5rnRQA4z9zyRRaXssvyqp5I6Vutv0vkpJaJtnjpz/8B19ytIayazLoAAAAASUVORK5CYII=");
-  font-size: 0.1em;
-  color: transparent;
-}
-
-.starability-result:after {
-  content: ' ';
-  position: absolute;
-  left: 0;
-  height: 30px;
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAA8CAMAAABGivqtAAAAxlBMVEUAAACZmZn2viTHuJ72viOampqampr1viSampr3vySampqdnZ34wiX1vSSampr1vSOZmZmampr1viT2vSOampr2viT2viSampr2viSampr2vyX4vyWbm5v3vSSdnZ32wSadnZ36wCWcnJyZmZn/wSr/2ySampr2vSP2viSZmZn2vSSZmZn2vST2viSampr2viSbm5ubm5uZmZn1vSSampqbm5v2vSWampqampr3vSf5wiT5vyagoKD/xCmkpKT/yCSZmZn1vSO4V2dEAAAAQHRSTlMA+vsG9fO6uqdgRSIi7+3q39XVqZWVgnJyX09HPDw1NTAwKRkYB+jh3L6+srKijY2Ef2lpYllZUU5CKigWFQ4Oneh1twAAAZlJREFUOMuV0mdzAiEQBmDgWq4YTWIvKRqT2Htv8P//VJCTGfYQZnw/3fJ4tyO76KE0m1b2fZu+U/pu4QGlA7N+Up5PIz9d+cmkbSrSNr9seT3GKeNYIyeO5j16S28exY5suK0U/QKmmeCCX6xs22hJLVkitMImxCvEs8EG3SCRCN/ViFPqnq5epIzZ07QJJvkM9Tkz1xnkmXbfSvR7f4H8AtXBkLGj74mMvjM1+VHZpAZ4LM4K/LBWEI9jwP71v1ZEQ6dyvQMf8A/1pmdZnKce/VH1iIsdte4U8VEtY23xOujxtFpWDgKbfjD2YeEhY0OzfjGeLyO/XfnNpAcmcjDwKOXRfU1IyiTRyEkaiz67pb9oJHJb9vVqKfgjLBPyF5Sq9T0KmSUhQmtiQrJGPHVi0DoSabj31G2gW3buHd0pY85lNdcCk8xlNDPXMuSyNiwl+theIb9C7RLIpKvviYy+M6H8qGwSAp6Is19+GP6KxwnggJ/kq6Jht5rnRQA4z9zyRRaXssvyqp5I6Vutv0vkpJaJtnjpz/8B19ytIayazLoAAAAASUVORK5CYII=");
-  background-position: 0 -30px;
-}
-
-.starability-result[data-rating="5"]::after {
-  width: 150px;
-}
-
-.starability-result[data-rating="4"]::after {
-  width: 120px;
-}
-
-.starability-result[data-rating="3"]::after {
-  width: 90px;
-}
-
-.starability-result[data-rating="2"]::after {
-  width: 60px;
-}
-
-.starability-result[data-rating="1"]::after {
-  width: 30px;
-}
-
-@media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolution: 192dpi) {
-  .starability-result {
-    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAB4CAMAAACZ62E6AAABAlBMVEUAAACZmZmampr2vSObm5v/yiufn5+ampr1viP1viSZmZn2viOZmZmampqampr2viSampqampqcnJz5vyScnJz3wSf/wyn/xiujo6Oqqqr/0C/1vSOampr2viP2viOampr2viP2vST2viOampqampqampr1vyP3viSampr2vyT4vyX3viSbm5ubm5v5wCT8xSmgoKCampqampr3vyb2wiWenp72viOampqZmZmampr2viP2viP1viSampqbm5v2vyT3viObm5v4vyadnZ34wSSbm5v2viSZmZn2viP2vST2viP2viT1viOZmZn2viT2viX3viT3vyb2vyOZmZn1vSOZmZlNN+fKAAAAVHRSTlMA9uz4PQwS8O7r5+fTw4yMelw2MB0dFRELBgbS+/Hfu7uxqKWdg4N7ZmZMPi8pKRgPs0w7Nhb14drKw6Gck21tXkNDIyMZ1rDLycTBtaqVknlfV0sGP8ZwAAADW0lEQVRYw9zWvYqDQBSG4TPDoCAqKhYKQgoVLFaIgZCkiCBBUqVazv3fyu4aEXWdM85Uy779A+LP58AfTQgw73AwtxFiZIwbxMbUfuB3H4b49YNfZrbGodoI52+cm9hH9sbZwwAXOFbo2zjDsSzWxnecuuvaM8MpdtbEPs7y9azF5phZWrjERaWOPdpLbB81cICrgv3W4mvMLbU6RmFQeA5u5HhFEEbHLdWLsMxvHJXxW16Goh+ZqPyny1Az5j79SsCJoWHsBNAxQ9sNF26bWFuMC8v1LY+mmeTadjaqtaNnnXoxWBcde1nNWnzdb68xrOqvu22/MTzuPutujpJ122NvluSb8tTWk85CclDZQwLS0oa2TQpEKacsJy0kSJaQOKJxROKKxhWJ7zS+k9ijsUdim8Y2ZWNUFBP4pMKfOv8onX9WrsI5gd3VVLXtatxcuU0znGUHCUAS2DgrS6mT6hTzrXEjfIZj5Dk2xKkihqm4wKlQfQRqalhUP9UHo3FIPAG/Et44JVLsDDf0JHmB3OEByOwZES8hSAsviGjBdh3ylh6plmMnW4IyAUVJWcE/76vTell1EIaiMBwIAcWBA9GC0lIdKFXQQUsHVVCklN7ojf3+z3JOxYqK2TH555+K6CJJQtRbr9XtDmCnjH0AX9Va8J+liIMvDtRsCk2pEs6hKVexR2g7KuDihwt5a9MfprY0fkLXU9ZmFLpoJolN6GXKWWfZx0tHCocwKJSxC22ItYUEjmBUJHFjfYz1xQxlfaLiZsBExq2IPtbkNbLtOwwuGgjTLkH43mYtSzam7+1Bsr3nm5uExBQUozEh9V7N7uvmwZcqdpm0C6vJW63bZEuXtbrV2zpDzhrpYLBWMnY1mjV7JWFtMio7zbWniWFxvHnWm1yGxXmOPXP+L3YV2ysjnNhaZNeMcHPvuL27BMnVMaujljBAYyje4niH4g2ONyh+4PiB4gOODyjWcKxh1gZBNoJjEY4R/BLhF4IDEQ4QPBoEoyxH4+bxrUsHyxwxQlg0WHXqYifVLmo67cKY/UtaXFxBV26TLjuHrkp8BPJTMij1xQejdkgO24nf7dBOCRcbzQuNOR9Qs64GzzrfQa8It2oFAA6Zrga9xEeq1KHmLUHIiCAWInsg1x/MLqkMsItF8QAAAABJRU5ErkJggg==");
-    background-size: 30px auto;
-  }
-  .starability-result:after {
-    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAB4CAMAAACZ62E6AAABAlBMVEUAAACZmZmampr2vSObm5v/yiufn5+ampr1viP1viSZmZn2viOZmZmampqampr2viSampqampqcnJz5vyScnJz3wSf/wyn/xiujo6Oqqqr/0C/1vSOampr2viP2viOampr2viP2vST2viOampqampqampr1vyP3viSampr2vyT4vyX3viSbm5ubm5v5wCT8xSmgoKCampqampr3vyb2wiWenp72viOampqZmZmampr2viP2viP1viSampqbm5v2vyT3viObm5v4vyadnZ34wSSbm5v2viSZmZn2viP2vST2viP2viT1viOZmZn2viT2viX3viT3vyb2vyOZmZn1vSOZmZlNN+fKAAAAVHRSTlMA9uz4PQwS8O7r5+fTw4yMelw2MB0dFRELBgbS+/Hfu7uxqKWdg4N7ZmZMPi8pKRgPs0w7Nhb14drKw6Gck21tXkNDIyMZ1rDLycTBtaqVknlfV0sGP8ZwAAADW0lEQVRYw9zWvYqDQBSG4TPDoCAqKhYKQgoVLFaIgZCkiCBBUqVazv3fyu4aEXWdM85Uy779A+LP58AfTQgw73AwtxFiZIwbxMbUfuB3H4b49YNfZrbGodoI52+cm9hH9sbZwwAXOFbo2zjDsSzWxnecuuvaM8MpdtbEPs7y9azF5phZWrjERaWOPdpLbB81cICrgv3W4mvMLbU6RmFQeA5u5HhFEEbHLdWLsMxvHJXxW16Goh+ZqPyny1Az5j79SsCJoWHsBNAxQ9sNF26bWFuMC8v1LY+mmeTadjaqtaNnnXoxWBcde1nNWnzdb68xrOqvu22/MTzuPutujpJ122NvluSb8tTWk85CclDZQwLS0oa2TQpEKacsJy0kSJaQOKJxROKKxhWJ7zS+k9ijsUdim8Y2ZWNUFBP4pMKfOv8onX9WrsI5gd3VVLXtatxcuU0znGUHCUAS2DgrS6mT6hTzrXEjfIZj5Dk2xKkihqm4wKlQfQRqalhUP9UHo3FIPAG/Et44JVLsDDf0JHmB3OEByOwZES8hSAsviGjBdh3ylh6plmMnW4IyAUVJWcE/76vTell1EIaiMBwIAcWBA9GC0lIdKFXQQUsHVVCklN7ojf3+z3JOxYqK2TH555+K6CJJQtRbr9XtDmCnjH0AX9Va8J+liIMvDtRsCk2pEs6hKVexR2g7KuDihwt5a9MfprY0fkLXU9ZmFLpoJolN6GXKWWfZx0tHCocwKJSxC22ItYUEjmBUJHFjfYz1xQxlfaLiZsBExq2IPtbkNbLtOwwuGgjTLkH43mYtSzam7+1Bsr3nm5uExBQUozEh9V7N7uvmwZcqdpm0C6vJW63bZEuXtbrV2zpDzhrpYLBWMnY1mjV7JWFtMio7zbWniWFxvHnWm1yGxXmOPXP+L3YV2ysjnNhaZNeMcHPvuL27BMnVMaujljBAYyje4niH4g2ONyh+4PiB4gOODyjWcKxh1gZBNoJjEY4R/BLhF4IDEQ4QPBoEoyxH4+bxrUsHyxwxQlg0WHXqYifVLmo67cKY/UtaXFxBV26TLjuHrkp8BPJTMij1xQejdkgO24nf7dBOCRcbzQuNOR9Qs64GzzrfQa8It2oFAA6Zrga9xEeq1KHmLUHIiCAWInsg1x/MLqkMsItF8QAAAABJRU5ErkJggg==");
-    background-size: 30px auto;
-  }
-}
-
-.starability-slot {
-  display: block;
-  position: relative;
-  width: 150px;
-  min-height: 60px;
-  padding: 0;
-  border: none;
-}
-
-.starability-slot > input {
-  position: absolute;
-  margin-right: -100%;
-  opacity: 0;
-}
-
-.starability-slot > input:checked ~ label,
-.starability-slot > input:focus ~ label {
-  background-position: 0 0;
-}
-
-.starability-slot > input:checked + label,
-.starability-slot > input:focus + label {
-  background-position: 0 -30px;
-}
-
-.starability-slot > input[disabled]:hover + label {
-  cursor: default;
-}
-
-.starability-slot > input:not([disabled]):hover ~ label {
-  background-position: 0 0;
-}
-
-.starability-slot > input:not([disabled]):hover + label {
-  background-position: 0 -30px;
-}
-
-.starability-slot > input:not([disabled]):hover + label::before {
-  opacity: 1;
-}
-
-.starability-slot > input:focus + label {
-  outline: 1px dotted #999;
-}
-
-.starability-slot .starability-focus-ring {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 30px;
-  outline: 2px dotted #999;
-  pointer-events: none;
-  opacity: 0;
-}
-
-.starability-slot > .input-no-rate:focus ~ .starability-focus-ring {
-  opacity: 1;
-}
-
-.starability-slot > label {
-  position: relative;
-  display: block;
-  float: left;
-  width: 30px;
-  height: 30px;
-  font-size: 0.1em;
-  color: transparent;
-  cursor: pointer;
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAA8CAMAAABGivqtAAAAxlBMVEUAAACZmZn2viTHuJ72viOampqampr1viSampr3vySampqdnZ34wiX1vSSampr1vSOZmZmampr1viT2vSOampr2viT2viSampr2viSampr2vyX4vyWbm5v3vSSdnZ32wSadnZ36wCWcnJyZmZn/wSr/2ySampr2vSP2viSZmZn2vSSZmZn2vST2viSampr2viSbm5ubm5uZmZn1vSSampqbm5v2vSWampqampr3vSf5wiT5vyagoKD/xCmkpKT/yCSZmZn1vSO4V2dEAAAAQHRSTlMA+vsG9fO6uqdgRSIi7+3q39XVqZWVgnJyX09HPDw1NTAwKRkYB+jh3L6+srKijY2Ef2lpYllZUU5CKigWFQ4Oneh1twAAAZlJREFUOMuV0mdzAiEQBmDgWq4YTWIvKRqT2Htv8P//VJCTGfYQZnw/3fJ4tyO76KE0m1b2fZu+U/pu4QGlA7N+Up5PIz9d+cmkbSrSNr9seT3GKeNYIyeO5j16S28exY5suK0U/QKmmeCCX6xs22hJLVkitMImxCvEs8EG3SCRCN/ViFPqnq5epIzZ07QJJvkM9Tkz1xnkmXbfSvR7f4H8AtXBkLGj74mMvjM1+VHZpAZ4LM4K/LBWEI9jwP71v1ZEQ6dyvQMf8A/1pmdZnKce/VH1iIsdte4U8VEtY23xOujxtFpWDgKbfjD2YeEhY0OzfjGeLyO/XfnNpAcmcjDwKOXRfU1IyiTRyEkaiz67pb9oJHJb9vVqKfgjLBPyF5Sq9T0KmSUhQmtiQrJGPHVi0DoSabj31G2gW3buHd0pY85lNdcCk8xlNDPXMuSyNiwl+theIb9C7RLIpKvviYy+M6H8qGwSAp6Is19+GP6KxwnggJ/kq6Jht5rnRQA4z9zyRRaXssvyqp5I6Vutv0vkpJaJtnjpz/8B19ytIayazLoAAAAASUVORK5CYII=");
-  background-repeat: no-repeat;
-  background-position: 0 -30px;
-}
-
-.starability-slot > label::before {
-  content: '';
-  position: absolute;
-  display: block;
-  height: 30px;
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAA8CAMAAABGivqtAAAAxlBMVEUAAACZmZn2viTHuJ72viOampqampr1viSampr3vySampqdnZ34wiX1vSSampr1vSOZmZmampr1viT2vSOampr2viT2viSampr2viSampr2vyX4vyWbm5v3vSSdnZ32wSadnZ36wCWcnJyZmZn/wSr/2ySampr2vSP2viSZmZn2vSSZmZn2vST2viSampr2viSbm5ubm5uZmZn1vSSampqbm5v2vSWampqampr3vSf5wiT5vyagoKD/xCmkpKT/yCSZmZn1vSO4V2dEAAAAQHRSTlMA+vsG9fO6uqdgRSIi7+3q39XVqZWVgnJyX09HPDw1NTAwKRkYB+jh3L6+srKijY2Ef2lpYllZUU5CKigWFQ4Oneh1twAAAZlJREFUOMuV0mdzAiEQBmDgWq4YTWIvKRqT2Htv8P//VJCTGfYQZnw/3fJ4tyO76KE0m1b2fZu+U/pu4QGlA7N+Up5PIz9d+cmkbSrSNr9seT3GKeNYIyeO5j16S28exY5suK0U/QKmmeCCX6xs22hJLVkitMImxCvEs8EG3SCRCN/ViFPqnq5epIzZ07QJJvkM9Tkz1xnkmXbfSvR7f4H8AtXBkLGj74mMvjM1+VHZpAZ4LM4K/LBWEI9jwP71v1ZEQ6dyvQMf8A/1pmdZnKce/VH1iIsdte4U8VEtY23xOujxtFpWDgKbfjD2YeEhY0OzfjGeLyO/XfnNpAcmcjDwKOXRfU1IyiTRyEkaiz67pb9oJHJb9vVqKfgjLBPyF5Sq9T0KmSUhQmtiQrJGPHVi0DoSabj31G2gW3buHd0pY85lNdcCk8xlNDPXMuSyNiwl+theIb9C7RLIpKvviYy+M6H8qGwSAp6Is19+GP6KxwnggJ/kq6Jht5rnRQA4z9zyRRaXssvyqp5I6Vutv0vkpJaJtnjpz/8B19ytIayazLoAAAAASUVORK5CYII=");
-  background-position: 0 30px;
-  pointer-events: none;
-  opacity: 0;
-}
-
-.starability-slot > label:nth-of-type(5)::before {
-  width: 120px;
-  left: -120px;
-}
-
-.starability-slot > label:nth-of-type(4)::before {
-  width: 90px;
-  left: -90px;
-}
-
-.starability-slot > label:nth-of-type(3)::before {
-  width: 60px;
-  left: -60px;
-}
-
-.starability-slot > label:nth-of-type(2)::before {
-  width: 30px;
-  left: -30px;
-}
-
-.starability-slot > label:nth-of-type(1)::before {
-  width: 0px;
-  left: 0px;
-}
-
-@media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolution: 192dpi) {
-  .starability-slot > label {
-    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAB4CAMAAACZ62E6AAABAlBMVEUAAACZmZmampr2vSObm5v/yiufn5+ampr1viP1viSZmZn2viOZmZmampqampr2viSampqampqcnJz5vyScnJz3wSf/wyn/xiujo6Oqqqr/0C/1vSOampr2viP2viOampr2viP2vST2viOampqampqampr1vyP3viSampr2vyT4vyX3viSbm5ubm5v5wCT8xSmgoKCampqampr3vyb2wiWenp72viOampqZmZmampr2viP2viP1viSampqbm5v2vyT3viObm5v4vyadnZ34wSSbm5v2viSZmZn2viP2vST2viP2viT1viOZmZn2viT2viX3viT3vyb2vyOZmZn1vSOZmZlNN+fKAAAAVHRSTlMA9uz4PQwS8O7r5+fTw4yMelw2MB0dFRELBgbS+/Hfu7uxqKWdg4N7ZmZMPi8pKRgPs0w7Nhb14drKw6Gck21tXkNDIyMZ1rDLycTBtaqVknlfV0sGP8ZwAAADW0lEQVRYw9zWvYqDQBSG4TPDoCAqKhYKQgoVLFaIgZCkiCBBUqVazv3fyu4aEXWdM85Uy779A+LP58AfTQgw73AwtxFiZIwbxMbUfuB3H4b49YNfZrbGodoI52+cm9hH9sbZwwAXOFbo2zjDsSzWxnecuuvaM8MpdtbEPs7y9azF5phZWrjERaWOPdpLbB81cICrgv3W4mvMLbU6RmFQeA5u5HhFEEbHLdWLsMxvHJXxW16Goh+ZqPyny1Az5j79SsCJoWHsBNAxQ9sNF26bWFuMC8v1LY+mmeTadjaqtaNnnXoxWBcde1nNWnzdb68xrOqvu22/MTzuPutujpJ122NvluSb8tTWk85CclDZQwLS0oa2TQpEKacsJy0kSJaQOKJxROKKxhWJ7zS+k9ijsUdim8Y2ZWNUFBP4pMKfOv8onX9WrsI5gd3VVLXtatxcuU0znGUHCUAS2DgrS6mT6hTzrXEjfIZj5Dk2xKkihqm4wKlQfQRqalhUP9UHo3FIPAG/Et44JVLsDDf0JHmB3OEByOwZES8hSAsviGjBdh3ylh6plmMnW4IyAUVJWcE/76vTell1EIaiMBwIAcWBA9GC0lIdKFXQQUsHVVCklN7ojf3+z3JOxYqK2TH555+K6CJJQtRbr9XtDmCnjH0AX9Va8J+liIMvDtRsCk2pEs6hKVexR2g7KuDihwt5a9MfprY0fkLXU9ZmFLpoJolN6GXKWWfZx0tHCocwKJSxC22ItYUEjmBUJHFjfYz1xQxlfaLiZsBExq2IPtbkNbLtOwwuGgjTLkH43mYtSzam7+1Bsr3nm5uExBQUozEh9V7N7uvmwZcqdpm0C6vJW63bZEuXtbrV2zpDzhrpYLBWMnY1mjV7JWFtMio7zbWniWFxvHnWm1yGxXmOPXP+L3YV2ysjnNhaZNeMcHPvuL27BMnVMaujljBAYyje4niH4g2ONyh+4PiB4gOODyjWcKxh1gZBNoJjEY4R/BLhF4IDEQ4QPBoEoyxH4+bxrUsHyxwxQlg0WHXqYifVLmo67cKY/UtaXFxBV26TLjuHrkp8BPJTMij1xQejdkgO24nf7dBOCRcbzQuNOR9Qs64GzzrfQa8It2oFAA6Zrga9xEeq1KHmLUHIiCAWInsg1x/MLqkMsItF8QAAAABJRU5ErkJggg==");
-    background-size: 30px auto;
-  }
-}
-
-@media screen and (-ms-high-contrast: active) {
-  .starability-slot {
-    width: auto;
-  }
-  .starability-slot > input {
-    position: static;
-    margin-right: 0;
-    opacity: 1;
-  }
-  .starability-slot .input-no-rate {
-    display: none;
-  }
-  .starability-slot > label {
-    display: inline;
-    float: none;
-    width: auto;
-    height: auto;
-    font-size: 1em;
-    color: inherit;
-    background: none;
-  }
-  .starability-slot > label::before, .starability-slot > label::after {
-    display: none;
-  }
-}
-
-.starability-slot > input:checked ~ label,
-.starability-slot > input:hover ~ label,
-.starability-slot > input:focus ~ label {
-  -webkit-transition: background-position .7s;
-  transition: background-position .7s;
-}
-
-
-
-
-/**********************************************/
-/******** SFARSIT STELE REVIEWS ***************/
-/**********************************************/
-
-
-
-
-
-
-
-
-
-
-
-
-
-	/**********************************************/
 /********** NEW STYLE FOR CARDS ***************/
 /**********************************************/
-.cards_container{
-  width: 90%;
-  margin: 0 auto;
-  /*border: 1px solid green;*/
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  color: rgb(239, 239, 239);
+.cards_container {
+    width: 90%;
+    margin: 0 auto;
+    /*border: 1px solid green;*/
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    color: rgb(239, 239, 239);
 }
-.simple_card{
-  background-color: #324B4C;
-  width: 48%;
-  margin: 1% 0;
-  -webkit-box-shadow: 2px 5px 9px 0px #0E0E0E; 
-  box-shadow: 2px 5px 9px 0px #0E0E0E;
-  border-radius: 2px;
-  transition: .3s ease-in;
+
+.simple_card {
+    background-color: #324B4C;
+    width: 48%;
+    margin: 1% 0;
+    -webkit-box-shadow: 2px 5px 9px 0px #0E0E0E;
+    box-shadow: 2px 5px 9px 0px #0E0E0E;
+    border-radius: 2px;
+    transition: .3s ease-in;
 }
-.simple_card:hover{
-  background-color: #358387;
-  transform: scale(1.01);
+
+.simple_card:hover {
+    background-color: #358387;
+    transform: scale(1.01);
 }
-.card_icon_container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+.card_icon_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.card_icon{
-  height: fit-content;
-  margin-top: -30%;
-  margin-left: 20px;
+
+.card_icon {
+    margin-left: 20px;
 }
-.card_custom_button{
-  background-color: #163436;
-  border: none;
-  border-radius: 1px;
-  padding: 5% 26%;
-  color: rgb(239, 239, 239);
+
+.card_custom_button {
+    background-color: #163436;
+    border: none;
+    border-radius: 1px;
+    padding: 5% 26%;
+    color: rgb(239, 239, 239);
 }
-.card_custom_button:hover{
-  background-color: #191919;
-  transition: .3s ease-out;
+
+.card_custom_button:hover {
+    background-color: #191919;
+    transition: .3s ease-out;
 }
+
 /**********************************************/
 /********** END NEW STYLE FOR CARDS ***********/
 /**********************************************/
 
-
-
-
-
-
-
-
-
-/* ce ii mai jus de comentul asta ii adaugat de mine */
-body {
-    background: #264653;
-    font-family: "Nunito", sans-serif;
-    margin-top: 3rem;
-}
-
 .blurb h2 {
-   color: #EA1C2C;
-   font-weight: 100;
-   font-size: 2.5rem;
+    color: #EA1C2C;
+    font-weight: 100;
+    font-size: 2.5rem;
 }
 
 .blurb p {
@@ -405,45 +147,30 @@ body {
         font-weight: 100;
         font-size: 3rem;
     }
+
     .blurb h2 {
         font-size: 2rem;
     }
 }
 
-
-/* pt iconita sport */
-.fas{
+.fas {
     font-size: 3rem;
 }
 
-html {
-    -webkit-font-smoothing: antialiased;
-  }
-  
-  body {
-    background-color: #191919;
-    font-family: "Titillium Web", sans-serif;
-  }
-  @media screen and (min-width: 40em) {
-    body {
-      font-size: 1.25em;
-    }
-  }
-  
-  .form .button, .form .message, .customSelect, .form .select, .form .textarea, .form .text-input, .form .option-input + label, .form .checkbox-input + label, .form .label {
+.form .button, .form .message, .customSelect, .form .select, .form .textarea, .form .text-input, .form .option-input + label, .form .checkbox-input + label, .form .label {
     padding: 0.75em 1em;
     -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     outline: none;
     line-height: normal;
     border-radius: 0;
     border: none;
     background: none;
     display: block;
-  }
+}
 
-  .customSelect, .form .select, .form .textarea, .form .text-input, .form .option-input + label, .form .checkbox-input + label {
+.customSelect, .form .select, .form .textarea, .form .text-input, .form .option-input + label, .form .checkbox-input + label {
     font: inherit;
     line-height: normal;
     width: 100%;
@@ -451,16 +178,28 @@ html {
     background: #222222;
     color: white;
     position: relative;
-  }
+}
 
-  .form .date-time {
+.form .date-time {
     padding: 0.5em 1em;
     border-radius: 0;
     border: none;
     width: 100%;
-  }
-  
-  .form .label {
+}
+
+input[type="datetime-local"] {
+    cursor: pointer;
+    background-color: #191919;
+    color: white;
+}
+input[type="datetime-local "]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.6;
+    filter: invert(0.8);
+}
+
+
+.form .label {
     font-weight: bold;
     color: white;
     padding-top: 0;
@@ -470,45 +209,40 @@ html {
     line-height: 1em;
     position: relative;
     z-index: 100;
-  }
-  .required .form .label:after, .form .required .label:after {
+}
+
+.required .form .label:after, .form .required .label:after {
     content: " *";
     color: #E8474C;
     font-weight: normal;
     font-size: 0.75em;
     vertical-align: top;
-  }
-  
+}
 
-  .customSelect:placeholder, .form .select:placeholder, .form .textarea:placeholder, .form .text-input:placeholder, .form .option-input + label:placeholder, .form .checkbox-input + label:placeholder {
+
+.customSelect:placeholder, .form .select:placeholder, .form .textarea:placeholder, .form .text-input:placeholder, .form .option-input + label:placeholder, .form .checkbox-input + label:placeholder {
     color: white;
-  }
-  .customSelect:-webkit-autofill, .form .select:-webkit-autofill, .form .textarea:-webkit-autofill, .form .text-input:-webkit-autofill, .form .option-input + label:-webkit-autofill, .form .checkbox-input + label:-webkit-autofill {
+}
+
+.customSelect:-webkit-autofill, .form .select:-webkit-autofill, .form .textarea:-webkit-autofill, .form .text-input:-webkit-autofill, .form .option-input + label:-webkit-autofill, .form .checkbox-input + label:-webkit-autofill {
     box-shadow: 0 0 0px 1000px #111111 inset;
     -webkit-text-fill-color: white;
     border-top-color: #111111;
     border-left-color: #111111;
     border-right-color: #111111;
-  }
-  .customSelect:not(:focus):not(:active).error, .form .select:not(:focus):not(:active).error, .form .textarea:not(:focus):not(:active).error, .form .text-input:not(:focus):not(:active).error, .form .option-input + label:not(:focus):not(:active).error, .form .checkbox-input + label:not(:focus):not(:active).error, .error .customSelect:not(:focus):not(:active), .error .form .select:not(:focus):not(:active), .form .error .select:not(:focus):not(:active), .error .form .textarea:not(:focus):not(:active), .form .error .textarea:not(:focus):not(:active), .error .form .text-input:not(:focus):not(:active), .form .error .text-input:not(:focus):not(:active), .error .form .option-input + label:not(:focus):not(:active), .form .error .option-input + label:not(:focus):not(:active), .error .form .checkbox-input + label:not(:focus):not(:active), .form .error .checkbox-input + label:not(:focus):not(:active) {
+}
+
+.customSelect:not(:focus):not(:active).error, .form .select:not(:focus):not(:active).error, .form .textarea:not(:focus):not(:active).error, .form .text-input:not(:focus):not(:active).error, .form .option-input + label:not(:focus):not(:active).error, .form .checkbox-input + label:not(:focus):not(:active).error, .error .customSelect:not(:focus):not(:active), .error .form .select:not(:focus):not(:active), .form .error .select:not(:focus):not(:active), .error .form .textarea:not(:focus):not(:active), .form .error .textarea:not(:focus):not(:active), .error .form .text-input:not(:focus):not(:active), .form .error .text-input:not(:focus):not(:active), .error .form .option-input + label:not(:focus):not(:active), .form .error .option-input + label:not(:focus):not(:active), .error .form .checkbox-input + label:not(:focus):not(:active), .form .error .checkbox-input + label:not(:focus):not(:active) {
     background-size: 8px 8px;
     background-image: linear-gradient(135deg, rgba(232, 71, 76, 0.5), rgba(232, 71, 76, 0.5) 25%, transparent 25%, transparent 50%, rgba(232, 71, 76, 0.5) 50%, rgba(232, 71, 76, 0.5) 75%, transparent 75%, transparent);
     background-repeat: repeat;
-  }
-  .form:not(.has-magic-focus) .customSelect.customSelectFocus, .form:not(.has-magic-focus) .customSelect:active, .form:not(.has-magic-focus) .select:active, .form:not(.has-magic-focus) .textarea:active, .form:not(.has-magic-focus) .text-input:active, .form:not(.has-magic-focus) .option-input + label:active, .form:not(.has-magic-focus) .checkbox-input + label:active, .form:not(.has-magic-focus) .customSelect:focus, .form:not(.has-magic-focus) .select:focus, .form:not(.has-magic-focus) .textarea:focus, .form:not(.has-magic-focus) .text-input:focus, .form:not(.has-magic-focus) .option-input + label:focus, .form:not(.has-magic-focus) .checkbox-input + label:focus {
+}
+
+.form:not(.has-magic-focus) .customSelect.customSelectFocus, .form:not(.has-magic-focus) .customSelect:active, .form:not(.has-magic-focus) .select:active, .form:not(.has-magic-focus) .textarea:active, .form:not(.has-magic-focus) .text-input:active, .form:not(.has-magic-focus) .option-input + label:active, .form:not(.has-magic-focus) .checkbox-input + label:active, .form:not(.has-magic-focus) .customSelect:focus, .form:not(.has-magic-focus) .select:focus, .form:not(.has-magic-focus) .textarea:focus, .form:not(.has-magic-focus) .text-input:focus, .form:not(.has-magic-focus) .option-input + label:focus, .form:not(.has-magic-focus) .checkbox-input + label:focus {
     background: #4E4E4E;
-  }
-  
-  .form .message {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    z-index: 100;
-    font-size: 0.625em;
-    color: white;
-  }
-  
-  .form .option-input, .form .checkbox-input {
+}
+
+.form .option-input, .form .checkbox-input {
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -517,26 +251,29 @@ html {
     padding: 0;
     position: absolute;
     width: 1px;
-  }
-  .form .option-input + label, .form .checkbox-input + label {
+}
+
+.form .option-input + label, .form .checkbox-input + label {
     display: inline-block;
     width: auto;
     color: #4E4E4E;
     position: relative;
     -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     cursor: pointer;
-  }
-  .form .option-input:focus + label, .form .checkbox-input:focus + label, .form .option-input:active + label, .form .checkbox-input:active + label {
+}
+
+.form .option-input:focus + label, .form .checkbox-input:focus + label, .form .option-input:active + label, .form .checkbox-input:active + label {
     color: #4E4E4E;
-  }
-  .form .option-input:checked + label, .form .checkbox-input:checked + label {
+}
+
+.form .option-input:checked + label, .form .checkbox-input:checked + label {
     color: white;
-  }
-  
-  .form .button {
+}
+
+.form .button {
     font: inherit;
     line-height: normal;
     cursor: pointer;
@@ -545,25 +282,22 @@ html {
     font-weight: bold;
     width: auto;
     margin-left: auto;
-    font-weight: bold;
     padding-left: 2em;
     padding-right: 2em;
-  }
-  .form .button:hover, .form .button:focus, .form .button:active {
+}
+
+.form .button:hover, .form .button:focus, .form .button:active {
     color: white;
     border-color: white;
-  }
-  .form .button:active {
+}
+
+.form .button:active {
     position: relative;
     top: 1px;
     left: 1px;
-  }
-  
-  body {
-    padding: 2em;
-  }
-  
-  .form {
+}
+
+.form {
     max-width: 40em;
     margin: 0 auto;
     position: relative;
@@ -571,72 +305,44 @@ html {
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: flex-end;
-  }
-  .form .field {
+}
+
+.form .field {
     width: 100%;
     margin: 0 0 1.5em 0;
-  }
-  @media screen and (min-width: 40em) {
+}
+
+@media screen and (min-width: 40em) {
     .form .field.half {
-      width: calc(50% - 1px);
+        width: calc(50% - 1px);
     }
-  }
-  .form .field.last {
+}
+
+.form .field.last {
     margin-left: auto;
-  }
-  .form .textarea {
+}
+
+.form .textarea {
     max-width: 100%;
-  }
-  .form .select {
+}
+
+.form .select {
     text-indent: 0.01px;
     text-overflow: "" !important;
-  }
-  .form .select::-ms-expand {
+}
+
+.form .select::-ms-expand {
     display: none;
-  }
-  .form .checkboxes, .form .options {
+}
+
+.form .checkboxes, .form .options {
     padding: 0;
     margin: 0;
     list-style-type: none;
     overflow: hidden;
-  }
-  .form .checkbox, .form .option {
+}
+
+.form .checkbox, .form .option {
     float: left;
     margin: 1px;
-  }
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
- 
- 
- 
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
+}

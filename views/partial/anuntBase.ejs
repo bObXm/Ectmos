@@ -1,16 +1,16 @@
-<%  if( currentUser && !anunt.author.equals(currentUser._id)) {%>
-    <li class="list-group-item autor">Submited by: <b style="text-transform: capitalize;"><%= anunt.author.username%></b></li>
+<% if( currentUser && !anunt.author.equals(currentUser._id)) { %>
+    <li class="list-group-item autor">Submited by: <b><%= anunt.author.username %></b></li>
 <% } %>
 <div class="card-body darkkkk">
     <h2 class="card-title"><b style="text-transform: capitalize;"><%= anunt.sport %></b></h2>
-    <p class="card-text">  
-        <% const options = { year: 'numeric', month: 'long', day: 'numeric' }; %>
-        <h5>Difficulty: <b><%=anunt.dificultate %></b></h5>
-        <h5>Organizer: <b style="text-transform: capitalize;"><%=anunt.organizator %></b> </h5>
-        <h5>Phone Number: <b><%=anunt.telefon %></b></h5>
-        <br/>
-        <h5>Date: <b><%=anunt.dataSiOra.toLocaleDateString("en-GB", options)%></b></h5>
-        <h5>Time: <b><%=ora.substring(0, 5)%></b></h5>
-        <h5 class="oras"><i class="fas fa-map-marker-alt"></i><b><%=anunt.oras %></b></h5>
+    <p class="card-text">
+    <h5>Difficulty: <b><%= anunt.dificultate %></b></h5>
+    <h5>Organizer: <b style="text-transform: capitalize;"><%= anunt.organizator %></b></h5>
+    <h5>Phone Number: <b><%= anunt.telefon %></b></h5>
+    <br/>
+    <% const options = {year: 'numeric', month: 'long', day: 'numeric'}; %>
+    <h5>Date: <b><%= anunt.dataSiOra.toLocaleDateString("en-GB", options) %></b></h5>
+    <h5>Time: <b><%= ora.substring(0, 5) %></b></h5>
+    <h5 class="oras"><i class="fas fa-map-marker-alt"></i><b><%= anunt.oras %></b></h5>
     </p>
 </div>

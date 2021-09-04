@@ -3,24 +3,24 @@
 <%- include('partial/head.ejs') %>
 
 <body>
-    <%- include('partial/navbar.ejs') %>
-    <%- include('partial/flash.ejs')%>
-    <form action='/anunturiTenis/<%= anunt.id %>' method="POST" class='form'>
-        <%- include('partial/editBase.ejs', {anunt: anunt, titlu: "Tennis", toAddSport: ""}); %>
-        
-        <p class='field half'>
-            <label class='label' for='partnerCounter'>Partners</label>
-            <select class='select' id='partnerCounter' name="partnerCounter">
-                <option value='1' <%= anunt.team.partner.counter=== 1 ? 'selected':'' %>>1</option>
-                <option value='2' <%= anunt.team.partner.counter=== 2 ? 'selected':'' %>>2</option>
-                <option value='3' <%= anunt.team.partner.counter=== 3 ? 'selected':'' %>>3</option>
-            </select>
-        </p>
-        <p class='field half'>
-            <input class='button' type='submit' value='Send'>
-        </p>
-    </form>
-        <%- include('partial/script.ejs') %>
+<%- include('partial/navbar.ejs') %>
+<%- include('partial/flash.ejs') %>
+<form action='/anunturiTenis/<%= anunt.id %>' method="POST" class='form'>
+    <%- include('partial/editBase.ejs', {anunt: anunt, titlu: "Tennis", toAddSport: ""}); %>
+
+    <p class='field half'>
+        <label class='label' for='partnerCounter'>Partners</label>
+        <select class='select' id='partnerCounter' name="partnerCounter">
+            <option value='1' <%= anunt.team.partner.counter === 1 ? 'selected' : '' %>>1</option>
+            <option value='2' <%= anunt.team.partner.counter === 2 ? 'selected' : '' %>>2</option>
+            <option value='3' <%= anunt.team.partner.counter === 3 ? 'selected' : '' %>>3</option>
+        </select>
+    </p>
+    <p class='field half'>
+        <input class='button' type='submit' value='Send'>
+    </p>
+</form>
+<%- include('partial/script.ejs') %>
 </body>
 
 </html>

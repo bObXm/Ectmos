@@ -3,48 +3,52 @@
 <%- include('partial/head.ejs') %>
 
 <body>
-    <%- include('partial/navbar.ejs') %>
-    <%- include('partial/flash.ejs')%>
+<%- include('partial/navbar.ejs') %>
+<%- include('partial/flash.ejs') %>
 
-    <div class="row">
-        <div class="col-6 me-5">
-            <div class="card mb-3">
-                <%- include('partial/anuntBase.ejs', {anunt: anunt}); %>
-                <ul class="list-group list-group-flush ">
-                    <li class="list-group-item darkkkk">
-                        <h5>Team</h5>
-                        <br />
-                        <h5>Center: <span style="color: red;"><%=anunt.team ? anunt.team.center.counter : "0" %></span> player(s)</h5>
-                        <h5>Power Forward: <span style="color: red;"><%=anunt.team ? anunt.team.pForward.counter : "0" %></span> player(s)</h5>
-                        <h5>Small Forward: <span style="color: red;"><%=anunt.team ? anunt.team.sForward.counter : "0" %></span> player(s)</h5>
-                        <h5>Point Guard: <span style="color: red;"><%=anunt.team ? anunt.team.pGuard.counter : "0" %></span> player(s)</h5>
-                        <h5>Shooting Guard: <span style="color: red;"><%=anunt.team ? anunt.team.sGuard.counter : "0" %></span> player(s)</h5>
-                   
-                    </li>
-                </ul>
-                <%  if( currentUser && anunt.author.equals(currentUser._id))  {%>
+<div class="row">
+    <div class="col-6 me-5">
+        <div class="card mb-3">
+            <%- include('partial/anuntBase.ejs', {anunt: anunt}); %>
+            <ul class="list-group list-group-flush ">
+                <li class="list-group-item darkkkk">
+                    <h5>Team</h5>
+                    <br/>
+                    <h5>Center: <span class="red"> <%= anunt.team ? anunt.team.center.counter : "0" %></span>
+                        player(s)</h5>
+                    <h5>Power Forward: <span class="red"><%= anunt.team ? anunt.team.pForward.counter : "0" %></span>
+                        player(s)</h5>
+                    <h5>Small Forward: <span class="red"><%= anunt.team ? anunt.team.sForward.counter : "0" %></span>
+                        player(s)</h5>
+                    <h5>Point Guard: <span class="red"><%= anunt.team ? anunt.team.pGuard.counter : "0" %></span> player(s)
+                    </h5>
+                    <h5>Shooting Guard: <span class="red"><%= anunt.team ? anunt.team.sGuard.counter : "0" %></span> player(s)
+                    </h5>
+
+                </li>
+            </ul>
+            <% if( currentUser && anunt.author.equals(currentUser._id))  { %>
                 <div class="card-body darkkkk">
                     <a class="card-link btn btn-info" href="/anunturiBaschet/<%= anunt.id %>/edit ">Modify</a>
-                    <form class="d-inline" action="/anunt/baschet/<%= anunt.id %>?_method=DELETE" method="POST">
+                    <form class="d-inline" action="/anunt/baschet/<%= anunt.id %>" method="POST">
                         <button class="btn btn-danger">Delete</button>
                     </form>
                 </div>
-                <% } %>
-                <div class="card-footer text-muted darkkkk">
-                    <a href="/anunturi/baschet">
-                        < Back to list</a>
-                </div>
+            <% } %>
+            <div class="card-footer text-muted darkkkk">
+                <a href="/anunturi/baschet">< Back to list</a>
             </div>
         </div>
-        <div class="col-5">
-            <div id='map' class="mb-3" style='width: 100%; height: 400px;'></div>
-
-            <%- include('partial/showReviews', {currentUser: currentUser, anunt: anunt}); %>
-        </div>
     </div>
+    <div class="col-5">
+        <div id='map' class="mb-3" style='width: 100%; height: 400px;'></div>
 
-    <%- include('partial/initMapDetails', {anunt: anunt}); %>
-    <%- include('partial/script.ejs') %>
+        <%- include('partial/showReviews', {currentUser: currentUser, anunt: anunt}); %>
+    </div>
+</div>
+
+<%- include('partial/initMapDetails', {anunt: anunt}); %>
+<%- include('partial/script.ejs') %>
 </body>
 
 </html>

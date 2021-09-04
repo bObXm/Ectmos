@@ -1,10 +1,8 @@
-//cap38 curs3
-const mongoose=require('mongoose')
+const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 const echipaFotbalSchema = new mongoose.Schema({
-    //fotbal
-    portar:{
+    portar: {
         counter: {
             type: Number
         },
@@ -13,7 +11,7 @@ const echipaFotbalSchema = new mongoose.Schema({
             ref: 'User'
         }]
     },
-    fundas:{
+    fundas: {
         counter: {
             type: Number
         },
@@ -22,7 +20,7 @@ const echipaFotbalSchema = new mongoose.Schema({
             ref: 'User'
         }]
     },
-    mijlocas:{
+    mijlocas: {
         counter: {
             type: Number
         },
@@ -31,7 +29,7 @@ const echipaFotbalSchema = new mongoose.Schema({
             ref: 'User'
         }]
     },
-    atacant:{
+    atacant: {
         counter: {
             type: Number
         },
@@ -39,31 +37,8 @@ const echipaFotbalSchema = new mongoose.Schema({
             type: Schema.Types.ObjectId,
             ref: 'User'
         }]
-    }  
+    }
 })
 
-const EchipaFotbal = mongoose.model('EchipaFotbal',echipaFotbalSchema)
+const EchipaFotbal = mongoose.model('EchipaFotbal', echipaFotbalSchema)
 module.exports = EchipaFotbal
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
