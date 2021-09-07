@@ -30,7 +30,7 @@
             <% if( currentUser && anunt.author.equals(currentUser._id))  { %>
                 <div class="card-body darkkkk">
                     <a class="card-link btn btn-info" href="/anunturiBaschet/<%= anunt.id %>/edit ">Modify</a>
-                    <form class="d-inline" action="/anunt/baschet/<%= anunt.id %>" method="POST">
+                    <form class="d-inline" action="/anunt/baschet/<%= anunt.id %>?_method=DELETE" method="POST">
                         <button class="btn btn-danger">Delete</button>
                     </form>
                 </div>
